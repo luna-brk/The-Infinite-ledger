@@ -4,67 +4,193 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Infinite Ledger — Master Index</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --gold-pale: #F5E9CC;
-    --gold-dark: #7A6030;
-    --ink: #1A1510;
-    --ink-mid: #2E2519;
-    --ink-light: #5C4D38;
-    --parchment: #F7F1E3;
-    --parchment-dark: #EDE4CE;
-    --parchment-deeper: #DDD0B0;
-    --sigil-blue: #1C3045;
-    --sigil-blue-mid: #2B4A6A;
-    --border-ornate: #A8892E;
+    /* Gold spectrum */
+    --gold:            #C9A84C;
+    --gold-light:      #E8C97A;
+    --gold-pale:       #F5E9CC;
+    --gold-dark:       #7A6030;
+    --gold-deep:       #4A3A1C;
+    --gold-glow:       rgba(201,168,76,0.55);
+
+    /* Ink spectrum */
+    --ink:             #1A1510;
+    --ink-mid:         #2E2519;
+    --ink-light:       #5C4D38;
+    --ink-faint:       #8B7A5C;
+
+    /* Parchment spectrum */
+    --parchment:       #F7F1E3;
+    --parchment-warm:  #F1E8D0;
+    --parchment-dark:  #EDE4CE;
+    --parchment-deeper:#DDD0B0;
+    --parchment-shadow:#C9B98E;
+
+    /* Planar accent colors */
+    --sigil-blue:      #1C3045;
+    --sigil-blue-mid:  #2B4A6A;
+    --sigil-blue-deep: #0F1E2D;
+    --border-ornate:   #A8892E;
+
+    /* Iron-gall annotation red (margin marks, corrections) */
+    --rubric:          #8B2A1F;
+    --rubric-soft:     #A64134;
+
+    /* Planar faction hues */
+    --plane-abyss:     #5B1A2E;
+    --plane-celestia:  #D4B94A;
+    --plane-mechanus:  #6B6B6B;
+    --plane-limbo:     #8B4FA5;
+    --plane-arborea:   #3E7B3E;
+    --plane-baator:    #9B2E1F;
   }
 
+  /* ── KEYFRAMES ────────────────────────────────────── */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  @keyframes pulse-glow {
-    0%, 100% { text-shadow: 0 0 12px rgba(201,168,76,0.4); }
-    50%       { text-shadow: 0 0 28px rgba(201,168,76,0.7), 0 0 50px rgba(201,168,76,0.3); }
+  @keyframes fadeInSoft {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
-  @keyframes rotate-slow {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+  @keyframes candle-flicker {
+    0%, 100% { text-shadow: 0 0 12px rgba(201,168,76,0.40), 0 0 28px rgba(201,168,76,0.18); }
+    20%      { text-shadow: 0 0 16px rgba(201,168,76,0.55), 0 0 34px rgba(201,168,76,0.25); }
+    40%      { text-shadow: 0 0 10px rgba(201,168,76,0.35), 0 0 22px rgba(201,168,76,0.12); }
+    60%      { text-shadow: 0 0 20px rgba(201,168,76,0.65), 0 0 42px rgba(201,168,76,0.32); }
+    80%      { text-shadow: 0 0 14px rgba(201,168,76,0.45), 0 0 26px rgba(201,168,76,0.18); }
+  }
+  @keyframes rotate-slow { to { transform: translate(-50%, -50%) rotate(360deg); } }
+  @keyframes rotate-reverse { to { transform: translate(-50%, -50%) rotate(-360deg); } }
+  @keyframes ember-rise {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(-220px) translateX(var(--drift, 10px)); opacity: 0; }
+  }
+  @keyframes wax-press {
+    0%   { transform: scale(0.3) rotate(-15deg); opacity: 0; }
+    60%  { transform: scale(1.15) rotate(3deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+  @keyframes ink-bleed {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes pulse-sigil {
+    0%, 100% { opacity: 0.025; }
+    50%      { opacity: 0.055; }
   }
 
-  html, body {
-    min-height: 100%;
-    background: var(--ink);
-  }
+  /* ── BODY / BACKDROP ──────────────────────────────── */
+  html, body { min-height: 100%; background: #0A0805; }
 
   body {
     font-family: 'EB Garamond', Georgia, serif;
     color: var(--ink);
-    background: radial-gradient(ellipse at 50% 0%, #2A2010 0%, #0D0A06 60%);
+    background:
+      radial-gradient(ellipse 1200px 800px at 50% -10%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 900px 700px at 20% 40%, rgba(43,74,106,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 900px 700px at 85% 70%, rgba(139,42,31,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 0%, #2A2010 0%, #0D0A06 55%, #05030F 100%);
     min-height: 100vh;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 3rem 1.5rem 5rem;
+    position: relative;
+    overflow-x: hidden;
   }
+
+  /* Drifting embers behind the page */
+  .ember {
+    position: fixed;
+    bottom: -10px;
+    width: 3px; height: 3px;
+    background: radial-gradient(circle, #E8C97A 0%, #C9A84C 40%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: ember-rise linear infinite;
+    box-shadow: 0 0 8px rgba(232,201,122,0.8);
+  }
+
+  /* ── TOP RIBBON (controls) ────────────────────────── */
+  .top-ribbon {
+    width: 780px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 5;
+    position: relative;
+  }
+  .top-ribbon .folio {
+    opacity: 0.6;
+  }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(247,241,227,0.06);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 6px 12px;
+    border-radius: 2px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .search-bar:focus-within {
+    background: rgba(247,241,227,0.12);
+    border-color: var(--gold);
+  }
+  .search-bar svg { width: 12px; height: 12px; stroke: var(--gold); flex-shrink: 0; }
+  .search-bar input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--gold-light);
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    width: 200px;
+    font-style: italic;
+  }
+  .search-bar input::placeholder { color: rgba(232,201,122,0.4); }
 
   /* ── PAGE FRAME ───────────────────────────────────── */
   .page {
     width: 780px;
     max-width: 100%;
-    background: var(--parchment);
+    background:
+      /* Parchment noise */
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.34  0 0 0 0 0.18  0 0 0 0.06 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"),
+      /* Subtle stains */
+      radial-gradient(ellipse 300px 200px at 15% 20%, rgba(139,100,42,0.05), transparent),
+      radial-gradient(ellipse 250px 180px at 85% 75%, rgba(139,100,42,0.04), transparent),
+      radial-gradient(ellipse 200px 150px at 55% 50%, rgba(201,168,76,0.03), transparent),
+      var(--parchment);
+    background-blend-mode: multiply, normal, normal, normal, normal;
     position: relative;
     box-shadow:
       0 0 0 1px var(--gold-dark),
       0 0 0 5px rgba(201,168,76,0.15),
-      0 30px 80px rgba(0,0,0,0.8),
-      0 0 120px rgba(201,168,76,0.08);
-    animation: fadeIn 0.8s ease both;
+      0 30px 90px rgba(0,0,0,0.85),
+      0 0 140px rgba(201,168,76,0.10),
+      inset 0 0 80px rgba(139,100,42,0.08);
+    animation: fadeIn 0.9s ease both;
+    z-index: 1;
   }
 
   .page::before {
@@ -73,7 +199,7 @@
     inset: 6px;
     border: 1px solid var(--gold-dark);
     pointer-events: none;
-    z-index: 1;
+    z-index: 3;
   }
   .page::after {
     content: '';
@@ -81,11 +207,33 @@
     inset: 12px;
     border: 1px solid rgba(201,168,76,0.35);
     pointer-events: none;
-    z-index: 1;
+    z-index: 3;
+  }
+
+  /* Ribbon bookmark */
+  .bookmark {
+    position: absolute;
+    top: -6px;
+    right: 60px;
+    width: 36px;
+    height: 110px;
+    background: linear-gradient(180deg, #6B1A1A 0%, #8B2A1F 50%, #5B1515 100%);
+    z-index: 2;
+    box-shadow: 2px 3px 8px rgba(0,0,0,0.5);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+  }
+  .bookmark::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 70px;
+    background: linear-gradient(180deg, rgba(255,220,180,0.3), transparent);
   }
 
   /* ── CORNER ORNAMENTS ─────────────────────────────── */
-  .corner { position: absolute; width: 48px; height: 48px; z-index: 2; }
+  .corner { position: absolute; width: 72px; height: 72px; z-index: 4; pointer-events: none; }
   .corner svg { width: 100%; height: 100%; }
   .corner-tl { top: 3px; left: 3px; }
   .corner-tr { top: 3px; right: 3px; transform: scaleX(-1); }
@@ -96,17 +244,39 @@
   .page-inner {
     padding: 64px 72px 72px;
     position: relative;
+    z-index: 2;
   }
 
   /* ── HEADER BAND ──────────────────────────────────── */
   .header-band {
-    background: var(--sigil-blue);
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(201,168,76,0.15), transparent 70%),
+      linear-gradient(180deg, var(--sigil-blue-deep) 0%, var(--sigil-blue) 50%, var(--sigil-blue-deep) 100%);
     margin: -64px -72px 40px;
-    padding: 60px 72px 20px;
+    padding: 60px 72px 28px;
     border-top: 2px solid var(--gold);
     border-bottom: 2px solid var(--gold);
     text-align: center;
     position: relative;
+    overflow: hidden;
+  }
+  /* Starfield in header */
+  .header-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(232,201,122,0.6), transparent),
+      radial-gradient(1px 1px at 25% 70%, rgba(232,201,122,0.4), transparent),
+      radial-gradient(1px 1px at 45% 30%, rgba(232,201,122,0.5), transparent),
+      radial-gradient(1px 1px at 70% 60%, rgba(232,201,122,0.7), transparent),
+      radial-gradient(1px 1px at 85% 25%, rgba(232,201,122,0.4), transparent),
+      radial-gradient(1px 1px at 90% 80%, rgba(232,201,122,0.5), transparent),
+      radial-gradient(1px 1px at 15% 85%, rgba(232,201,122,0.3), transparent),
+      radial-gradient(1px 1px at 55% 85%, rgba(232,201,122,0.4), transparent),
+      radial-gradient(1px 1px at 38% 15%, rgba(232,201,122,0.3), transparent),
+      radial-gradient(1px 1px at 78% 45%, rgba(232,201,122,0.5), transparent);
+    pointer-events: none;
   }
   .header-band::after {
     content: '';
@@ -114,44 +284,65 @@
     left: 72px; right: 72px; bottom: -8px;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+    z-index: 2;
   }
 
   .header-subtitle {
     font-family: 'Cinzel', serif;
     font-size: 10px;
-    letter-spacing: 0.35em;
+    letter-spacing: 0.4em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 10px;
-    opacity: 0.85;
+    margin-bottom: 12px;
+    opacity: 0.9;
     animation: fadeIn 0.8s 0.1s ease both;
+    position: relative;
+    z-index: 1;
   }
 
   .main-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 42px;
-    font-weight: 700;
+    font-size: 46px;
+    font-weight: 900;
     color: var(--gold-light);
-    line-height: 1.1;
-    animation: pulse-glow 4s ease-in-out infinite, fadeIn 0.8s 0.2s ease both;
+    line-height: 1.05;
+    animation: candle-flicker 6s ease-in-out infinite, fadeIn 0.8s 0.2s ease both;
     letter-spacing: 0.04em;
+    position: relative;
+    z-index: 1;
   }
 
   .main-subtitle {
     font-family: 'Cinzel', serif;
     font-size: 12.5px;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.3em;
     color: var(--parchment-deeper);
-    margin-top: 10px;
+    margin-top: 12px;
     opacity: 0.75;
     animation: fadeIn 0.8s 0.3s ease both;
+    position: relative;
+    z-index: 1;
   }
+
+  /* Flanking sigil ornaments in header */
+  .header-sigil {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .header-sigil.left  { left: 32px; }
+  .header-sigil.right { right: 32px; }
+  .header-sigil svg { width: 100%; height: 100%; }
 
   /* ── ORNAMENT DIVIDER ─────────────────────────────── */
   .ornament-line {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     margin: 32px 0 28px;
   }
   .ornament-line span {
@@ -164,39 +355,164 @@
     background: var(--gold);
     transform: rotate(45deg);
     flex-shrink: 0;
+    box-shadow: 0 0 4px rgba(201,168,76,0.4);
   }
   .ornament-diamond.sm { width: 6px; height: 6px; }
 
-  /* ── PREAMBLE ─────────────────────────────────────── */
+  .ornament-fleuron {
+    font-family: 'EB Garamond', serif;
+    color: var(--gold-dark);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  /* ── PREAMBLE with drop cap ───────────────────────── */
   .preamble {
     font-style: italic;
     font-size: 16px;
     line-height: 1.75;
     color: var(--ink-light);
-    text-align: center;
-    padding: 0 24px;
-    margin-bottom: 40px;
+    text-align: justify;
+    padding: 0 12px;
+    margin-bottom: 8px;
     position: relative;
   }
-  .preamble::before, .preamble::after {
-    content: '❧';
-    color: var(--gold-dark);
-    font-size: 20px;
-    display: block;
+  .preamble::first-letter {
+    font-family: 'Cinzel Decorative', serif;
+    float: left;
+    font-size: 58px;
+    line-height: 0.9;
+    font-weight: 700;
+    color: var(--rubric);
+    padding: 4px 10px 0 0;
+    font-style: normal;
+    text-shadow: 1px 1px 0 rgba(139,42,31,0.15);
+  }
+  .preamble-flourish {
     text-align: center;
+    color: var(--gold-dark);
+    font-size: 22px;
     line-height: 1;
-    margin: 8px 0;
+    margin: 18px 0 36px;
+    letter-spacing: 0.8em;
+    padding-left: 0.8em;
   }
 
-  /* ── INDEX HEADING ────────────────────────────────── */
-  .index-heading {
-    font-family: 'Cinzel', serif;
+  /* Margin annotation (looks hand-scribbled in rubric red) */
+  .margin-note {
+    position: absolute;
+    font-family: 'IM Fell DW Pica', 'EB Garamond', serif;
+    font-style: italic;
     font-size: 11px;
+    color: var(--rubric);
+    line-height: 1.25;
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+    transform: rotate(-2deg);
+    max-width: 62px;
+    text-align: center;
+  }
+  .margin-note::before {
+    content: '☞';
+    display: block;
+    color: var(--rubric);
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  /* ── WHEEL (Great Wheel mini-diagram) ─────────────── */
+  .great-wheel {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 8px;
+    position: relative;
+  }
+  .great-wheel svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 12px rgba(201,168,76,0.15));
+  }
+  .great-wheel .rim-outer { animation: rotate-slow 200s linear infinite; transform-origin: center; }
+  .great-wheel .rim-inner { animation: rotate-reverse 260s linear infinite; transform-origin: center; }
+  .wheel-label {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
     letter-spacing: 0.35em;
     color: var(--gold-dark);
     text-transform: uppercase;
+    margin-top: -8px;
+    margin-bottom: 30px;
+    opacity: 0.75;
+  }
+
+  /* ── INDEX HEADING ────────────────────────────────── */
+  .section-heading {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .section-heading::before,
+  .section-heading::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--border-ornate);
+    opacity: 0.5;
+  }
+  .section-heading .star {
+    color: var(--gold);
+    font-size: 13px;
+  }
+
+  /* ── FILTER TABS ──────────────────────────────────── */
+  .filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--parchment-deeper);
+  }
+  .filter-tab {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: transparent;
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+  .filter-tab:hover { color: var(--ink-light); }
+  .filter-tab.active {
+    color: var(--gold-dark);
+    font-weight: 700;
+  }
+  .filter-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 10%; right: 10%;
+    height: 2px;
+    background: var(--gold);
+  }
+  .filter-tab .count {
+    display: inline-block;
+    margin-left: 4px;
+    color: var(--ink-faint);
+    font-weight: 400;
+    opacity: 0.7;
   }
 
   /* ── MODULE GRID ──────────────────────────────────── */
@@ -206,61 +522,95 @@
     gap: 12px;
   }
 
-  /* Base card — skeleton/coming soon */
   .module-card {
-    background: var(--parchment-dark);
+    background:
+      linear-gradient(180deg, rgba(247,241,227,0.4), transparent),
+      var(--parchment-dark);
     border: 1px solid var(--parchment-deeper);
     border-left: 3px solid var(--gold-dark);
-    padding: 14px 16px;
+    padding: 16px 18px 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     position: relative;
     color: inherit;
     text-decoration: none;
-    /* Not a link yet — pointer events removed for skeleton cards */
     cursor: default;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+    overflow: hidden;
+  }
+  .module-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top left, rgba(201,168,76,0.08), transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
-  /* Live card — clickable module */
   .module-card.live {
     cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    border-left-color: var(--gold);
+  }
+  .module-card.live::after {
+    content: '→';
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+    font-family: 'Cinzel', serif;
+    color: var(--gold-dark);
+    font-size: 18px;
+    opacity: 0.5;
+    transition: transform 0.25s, opacity 0.25s, color 0.25s;
   }
   .module-card.live:hover {
-    background: #E8DEC4;
+    background:
+      linear-gradient(180deg, rgba(247,241,227,0.6), transparent),
+      var(--parchment-warm);
+    border-color: var(--gold);
     border-left-color: var(--gold);
-    transform: translateX(2px);
+    transform: translateX(3px);
+    box-shadow: -3px 3px 0 rgba(201,168,76,0.15), 0 4px 12px rgba(0,0,0,0.1);
   }
-  .module-card.live:hover .module-title {
-    color: var(--gold-dark);
+  .module-card.live:hover::before { opacity: 1; }
+  .module-card.live:hover::after {
+    transform: translateX(4px);
+    opacity: 1;
+    color: var(--gold);
   }
+  .module-card.live:hover .module-title { color: var(--gold-dark); }
 
-  /* Wide card spanning both columns */
   .module-card.span-2 {
     grid-column: span 2;
     border-left-color: var(--gold);
-    background: #EDE4CE;
+    background:
+      linear-gradient(180deg, rgba(247,241,227,0.5), transparent),
+      var(--parchment-dark);
   }
-  .module-card.span-2.live:hover {
-    background: #E3D5B2;
+
+  /* Hidden state for filter */
+  .module-card.filtered-out {
+    display: none;
   }
 
   .module-numeral {
     font-family: 'Cinzel', serif;
     font-size: 9px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.35em;
     color: var(--gold);
     text-transform: uppercase;
+    font-weight: 600;
   }
 
   .module-title {
     font-family: 'Cinzel', serif;
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--sigil-blue);
     line-height: 1.3;
-    transition: color 0.2s;
+    transition: color 0.25s;
+    padding-right: 24px;
   }
 
   .module-desc {
@@ -269,50 +619,313 @@
     line-height: 1.5;
     margin-top: 2px;
     font-style: italic;
+    padding-right: 20px;
+  }
+
+  .module-meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    font-size: 10px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .module-meta .meta-tag {
+    padding: 2px 7px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    font-weight: 500;
   }
 
   .module-status {
     position: absolute;
-    top: 10px;
-    right: 12px;
-    font-size: 11px;
+    top: 12px;
+    right: 14px;
+    font-size: 10px;
     font-family: 'Cinzel', serif;
-    color: var(--gold-dark);
-    opacity: 0.6;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    opacity: 0.7;
+    text-transform: uppercase;
+    font-weight: 500;
   }
   .module-status.active {
     color: var(--sigil-blue-mid);
     opacity: 1;
+    font-weight: 700;
+  }
+  .module-status.active::before {
+    content: '';
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: 1px;
+    box-shadow: 0 0 6px rgba(201,168,76,0.8);
+    animation: candle-flicker 3s ease-in-out infinite;
+  }
+
+  /* Progress bar on the card */
+  .module-progress {
+    position: absolute;
+    left: 0; bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+    transition: width 0.6s ease;
+  }
+
+  /* ── CURRENCY CONVERTER (toy) ─────────────────────── */
+  .converter-section {
+    margin-top: 42px;
+    background:
+      linear-gradient(180deg, rgba(28,48,69,0.04), transparent),
+      var(--parchment-warm);
+    border: 1px solid var(--parchment-deeper);
+    border-left: 3px solid var(--sigil-blue);
+    padding: 22px 24px 24px;
+    position: relative;
+  }
+  .converter-section::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .converter-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--sigil-blue);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .converter-sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--ink-light);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .converter-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .converter-side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .converter-side label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+  }
+  .converter-row {
+    display: flex;
+    gap: 6px;
+  }
+  .converter-input, .converter-select {
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    background: var(--parchment);
+    border: 1px solid var(--parchment-deeper);
+    padding: 8px 10px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .converter-input {
+    flex: 0 0 80px;
+    text-align: right;
     font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .converter-select {
+    flex: 1;
+    cursor: pointer;
+    font-style: italic;
+  }
+  .converter-input:focus, .converter-select:focus {
+    border-color: var(--gold);
+    background: #FDF8E9;
+  }
+  .converter-arrow {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-dark);
+    font-size: 24px;
+    padding: 0 4px;
+    user-select: none;
+    cursor: pointer;
+    transition: transform 0.3s, color 0.2s;
+  }
+  .converter-arrow:hover {
+    transform: rotate(180deg);
+    color: var(--gold);
+  }
+  .converter-note {
+    margin-top: 14px;
+    font-family: 'IM Fell DW Pica', serif;
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .converter-note strong {
+    color: var(--rubric);
+    font-weight: 500;
+  }
+
+  /* ── WBL PROGRESS RIBBON ──────────────────────────── */
+  .wbl-section {
+    margin-top: 36px;
+  }
+  .wbl-ribbon {
+    display: flex;
+    gap: 2px;
+    height: 32px;
+    position: relative;
+    border: 1px solid var(--parchment-deeper);
+    background: var(--parchment-warm);
+    padding: 3px;
+  }
+  .wbl-seg {
+    flex: 1;
+    background: linear-gradient(180deg, var(--parchment-deeper), var(--parchment-shadow));
+    position: relative;
+    transition: background 0.25s, transform 0.15s;
+    cursor: pointer;
+  }
+  .wbl-seg.covered {
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    box-shadow: inset 0 -2px 0 var(--gold-dark);
+  }
+  .wbl-seg:hover {
+    transform: scaleY(1.15);
+    z-index: 2;
+  }
+  .wbl-seg::after {
+    content: attr(data-lvl);
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .wbl-seg:hover::after { opacity: 1; }
+  .wbl-legend {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  /* ── CANT GLOSSARY ────────────────────────────────── */
+  .cant-section {
+    margin-top: 38px;
+  }
+  .cant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--parchment-deeper);
+    border: 1px solid var(--parchment-deeper);
+  }
+  .cant-term {
+    background: var(--parchment-warm);
+    padding: 12px 14px;
+    cursor: help;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .cant-term:hover {
+    background: var(--parchment);
+  }
+  .cant-word {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sigil-blue);
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+  .cant-def {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.4;
   }
 
   /* ── THREE PILLARS ────────────────────────────────── */
-  .footer-area { margin-top: 40px; }
+  .footer-area { margin-top: 42px; }
 
   .three-pillars {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
     border: 1px solid var(--parchment-deeper);
+    background: var(--parchment-warm);
+    position: relative;
   }
+  .three-pillars::before,
+  .three-pillars::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .three-pillars::before { top: -1px; }
+  .three-pillars::after  { bottom: -1px; }
 
   .pillar {
-    padding: 16px 18px;
+    padding: 20px 18px 22px;
     text-align: center;
     border-right: 1px solid var(--parchment-deeper);
+    position: relative;
   }
   .pillar:last-child { border-right: none; }
-
+  .pillar-icon {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 10px;
+    color: var(--gold-dark);
+  }
+  .pillar-icon svg { width: 100%; height: 100%; }
   .pillar-name {
     font-family: 'Cinzel', serif;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--gold-dark);
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
-
   .pillar-desc {
     font-size: 12.5px;
     color: var(--ink-light);
@@ -320,20 +933,36 @@
     font-style: italic;
   }
 
+  /* ── WAX SEAL ─────────────────────────────────────── */
+  .wax-seal {
+    width: 90px;
+    height: 90px;
+    margin: 32px auto 0;
+    position: relative;
+    animation: wax-press 1s 0.8s ease-out both;
+    filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.35));
+  }
+  .wax-seal svg { width: 100%; height: 100%; }
+
   /* ── EDITION MARK ─────────────────────────────────── */
   .edition-mark {
     text-align: center;
-    margin-top: 36px;
+    margin-top: 28px;
     padding-top: 20px;
     border-top: 1px solid var(--parchment-deeper);
   }
   .edition-mark p {
     font-family: 'Cinzel', serif;
     font-size: 10px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.35em;
     color: var(--border-ornate);
-    opacity: 0.7;
+    opacity: 0.75;
     text-transform: uppercase;
+  }
+  .edition-mark .signet {
+    display: inline-block;
+    margin: 0 8px;
+    color: var(--gold);
   }
 
   /* ── WATERMARK SIGIL ──────────────────────────────── */
@@ -341,91 +970,263 @@
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px; height: 400px;
-    opacity: 0.025;
+    width: 520px; height: 520px;
     pointer-events: none;
-    animation: rotate-slow 120s linear infinite;
+    animation: rotate-slow 300s linear infinite, pulse-sigil 8s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  /* ── TOOLTIPS ─────────────────────────────────────── */
+  [data-tip] {
+    position: relative;
+  }
+  [data-tip]:hover::before {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--parchment);
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    padding: 8px 12px;
+    white-space: nowrap;
+    border: 1px solid var(--gold-dark);
+    z-index: 100;
+    pointer-events: none;
+    animation: fadeInSoft 0.15s ease;
+  }
+  [data-tip]:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--gold-dark);
+    z-index: 100;
+    pointer-events: none;
   }
 
   /* ── RESPONSIVE ───────────────────────────────────── */
-  @media (max-width: 600px) {
-    .page-inner         { padding: 48px 28px 48px; }
-    .header-band        { margin: -48px -28px 32px; padding: 48px 28px 16px; }
-    .main-title         { font-size: 28px; }
-    .module-grid        { grid-template-columns: 1fr; }
+  @media (max-width: 720px) {
+    body { padding: 1.5rem 0.75rem 3rem; }
+    .top-ribbon { flex-direction: column; gap: 8px; align-items: center; }
+    .search-bar input { width: 160px; }
+    .page-inner { padding: 48px 22px 40px; }
+    .header-band { margin: -48px -22px 32px; padding: 48px 22px 20px; }
+    .header-sigil { display: none; }
+    .main-title { font-size: 30px; }
+    .module-grid { grid-template-columns: 1fr; }
     .module-card.span-2 { grid-column: span 1; }
-    .three-pillars      { grid-template-columns: 1fr; }
-    .pillar             { border-right: none; border-bottom: 1px solid var(--parchment-deeper); }
-    .pillar:last-child  { border-bottom: none; }
+    .three-pillars { grid-template-columns: 1fr; }
+    .pillar { border-right: none; border-bottom: 1px solid var(--parchment-deeper); }
+    .pillar:last-child { border-bottom: none; }
+    .cant-grid { grid-template-columns: 1fr; }
+    .converter-grid { grid-template-columns: 1fr; }
+    .converter-arrow { transform: rotate(90deg); margin: 0 auto; }
+    .converter-arrow:hover { transform: rotate(270deg); }
+    .filter-tabs { flex-wrap: wrap; }
+    .filter-tab { padding: 8px 12px; font-size: 9px; }
+    .margin-note { display: none; }
+    .bookmark { right: 30px; }
   }
 
   @media print {
-    body      { background: white; }
-    .page     { box-shadow: none; }
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
     .module-card { break-inside: avoid; }
+    .top-ribbon, .bookmark, .ember, .margin-note { display: none; }
+    .main-title { animation: none; color: #7A6030 !important; text-shadow: none !important; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .ember { display: none; }
   }
 </style>
 </head>
 <body>
 
+<!-- Drifting embers -->
+<div class="ember" style="left:5%;  animation-duration: 14s; animation-delay: 0s;  --drift:  20px;"></div>
+<div class="ember" style="left:18%; animation-duration: 18s; animation-delay: 3s;  --drift: -15px;"></div>
+<div class="ember" style="left:32%; animation-duration: 12s; animation-delay: 6s;  --drift:  25px;"></div>
+<div class="ember" style="left:48%; animation-duration: 16s; animation-delay: 1s;  --drift: -30px;"></div>
+<div class="ember" style="left:62%; animation-duration: 20s; animation-delay: 4s;  --drift:  18px;"></div>
+<div class="ember" style="left:76%; animation-duration: 13s; animation-delay: 8s;  --drift: -22px;"></div>
+<div class="ember" style="left:88%; animation-duration: 17s; animation-delay: 2s;  --drift:  12px;"></div>
+<div class="ember" style="left:95%; animation-duration: 15s; animation-delay: 5s;  --drift: -10px;"></div>
+
+<!-- Top ribbon: folio + search -->
+<div class="top-ribbon">
+  <span class="folio">Folio I · Master Index · MMXXVI</span>
+  <div class="search-bar" role="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="search" id="moduleSearch" placeholder="Seek a module…" aria-label="Search modules">
+  </div>
+</div>
+
 <div class="page">
 
-  <!-- Corner ornaments -->
-  <div class="corner corner-tl">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 4 L4 22 M4 4 L22 4" stroke="#A8892E" stroke-width="1.5" fill="none"/>
-      <path d="M4 4 L18 18" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
-      <circle cx="4" cy="4" r="2.5" fill="#A8892E"/>
-      <circle cx="13" cy="4" r="1" fill="#A8892E" opacity="0.6"/>
-      <circle cx="4" cy="13" r="1" fill="#A8892E" opacity="0.6"/>
-      <path d="M18 18 L24 12 L30 18" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.4"/>
+  <!-- Ribbon bookmark -->
+  <div class="bookmark" aria-hidden="true"></div>
+
+  <!-- Corner ornaments (larger, more elaborate) -->
+  <div class="corner corner-tl" aria-hidden="true">
+    <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main L-bracket -->
+      <path d="M6 6 L6 34 M6 6 L34 6" stroke="#A8892E" stroke-width="1.5" fill="none"/>
+      <path d="M10 6 L10 22 M6 10 L22 10" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.6"/>
+      <!-- Corner medallion -->
+      <circle cx="6" cy="6" r="3" fill="#A8892E"/>
+      <circle cx="6" cy="6" r="1.5" fill="#F7F1E3"/>
+      <!-- Vine flourish -->
+      <path d="M6 6 Q 22 22 40 24" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
+      <path d="M6 6 Q 24 22 24 40" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
+      <!-- Decorative buds -->
+      <circle cx="18" cy="6" r="1.2" fill="#A8892E" opacity="0.7"/>
+      <circle cx="28" cy="6" r="0.8" fill="#A8892E" opacity="0.5"/>
+      <circle cx="6"  cy="18" r="1.2" fill="#A8892E" opacity="0.7"/>
+      <circle cx="6"  cy="28" r="0.8" fill="#A8892E" opacity="0.5"/>
+      <!-- Fleur at end of vine -->
+      <path d="M40 24 Q 44 20 42 16 Q 46 18 46 24 Q 44 26 40 24 Z"
+            fill="#A8892E" opacity="0.45"/>
+      <path d="M24 40 Q 20 44 16 42 Q 18 46 24 46 Q 26 44 24 40 Z"
+            fill="#A8892E" opacity="0.45"/>
+      <!-- Inner triangle -->
+      <path d="M14 14 L22 22" stroke="#A8892E" stroke-width="0.6" fill="none" opacity="0.4"/>
+      <path d="M14 22 L22 14" stroke="#A8892E" stroke-width="0.6" fill="none" opacity="0.4"/>
     </svg>
   </div>
-  <div class="corner corner-tr">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 4 L4 22 M4 4 L22 4" stroke="#A8892E" stroke-width="1.5" fill="none"/>
-      <path d="M4 4 L18 18" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
-      <circle cx="4" cy="4" r="2.5" fill="#A8892E"/>
-      <circle cx="13" cy="4" r="1" fill="#A8892E" opacity="0.6"/>
-      <circle cx="4" cy="13" r="1" fill="#A8892E" opacity="0.6"/>
+  <div class="corner corner-tr" aria-hidden="true">
+    <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 6 L6 34 M6 6 L34 6" stroke="#A8892E" stroke-width="1.5" fill="none"/>
+      <path d="M10 6 L10 22 M6 10 L22 10" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.6"/>
+      <circle cx="6" cy="6" r="3" fill="#A8892E"/>
+      <circle cx="6" cy="6" r="1.5" fill="#F7F1E3"/>
+      <path d="M6 6 Q 22 22 40 24" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
+      <path d="M6 6 Q 24 22 24 40" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
+      <circle cx="18" cy="6" r="1.2" fill="#A8892E" opacity="0.7"/>
+      <circle cx="28" cy="6" r="0.8" fill="#A8892E" opacity="0.5"/>
+      <circle cx="6"  cy="18" r="1.2" fill="#A8892E" opacity="0.7"/>
+      <circle cx="6"  cy="28" r="0.8" fill="#A8892E" opacity="0.5"/>
+      <path d="M40 24 Q 44 20 42 16 Q 46 18 46 24 Q 44 26 40 24 Z" fill="#A8892E" opacity="0.45"/>
+      <path d="M24 40 Q 20 44 16 42 Q 18 46 24 46 Q 26 44 24 40 Z" fill="#A8892E" opacity="0.45"/>
+      <path d="M14 14 L22 22" stroke="#A8892E" stroke-width="0.6" fill="none" opacity="0.4"/>
+      <path d="M14 22 L22 14" stroke="#A8892E" stroke-width="0.6" fill="none" opacity="0.4"/>
     </svg>
   </div>
-  <div class="corner corner-bl">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 4 L4 22 M4 4 L22 4" stroke="#A8892E" stroke-width="1.5" fill="none"/>
-      <circle cx="4" cy="4" r="2.5" fill="#A8892E"/>
-      <circle cx="13" cy="4" r="1" fill="#A8892E" opacity="0.6"/>
-      <circle cx="4" cy="13" r="1" fill="#A8892E" opacity="0.6"/>
+  <div class="corner corner-bl" aria-hidden="true">
+    <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 6 L6 34 M6 6 L34 6" stroke="#A8892E" stroke-width="1.5" fill="none"/>
+      <path d="M10 6 L10 22 M6 10 L22 10" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.6"/>
+      <circle cx="6" cy="6" r="3" fill="#A8892E"/>
+      <circle cx="6" cy="6" r="1.5" fill="#F7F1E3"/>
+      <path d="M6 6 Q 22 22 40 24" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
+      <path d="M6 6 Q 24 22 24 40" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
+      <circle cx="18" cy="6" r="1.2" fill="#A8892E" opacity="0.7"/>
+      <circle cx="28" cy="6" r="0.8" fill="#A8892E" opacity="0.5"/>
+      <circle cx="6"  cy="18" r="1.2" fill="#A8892E" opacity="0.7"/>
+      <circle cx="6"  cy="28" r="0.8" fill="#A8892E" opacity="0.5"/>
     </svg>
   </div>
-  <div class="corner corner-br">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 4 L4 22 M4 4 L22 4" stroke="#A8892E" stroke-width="1.5" fill="none"/>
-      <circle cx="4" cy="4" r="2.5" fill="#A8892E"/>
-      <circle cx="13" cy="4" r="1" fill="#A8892E" opacity="0.6"/>
-      <circle cx="4" cy="13" r="1" fill="#A8892E" opacity="0.6"/>
+  <div class="corner corner-br" aria-hidden="true">
+    <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 6 L6 34 M6 6 L34 6" stroke="#A8892E" stroke-width="1.5" fill="none"/>
+      <path d="M10 6 L10 22 M6 10 L22 10" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.6"/>
+      <circle cx="6" cy="6" r="3" fill="#A8892E"/>
+      <circle cx="6" cy="6" r="1.5" fill="#F7F1E3"/>
+      <path d="M6 6 Q 22 22 40 24" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
+      <path d="M6 6 Q 24 22 24 40" stroke="#A8892E" stroke-width="0.75" fill="none" opacity="0.5"/>
+      <circle cx="18" cy="6" r="1.2" fill="#A8892E" opacity="0.7"/>
+      <circle cx="28" cy="6" r="0.8" fill="#A8892E" opacity="0.5"/>
+      <circle cx="6"  cy="18" r="1.2" fill="#A8892E" opacity="0.7"/>
+      <circle cx="6"  cy="28" r="0.8" fill="#A8892E" opacity="0.5"/>
     </svg>
   </div>
 
   <div class="page-inner">
 
-    <!-- Background watermark sigil -->
+    <!-- Background watermark: Sigil's ring + Great Wheel -->
     <svg class="bg-sigil" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="100" r="95" fill="none" stroke="#A8892E" stroke-width="1"/>
+      <defs>
+        <radialGradient id="sigGrad" cx="50%" cy="50%">
+          <stop offset="0%" stop-color="#A8892E" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#A8892E" stop-opacity="0.3"/>
+        </radialGradient>
+      </defs>
+      <!-- Outer ring -->
+      <circle cx="100" cy="100" r="95" fill="none" stroke="url(#sigGrad)" stroke-width="0.8"/>
+      <circle cx="100" cy="100" r="88" fill="none" stroke="#A8892E" stroke-width="0.3"/>
       <circle cx="100" cy="100" r="80" fill="none" stroke="#A8892E" stroke-width="0.5"/>
-      <polygon points="100,10 185,155 15,155" fill="none" stroke="#A8892E" stroke-width="1"/>
-      <polygon points="100,190 15,45 185,45" fill="none" stroke="#A8892E" stroke-width="1"/>
-      <circle cx="100" cy="100" r="12" fill="none" stroke="#A8892E" stroke-width="1"/>
-      <circle cx="100" cy="10"  r="4" fill="#A8892E"/>
-      <circle cx="185" cy="155" r="4" fill="#A8892E"/>
-      <circle cx="15"  cy="155" r="4" fill="#A8892E"/>
-      <circle cx="100" cy="190" r="4" fill="#A8892E"/>
-      <circle cx="15"  cy="45"  r="4" fill="#A8892E"/>
-      <circle cx="185" cy="45"  r="4" fill="#A8892E"/>
+      <!-- Hexagram -->
+      <polygon points="100,14 185,155 15,155" fill="none" stroke="#A8892E" stroke-width="0.8"/>
+      <polygon points="100,186 15,45 185,45" fill="none" stroke="#A8892E" stroke-width="0.8"/>
+      <!-- Inner sigil -->
+      <circle cx="100" cy="100" r="30" fill="none" stroke="#A8892E" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="18" fill="none" stroke="#A8892E" stroke-width="0.4"/>
+      <circle cx="100" cy="100" r="8"  fill="none" stroke="#A8892E" stroke-width="0.6"/>
+      <!-- 16-point compass -->
+      <g stroke="#A8892E" stroke-width="0.3" opacity="0.7">
+        <line x1="100" y1="5"   x2="100" y2="195"/>
+        <line x1="5"   y1="100" x2="195" y2="100"/>
+        <line x1="33"  y1="33"  x2="167" y2="167"/>
+        <line x1="167" y1="33"  x2="33"  y2="167"/>
+      </g>
+      <!-- Vertex nodes -->
+      <circle cx="100" cy="14"  r="3.5" fill="#A8892E"/>
+      <circle cx="185" cy="155" r="3.5" fill="#A8892E"/>
+      <circle cx="15"  cy="155" r="3.5" fill="#A8892E"/>
+      <circle cx="100" cy="186" r="3.5" fill="#A8892E"/>
+      <circle cx="15"  cy="45"  r="3.5" fill="#A8892E"/>
+      <circle cx="185" cy="45"  r="3.5" fill="#A8892E"/>
+      <!-- Runic marks along the rim -->
+      <g fill="#A8892E" opacity="0.5">
+        <circle cx="100" cy="5"   r="1"/>
+        <circle cx="150" cy="20"  r="1"/>
+        <circle cx="180" cy="50"  r="1"/>
+        <circle cx="195" cy="100" r="1"/>
+        <circle cx="180" cy="150" r="1"/>
+        <circle cx="150" cy="180" r="1"/>
+        <circle cx="100" cy="195" r="1"/>
+        <circle cx="50"  cy="180" r="1"/>
+        <circle cx="20"  cy="150" r="1"/>
+        <circle cx="5"   cy="100" r="1"/>
+        <circle cx="20"  cy="50"  r="1"/>
+        <circle cx="50"  cy="20"  r="1"/>
+      </g>
     </svg>
 
     <!-- Header -->
     <div class="header-band">
+      <!-- Flanking sigils -->
+      <div class="header-sigil left" aria-hidden="true">
+        <svg viewBox="0 0 60 60">
+          <circle cx="30" cy="30" r="24" fill="none" stroke="#C9A84C" stroke-width="1"/>
+          <circle cx="30" cy="30" r="16" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+          <polygon points="30,10 46,38 14,38" fill="none" stroke="#C9A84C" stroke-width="0.75"/>
+          <circle cx="30" cy="30" r="3" fill="#E8C97A"/>
+        </svg>
+      </div>
+      <div class="header-sigil right" aria-hidden="true">
+        <svg viewBox="0 0 60 60">
+          <circle cx="30" cy="30" r="24" fill="none" stroke="#C9A84C" stroke-width="1"/>
+          <circle cx="30" cy="30" r="16" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+          <polygon points="30,50 14,22 46,22" fill="none" stroke="#C9A84C" stroke-width="0.75"/>
+          <circle cx="30" cy="30" r="3" fill="#E8C97A"/>
+        </svg>
+      </div>
       <p class="header-subtitle">A Planar Economy System · Pathfinder 1e Planescape · Levels 1–20</p>
       <h1 class="main-title">The Infinite Ledger</h1>
       <p class="main-subtitle">Master Index &amp; Navigation</p>
@@ -434,148 +1235,600 @@
     <!-- Ornamental divider -->
     <div class="ornament-line">
       <span></span>
+      <span class="ornament-fleuron">❦</span>
       <div class="ornament-diamond sm"></div>
       <div class="ornament-diamond"></div>
       <div class="ornament-diamond sm"></div>
+      <span class="ornament-fleuron">❦</span>
       <span></span>
     </div>
 
-    <!-- Preamble -->
+    <!-- Preamble with drop cap -->
     <div class="preamble">
       The economy is a toy, not a tax. Players should <em>want</em> to arbitrage soul shells between
       the Grey Waste and Bytopia — to argue whether to pay the Merkhant Consortium in belief-tokens
       or raw quintessence. The complexity is opt-in: a player who just wants to buy a sword can buy a sword.
     </div>
+    <div class="preamble-flourish">✦ &nbsp; ✦ &nbsp; ✦</div>
 
-    <!-- Module index -->
-    <p class="index-heading">✦ &nbsp; Module Index &nbsp; ✦</p>
+    <!-- The Great Wheel mini-diagram -->
+    <div class="great-wheel" aria-label="The Great Wheel of the Planes">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="wheelCore" cx="50%" cy="50%">
+            <stop offset="0%"  stop-color="#E8C97A" stop-opacity="0.9"/>
+            <stop offset="70%" stop-color="#C9A84C" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#7A6030" stop-opacity="0.3"/>
+          </radialGradient>
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="1.5"/>
+          </filter>
+        </defs>
+        <!-- Outer rim (rotates) -->
+        <g class="rim-outer">
+          <circle cx="110" cy="110" r="100" fill="none" stroke="#7A6030" stroke-width="1.2"/>
+          <circle cx="110" cy="110" r="97" fill="none" stroke="#C9A84C" stroke-width="0.4" stroke-dasharray="2 4"/>
+          <!-- 16 planar spokes (cardinal + secondary) -->
+          <g stroke="#7A6030" stroke-width="0.5" opacity="0.6">
+            <line x1="110" y1="10"  x2="110" y2="18"/>
+            <line x1="110" y1="210" x2="110" y2="202"/>
+            <line x1="10"  y1="110" x2="18"  y2="110"/>
+            <line x1="210" y1="110" x2="202" y2="110"/>
+            <line x1="39"  y1="39"  x2="45"  y2="45"/>
+            <line x1="181" y1="39"  x2="175" y2="45"/>
+            <line x1="39"  y1="181" x2="45"  y2="175"/>
+            <line x1="181" y1="181" x2="175" y2="175"/>
+          </g>
+          <!-- Plane markers (hoverable) -->
+          <g font-family="Cinzel, serif" font-size="6" fill="#7A6030" letter-spacing="0.1em" text-anchor="middle">
+            <text x="110" y="8">CELESTIA</text>
+            <text x="184" y="42">BYTOPIA</text>
+            <text x="202" y="113">ELYSIUM</text>
+            <text x="184" y="184">ARBOREA</text>
+            <text x="110" y="218">YSGARD</text>
+            <text x="36"  y="184">LIMBO</text>
+            <text x="18"  y="113">PANDEMONIUM</text>
+            <text x="36"  y="42">ABYSS</text>
+          </g>
+        </g>
+        <!-- Middle ring (rotates reverse) -->
+        <g class="rim-inner">
+          <circle cx="110" cy="110" r="68" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
+          <circle cx="110" cy="110" r="60" fill="none" stroke="#7A6030" stroke-width="0.3" stroke-dasharray="1 3"/>
+          <!-- Hexagram -->
+          <polygon points="110,50 162,138 58,138" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.7"/>
+          <polygon points="110,170 58,82 162,82" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.7"/>
+          <!-- Vertex orbs -->
+          <circle cx="110" cy="50"  r="2.5" fill="#C9A84C"/>
+          <circle cx="162" cy="138" r="2.5" fill="#C9A84C"/>
+          <circle cx="58"  cy="138" r="2.5" fill="#C9A84C"/>
+          <circle cx="110" cy="170" r="2.5" fill="#C9A84C"/>
+          <circle cx="58"  cy="82"  r="2.5" fill="#C9A84C"/>
+          <circle cx="162" cy="82"  r="2.5" fill="#C9A84C"/>
+        </g>
+        <!-- Central Sigil -->
+        <g>
+          <circle cx="110" cy="110" r="22" fill="url(#wheelCore)" filter="url(#softGlow)"/>
+          <circle cx="110" cy="110" r="22" fill="none" stroke="#7A6030" stroke-width="0.8"/>
+          <circle cx="110" cy="110" r="14" fill="none" stroke="#F7F1E3" stroke-width="0.5" opacity="0.6"/>
+          <!-- Sigil ring (city at center of the wheel) -->
+          <circle cx="110" cy="110" r="6" fill="#1C3045"/>
+          <text x="110" y="113" font-family="Cinzel, serif" font-size="6" font-weight="700"
+                fill="#E8C97A" text-anchor="middle" letter-spacing="0.05em">S</text>
+        </g>
+      </svg>
+    </div>
+    <p class="wheel-label">The Cage sits at the Hub · All rings turn 'round Sigil</p>
 
-    <div class="module-grid">
+    <!-- MODULE INDEX -->
+    <p class="section-heading"><span class="star">✦</span>Module Index<span class="star">✦</span></p>
 
-      <!-- MODULE I — LIVE -->
-      <a class="module-card live" href="./module-1/">
+    <!-- Filter tabs -->
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all">All <span class="count">11</span></button>
+      <button class="filter-tab" data-filter="active">Active <span class="count">1</span></button>
+      <button class="filter-tab" data-filter="skeleton">Skeleton <span class="count">10</span></button>
+      <button class="filter-tab" data-filter="reference">Reference</button>
+    </div>
+
+    <div class="module-grid" id="moduleGrid">
+
+      <!-- I — LIVE -->
+      <a class="module-card live" href="./module-1/" data-status="active" data-tags="framework foundation">
         <span class="module-numeral">Module I</span>
-        <span class="module-status active">◆ Active</span>
+        <span class="module-status active">Active</span>
         <span class="module-title">Framework &amp; Skeleton</span>
         <span class="module-desc">Organizational map, design axioms, key definitions &amp; the five economic zones.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Foundation</span>
+          <span class="meta-tag">12 sections</span>
+        </div>
+        <div class="module-progress" style="width: 100%;"></div>
       </a>
 
-      <!-- MODULE II — SKELETON -->
-      <div class="module-card">
+      <!-- II -->
+      <div class="module-card" data-status="skeleton" data-tags="currency coin token">
         <span class="module-numeral">Module II</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">Currencies &amp; Mediums of Exchange</span>
         <span class="module-desc">Every coin, barter-token, metaphysical currency &amp; conversion tables.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Currency</span>
+        </div>
+        <div class="module-progress" style="width: 15%;"></div>
       </div>
 
-      <!-- MODULE III — SKELETON -->
-      <div class="module-card">
+      <!-- III -->
+      <div class="module-card" data-status="skeleton" data-tags="pricing market modifier">
         <span class="module-numeral">Module III</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">The Price of Everything</span>
         <span class="module-desc">Pricing philosophy, planar markup/discount engine &amp; regional modifiers.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Pricing</span>
+        </div>
+        <div class="module-progress" style="width: 10%;"></div>
       </div>
 
-      <!-- MODULE IV — SKELETON -->
-      <div class="module-card">
+      <!-- IV -->
+      <div class="module-card" data-status="skeleton" data-tags="trade goods smuggling route">
         <span class="module-numeral">Module IV</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">Trade Goods &amp; Commodities</span>
         <span class="module-desc">What moves between planes and why. Trade route tables &amp; smuggling.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Commerce</span>
+        </div>
+        <div class="module-progress" style="width: 8%;"></div>
       </div>
 
-      <!-- MODULE V — SKELETON -->
-      <div class="module-card">
+      <!-- V -->
+      <div class="module-card" data-status="skeleton" data-tags="services labor hiring spell portal toll">
         <span class="module-numeral">Module V</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">Services, Labor &amp; the Intangible Market</span>
         <span class="module-desc">Hiring, spell services, information brokerage, faction favors &amp; portal tolls.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Services</span>
+        </div>
+        <div class="module-progress" style="width: 12%;"></div>
       </div>
 
-      <!-- MODULE VI — SKELETON -->
-      <div class="module-card">
+      <!-- VI -->
+      <div class="module-card" data-status="skeleton" data-tags="faction sigil politics">
         <span class="module-numeral">Module VI</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">Faction Economics</span>
         <span class="module-desc">How each Sigil faction distorts, controls, or subverts the economy.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Factions</span>
+        </div>
+        <div class="module-progress" style="width: 20%;"></div>
       </div>
 
-      <!-- MODULE VII — SKELETON -->
-      <div class="module-card">
+      <!-- VII -->
+      <div class="module-card" data-status="skeleton" data-tags="law contract tax infernal regulation">
         <span class="module-numeral">Module VII</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">Planar Commerce Law &amp; Enforcement</span>
         <span class="module-desc">Infernal contracts, Fraternity of Order regulations &amp; extraplanar taxation.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Law</span>
+        </div>
+        <div class="module-progress" style="width: 5%;"></div>
       </div>
 
-      <!-- MODULE VIII — SKELETON -->
-      <div class="module-card">
+      <!-- VIII -->
+      <div class="module-card" data-status="skeleton" data-tags="wbl gm wealth pacing exploit">
         <span class="module-numeral">Module VIII</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">WBL Integration &amp; GM Controls</span>
         <span class="module-desc">Pacing wealth across levels 1–20. Anti-exploit safeguards &amp; arbitrage solutions.</span>
+        <div class="module-meta">
+          <span class="meta-tag">GM Tools</span>
+        </div>
+        <div class="module-progress" style="width: 25%;"></div>
       </div>
 
-      <!-- MODULE IX — SKELETON -->
-      <div class="module-card">
+      <!-- IX -->
+      <div class="module-card" data-status="skeleton" data-tags="downtime investment real estate reputation player">
         <span class="module-numeral">Module IX</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">Player-Facing Systems</span>
         <span class="module-desc">Downtime commerce, investment, planar real estate &amp; reputation economies.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Downtime</span>
+        </div>
+        <div class="module-progress" style="width: 18%;"></div>
       </div>
 
-      <!-- MODULE X — SKELETON -->
-      <div class="module-card">
+      <!-- X -->
+      <div class="module-card" data-status="skeleton" data-tags="business trade house enterprise">
         <span class="module-numeral">Module X</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Skeleton</span>
         <span class="module-title">Player-Owned Businesses &amp; Trade Houses</span>
         <span class="module-desc">Founding, running &amp; scaling player enterprises across the planes.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Enterprise</span>
+        </div>
+        <div class="module-progress" style="width: 7%;"></div>
       </div>
 
-      <!-- MODULE XI — SKELETON, SPANS FULL WIDTH -->
-      <div class="module-card span-2">
+      <!-- XI — SPAN -->
+      <div class="module-card span-2" data-status="reference" data-tags="reference table chart modifier appraisal">
         <span class="module-numeral">Module XI</span>
-        <span class="module-status">○ Skeleton</span>
+        <span class="module-status">Reference</span>
         <span class="module-title">Quick-Reference Tables</span>
         <span class="module-desc">Condensed conversion charts, DC tables for appraisal &amp; negotiation, regional price modifier cheat sheets — everything at a glance.</span>
+        <div class="module-meta">
+          <span class="meta-tag">Reference</span>
+          <span class="meta-tag">Cheat Sheets</span>
+          <span class="meta-tag">Quick-Pull</span>
+        </div>
+        <div class="module-progress" style="width: 30%;"></div>
       </div>
 
     </div><!-- /module-grid -->
+
+    <div id="noResults" style="display:none; text-align:center; padding: 32px 0; font-style: italic; color: var(--ink-faint);">
+      No entries bear that sigil.
+    </div>
+
+    <!-- ── CURRENCY CONVERTER ─────────────────────────── -->
+    <p class="section-heading" style="margin-top: 42px;"><span class="star">✦</span>The Merkhant's Abacus<span class="star">✦</span></p>
+
+    <div class="converter-section">
+      <p class="converter-title">Planar Currency Converter</p>
+      <p class="converter-sub">A toy, a curiosity — rates drift with the belief of the hour.</p>
+
+      <div class="converter-grid">
+        <div class="converter-side">
+          <label>Offer</label>
+          <div class="converter-row">
+            <input type="number" class="converter-input" id="convFromAmt" value="100" min="0" step="1" aria-label="Amount to convert from">
+            <select class="converter-select" id="convFrom" aria-label="Currency to convert from">
+              <option value="gp"      data-rate="1">      Gold Piece (gp)</option>
+              <option value="pp"      data-rate="10">     Platinum Piece (pp)</option>
+              <option value="sp"      data-rate="0.1">    Silver Piece (sp)</option>
+              <option value="cp"      data-rate="0.01">   Copper Piece (cp)</option>
+              <option value="jink"    data-rate="1">      Sigil Jink (jk)</option>
+              <option value="soul"    data-rate="2500">   Soul Shell (coin-soul)</option>
+              <option value="belief"  data-rate="0.4">    Belief Token</option>
+              <option value="quint"   data-rate="150">    Raw Quintessence (drop)</option>
+              <option value="astral"  data-rate="800">    Astral Githshard</option>
+              <option value="river"   data-rate="45">     Styx-Silver (drachm)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="converter-arrow" id="convSwap" title="Swap" role="button" tabindex="0">⇌</div>
+
+        <div class="converter-side">
+          <label>Yields</label>
+          <div class="converter-row">
+            <input type="number" class="converter-input" id="convToAmt" value="0.04" min="0" step="0.01" aria-label="Amount converted to" readonly>
+            <select class="converter-select" id="convTo" aria-label="Currency to convert to">
+              <option value="gp"      data-rate="1">      Gold Piece (gp)</option>
+              <option value="pp"      data-rate="10">     Platinum Piece (pp)</option>
+              <option value="sp"      data-rate="0.1">    Silver Piece (sp)</option>
+              <option value="cp"      data-rate="0.01">   Copper Piece (cp)</option>
+              <option value="jink"    data-rate="1">      Sigil Jink (jk)</option>
+              <option value="soul"    data-rate="2500" selected>   Soul Shell (coin-soul)</option>
+              <option value="belief"  data-rate="0.4">    Belief Token</option>
+              <option value="quint"   data-rate="150">    Raw Quintessence (drop)</option>
+              <option value="astral"  data-rate="800">    Astral Githshard</option>
+              <option value="river"   data-rate="45">     Styx-Silver (drachm)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <p class="converter-note" id="convNote">
+        <strong>Note:</strong> <span id="convFlavor">Rates vary by plane, petitioner, and phase of belief.</span>
+      </p>
+    </div>
+
+    <!-- ── WBL RIBBON ────────────────────────────────── -->
+    <p class="section-heading" style="margin-top: 44px;"><span class="star">✦</span>Wealth-By-Level Coverage<span class="star">✦</span></p>
+    <div class="wbl-section">
+      <div class="wbl-ribbon" id="wblRibbon" aria-label="Wealth-by-Level coverage across levels 1 to 20">
+        <!-- Populated by JS -->
+      </div>
+      <div class="wbl-legend">
+        <span>Lv 1</span>
+        <span>Lv 5</span>
+        <span>Lv 10</span>
+        <span>Lv 15</span>
+        <span>Lv 20</span>
+      </div>
+    </div>
+
+    <!-- ── THIEVES' CANT ──────────────────────────────── -->
+    <p class="section-heading" style="margin-top: 44px;"><span class="star">✦</span>The Cant — A Cutter's Glossary<span class="star">✦</span></p>
+
+    <div class="cant-section">
+      <div class="cant-grid">
+        <div class="cant-term" data-tip="Sigil slang: the common tongue of trade">
+          <div class="cant-word">Jink</div>
+          <div class="cant-def">Money. Coin. The grease of the Cage.</div>
+        </div>
+        <div class="cant-term" data-tip="A canny trader, a knowing soul">
+          <div class="cant-word">Cutter</div>
+          <div class="cant-def">A sharp berk. One who knows the dark.</div>
+        </div>
+        <div class="cant-term" data-tip="Ignorant newcomer to the planes">
+          <div class="cant-word">Berk</div>
+          <div class="cant-def">A clueless sod. A primer on two feet.</div>
+        </div>
+        <div class="cant-term" data-tip="The city-ring at the Wheel's hub">
+          <div class="cant-word">The Cage</div>
+          <div class="cant-def">Sigil. The Lady's city. Hub of all trade.</div>
+        </div>
+        <div class="cant-term" data-tip="A secret, a truth worth jink">
+          <div class="cant-word">The Dark</div>
+          <div class="cant-def">Inside knowledge. What merchants pay for.</div>
+        </div>
+        <div class="cant-term" data-tip="Crystallized belief as a medium of exchange">
+          <div class="cant-word">Quintessence</div>
+          <div class="cant-def">Raw planar stuff. The purest currency.</div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <div class="footer-area">
       <div class="ornament-line">
         <span></span>
+        <span class="ornament-fleuron">❦</span>
         <div class="ornament-diamond sm"></div>
         <div class="ornament-diamond"></div>
         <div class="ornament-diamond sm"></div>
+        <span class="ornament-fleuron">❦</span>
         <span></span>
       </div>
 
-      <p class="index-heading">✦ &nbsp; The Three Pillars &nbsp; ✦</p>
+      <p class="section-heading"><span class="star">✦</span>The Three Pillars<span class="star">✦</span></p>
 
       <div class="three-pillars">
         <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="14" cy="14" r="11"/>
+              <path d="M14 3 L14 25 M3 14 L25 14"/>
+              <circle cx="14" cy="14" r="4" fill="currentColor" fill-opacity="0.2"/>
+            </svg>
+          </div>
           <p class="pillar-name">Coherence</p>
           <p class="pillar-desc">Every price must survive the question: <em>"but why can't I just buy that on the Plane of Fire?"</em></p>
         </div>
         <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="5" y="5" width="18" height="18"/>
+              <line x1="5" y1="10" x2="23" y2="10"/>
+              <line x1="5" y1="15" x2="23" y2="15"/>
+              <line x1="5" y1="20" x2="23" y2="20"/>
+              <line x1="11" y1="5" x2="11" y2="23"/>
+              <line x1="17" y1="5" x2="17" y2="23"/>
+            </svg>
+          </div>
           <p class="pillar-name">PF1e Compatibility</p>
           <p class="pillar-desc">Wealth-By-Level is the structural spine. This system contextualizes it — never violates it.</p>
         </div>
         <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 3 L17 11 L25 12 L19 17 L21 25 L14 21 L7 25 L9 17 L3 12 L11 11 Z"/>
+            </svg>
+          </div>
           <p class="pillar-name">Player Fascination</p>
           <p class="pillar-desc">The economy is a toy. Complexity is opt-in. Anyone can buy a sword.</p>
         </div>
       </div>
 
+      <!-- Wax Seal -->
+      <div class="wax-seal" aria-label="Wax seal of office">
+        <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="waxGrad" cx="35%" cy="30%">
+              <stop offset="0%"  stop-color="#C84A3D"/>
+              <stop offset="50%" stop-color="#8B2A1F"/>
+              <stop offset="100%" stop-color="#4A1410"/>
+            </radialGradient>
+            <radialGradient id="waxHighlight" cx="35%" cy="30%">
+              <stop offset="0%" stop-color="#E86A5D" stop-opacity="0.6"/>
+              <stop offset="40%" stop-color="#E86A5D" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- Wax blob — irregular edge -->
+          <path d="M45 5
+                   C 62 6, 82 20, 84 38
+                   C 86 52, 80 68, 70 78
+                   C 58 86, 42 88, 28 82
+                   C 14 74, 6 58, 8 42
+                   C 10 24, 26 8, 45 5 Z"
+                fill="url(#waxGrad)"
+                stroke="#3A0A08"
+                stroke-width="0.5"/>
+          <!-- Highlight -->
+          <path d="M45 5
+                   C 62 6, 82 20, 84 38
+                   C 86 52, 80 68, 70 78
+                   C 58 86, 42 88, 28 82
+                   C 14 74, 6 58, 8 42
+                   C 10 24, 26 8, 45 5 Z"
+                fill="url(#waxHighlight)"/>
+          <!-- Inner ring impression -->
+          <circle cx="45" cy="45" r="28" fill="none" stroke="#3A0A08" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="45" cy="45" r="24" fill="none" stroke="#3A0A08" stroke-width="0.4" opacity="0.4"/>
+          <!-- Hexagram inside seal -->
+          <polygon points="45,22 62,56 28,56" fill="none" stroke="#3A0A08" stroke-width="1" opacity="0.7"/>
+          <polygon points="45,68 28,34 62,34" fill="none" stroke="#3A0A08" stroke-width="1" opacity="0.7"/>
+          <!-- Central "L" for Ledger -->
+          <text x="45" y="52" font-family="Cinzel Decorative, serif" font-size="18" font-weight="700"
+                fill="#3A0A08" text-anchor="middle" opacity="0.85">L</text>
+        </svg>
+      </div>
+
       <div class="edition-mark">
-        <p>The Infinite Ledger &nbsp;·&nbsp; Planescape Economy System &nbsp;·&nbsp; Working Draft</p>
+        <p>The Infinite Ledger <span class="signet">✦</span> Planescape Economy System <span class="signet">✦</span> Working Draft</p>
       </div>
     </div>
 
   </div><!-- /page-inner -->
+
+  <!-- Margin notes positioned absolutely outside page-inner constraints -->
+  <div class="margin-note" style="top: 520px; left: -70px;">
+    Start here,<br>cutter.
+  </div>
+  <div class="margin-note" style="top: 780px; right: -70px; transform: rotate(2deg);">
+    See also<br>Mod. IV
+  </div>
+
 </div><!-- /page -->
 
+<script>
+  // ────────────────────────────────────────────────────
+  //  MODULE FILTER + SEARCH
+  // ────────────────────────────────────────────────────
+  const grid       = document.getElementById('moduleGrid');
+  const cards      = Array.from(grid.querySelectorAll('.module-card'));
+  const tabs       = document.querySelectorAll('.filter-tab');
+  const searchInp  = document.getElementById('moduleSearch');
+  const noResults  = document.getElementById('noResults');
+  let currentFilter = 'all';
+
+  function applyFilters() {
+    const q = searchInp.value.trim().toLowerCase();
+    let visibleCount = 0;
+    cards.forEach(card => {
+      const status = card.dataset.status;
+      const tags   = (card.dataset.tags || '').toLowerCase();
+      const title  = card.querySelector('.module-title').textContent.toLowerCase();
+      const desc   = card.querySelector('.module-desc').textContent.toLowerCase();
+
+      const passesFilter = currentFilter === 'all' || status === currentFilter;
+      const passesSearch = q === '' ||
+                           tags.includes(q) ||
+                           title.includes(q) ||
+                           desc.includes(q);
+
+      if (passesFilter && passesSearch) {
+        card.classList.remove('filtered-out');
+        visibleCount++;
+      } else {
+        card.classList.add('filtered-out');
+      }
+    });
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentFilter = tab.dataset.filter;
+      applyFilters();
+    });
+  });
+  searchInp.addEventListener('input', applyFilters);
+
+  // Keyboard shortcut: "/" to focus search
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement !== searchInp) {
+      e.preventDefault();
+      searchInp.focus();
+    }
+    if (e.key === 'Escape' && document.activeElement === searchInp) {
+      searchInp.value = '';
+      applyFilters();
+      searchInp.blur();
+    }
+  });
+
+  // ────────────────────────────────────────────────────
+  //  CURRENCY CONVERTER
+  // ────────────────────────────────────────────────────
+  const fromAmt  = document.getElementById('convFromAmt');
+  const toAmt    = document.getElementById('convToAmt');
+  const fromSel  = document.getElementById('convFrom');
+  const toSel    = document.getElementById('convTo');
+  const swapBtn  = document.getElementById('convSwap');
+  const flavor   = document.getElementById('convFlavor');
+
+  const flavors = {
+    gp_soul:     "A soul-shell goes for some 2,500 gp in the right alley, cutter — ask no questions.",
+    soul_gp:     "Cash-out a shell? The Merkhant Consortium takes 15% and asks whose it was.",
+    gp_belief:   "Belief cheapens when gods are pleased. Good for the priesthood, poor for the changer.",
+    belief_gp:   "Belief-tokens trade thinly outside Sigil. Mind your markets.",
+    gp_quint:    "Raw quintessence requires a sealed vessel — or it drifts back to the Ethereal.",
+    quint_gp:    "A single drop commands a fortune where spells are cast and bodies mended.",
+    gp_river:    "Styx-silver erases memory. Hence the discount at the teller's cage.",
+    river_gp:    "Few honest merchants will touch Styx-silver. Fewer still will meet your eye.",
+    gp_astral:   "Githshards are prized by spellmongers. The Gith take a dim view of the trade.",
+    default:     "Rates vary by plane, petitioner, and phase of belief."
+  };
+
+  function convert() {
+    const fromRate = parseFloat(fromSel.options[fromSel.selectedIndex].dataset.rate);
+    const toRate   = parseFloat(toSel.options[toSel.selectedIndex].dataset.rate);
+    const amt      = parseFloat(fromAmt.value) || 0;
+    const gpValue  = amt * fromRate;
+    const result   = gpValue / toRate;
+
+    // Format intelligently
+    let formatted;
+    if (result === 0) formatted = '0';
+    else if (result < 0.01) formatted = result.toExponential(2);
+    else if (result < 1)    formatted = result.toFixed(3);
+    else if (result < 100)  formatted = result.toFixed(2);
+    else                    formatted = Math.round(result).toLocaleString();
+    toAmt.value = formatted;
+
+    // Flavor lookup
+    const key = `${fromSel.value}_${toSel.value}`;
+    flavor.textContent = flavors[key] || flavors.default;
+  }
+
+  fromAmt.addEventListener('input', convert);
+  fromSel.addEventListener('change', convert);
+  toSel.addEventListener('change', convert);
+
+  swapBtn.addEventListener('click', () => {
+    const tmpV = fromSel.value;
+    fromSel.value = toSel.value;
+    toSel.value = tmpV;
+    convert();
+  });
+  swapBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); swapBtn.click(); }
+  });
+
+  convert(); // initial
+
+  // ────────────────────────────────────────────────────
+  //  WBL RIBBON
+  // ────────────────────────────────────────────────────
+  const wblRibbon = document.getElementById('wblRibbon');
+  const coverage = {
+    1: true, 2: true, 3: true, 4: true, 5: true,
+    6: true, 7: true, 8: false, 9: false, 10: false,
+    11: false, 12: false, 13: false, 14: false, 15: false,
+    16: false, 17: false, 18: false, 19: false, 20: false
+  };
+  for (let i = 1; i <= 20; i++) {
+    const seg = document.createElement('div');
+    seg.className = 'wbl-seg' + (coverage[i] ? ' covered' : '');
+    seg.dataset.lvl = `Level ${i}${coverage[i] ? ' · drafted' : ' · skeletal'}`;
+    wblRibbon.appendChild(seg);
+  }
+
+  // ────────────────────────────────────────────────────
+  //  STAGGERED FADE-IN ON CARDS
+  // ────────────────────────────────────────────────────
+  cards.forEach((card, i) => {
+    card.style.animation = `fadeIn 0.5s ${0.3 + i * 0.04}s ease both`;
+  });
+</script>
 </body>
 </html>
