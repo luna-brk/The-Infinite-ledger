@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test — Framework &amp; Skeleton · The Infinite Ledger</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../infinite-ledger.css">
+<style>
+/* Test page only needs to flip the shared body layout to sidebar mode */
+body { flex-direction: row; align-items: stretch; padding: 0; }
+</style>
+</head>
+<body>
+
+<canvas id="motes"></canvas>
+
+<!-- Sidebar toggle -->
+<button id="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+<!-- ═══ SIDEBAR ═══════════════════════════════════════ -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <a href="../index.html" class="sidebar-back">The Infinite Ledger</a>
+    <div class="sidebar-title">Test</div>
+    <div class="sidebar-subtitle">Framework &amp; Skeleton</div>
+  </div>
+
+  <div class="sidebar-search">
+    <input type="search" class="search-input" id="search-input"
+           placeholder="Search this module…" autocomplete="off">
+  </div>
+
+  <div class="sidebar-progress">
+    <div class="progress-label">
+      <span>Reading Progress</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-track-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Test Content</div>
+    <a href="#section-one"   class="nav-link" data-section="section-one">Section One</a>
+    <a href="#section-two"   class="nav-link" data-section="section-two">Section Two</a>
+    <a href="#section-three" class="nav-link" data-section="section-three">Section Three</a>
+    <a href="#section-four"  class="nav-link" data-section="section-four">Advanced Concepts</a>
+    <a href="#section-five"  class="nav-link" data-section="section-five">Case Studies</a>
+    <a href="#section-six"   class="nav-link" data-section="section-six">Common Misconceptions</a>
+    <a href="#section-seven" class="nav-link" data-section="section-seven">GM Reference Tables</a>
+    <a href="#section-eight" class="nav-link" data-section="section-eight">Further Reading</a>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">Navigation</div>
+    <a href="../index.html" class="nav-link">← Back to Index</a>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ══════════════════════════════════════════ -->
+<main id="main">
+<div class="page-container">
+
+<!-- Module Banner -->
+<header class="module-banner" id="top">
+  <div class="banner-top">
+    <div class="banner-module-num">Test · The Infinite Ledger</div>
+    <h1 class="banner-title">Framework &amp; Skeleton</h1>
+    <div class="banner-subtitle">Minimal Test Version</div>
+  </div>
+  <div class="banner-body">
+    <div class="status-row">
+      <div class="status-badge"><span class="status-dot"></span>◆ Testing</div>
+    </div>
+    <p class="covers-line">This is a minimal placeholder version for testing layout and functionality.</p>
+    <div class="pillars-row">
+      <div class="pillar">
+        <div class="pillar-name">Coherence</div>
+        <p class="pillar-desc">Test pillar one description.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Testing</div>
+        <p class="pillar-desc">Test pillar two description.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Layout</div>
+        <p class="pillar-desc">Test pillar three description.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── SECTION ONE ────────────────────────────────── -->
+<section class="content-section" id="section-one">
+  <div class="section-header">
+    <span class="section-numeral">§ 1.1</span>
+    <span class="section-title">Section One</span>
+    <button class="bookmark-btn" data-section-id="section-one" data-section-title="Section One" aria-label="Bookmark this section">☆</button>
+    <span class="section-chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <p>This is the first test section. It contains basic placeholder content for testing the layout and styling.</p>
+    <p>Here's a second paragraph to test text flow and readability across different viewport sizes.</p>
+    <div class="callout">
+      <div class="callout-title">⚠ Test Callout</div>
+      <p>This is a test callout to verify styling of note boxes and highlighted content.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION TWO ────────────────────────────────── -->
+<section class="content-section" id="section-two">
+  <div class="section-header">
+    <span class="section-numeral">§ 1.2</span>
+    <span class="section-title">Section Two</span>
+    <button class="bookmark-btn" data-section-id="section-two" data-section-title="Section Two" aria-label="Bookmark this section">☆</button>
+    <span class="section-chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <p>This is the second test section with a table to verify table styling.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column A</th><th>Column B</th><th>Column C</th></tr></thead>
+        <tbody>
+          <tr><td>Item 1a</td><td>Item 1b</td><td>Item 1c</td></tr>
+          <tr><td>Item 2a</td><td>Item 2b</td><td>Item 2c</td></tr>
+          <tr><td>Item 3a</td><td>Item 3b</td><td>Item 3c</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION THREE ──────────────────────────────── -->
+<section class="content-section" id="section-three">
+  <div class="section-header">
+    <span class="section-numeral">§ 1.3</span>
+    <span class="section-title">Section Three</span>
+    <button class="bookmark-btn" data-section-id="section-three" data-section-title="Section Three" aria-label="Bookmark this section">☆</button>
+    <span class="section-chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <p>This is the third test section with a list.</p>
+    <ul class="safeguard-list">
+      <li>
+        <span class="safeguard-num">Item I</span>
+        <div class="safeguard-content"><strong>First item.</strong> Testing list item styling and content layout.</div>
+      </li>
+      <li>
+        <span class="safeguard-num">Item II</span>
+        <div class="safeguard-content"><strong>Second item.</strong> Another list item for testing purposes.</div>
+      </li>
+      <li>
+        <span class="safeguard-num">Item III</span>
+        <div class="safeguard-content"><strong>Third item.</strong> Final test item in the list.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── SECTION FOUR ───────────────────────────────── -->
+<section class="content-section" id="section-four">
+  <div class="section-header">
+    <span class="section-numeral">§ 1.4</span>
+    <span class="section-title">Advanced Concepts</span>
+    <button class="bookmark-btn" data-section-id="section-four" data-section-title="Advanced Concepts" aria-label="Bookmark this section">☆</button>
+    <span class="section-chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <p>This section explores more complex topics related to planar economics and trade.</p>
+    <h3>Subsection A: Deep Dive</h3>
+    <p>Understanding the nuances of cross-planar commerce requires careful study of how different planes interact economically.</p>
+    <p>The fundamental principle is that no economy exists in isolation. Every transaction ripples across the multiverse.</p>
+    <h3>Subsection B: Advanced Applications</h3>
+    <p>Once you've mastered the basics, you can begin to see opportunities for arbitrage and sophisticated trading strategies.</p>
+  </div>
+</section>
+
+<!-- ─── SECTION FIVE ───────────────────────────────── -->
+<section class="content-section" id="section-five">
+  <div class="section-header">
+    <span class="section-numeral">§ 1.5</span>
+    <span class="section-title">Case Studies &amp; Examples</span>
+    <button class="bookmark-btn" data-section-id="section-five" data-section-title="Case Studies & Examples" aria-label="Bookmark this section">☆</button>
+    <span class="section-chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <p>Real-world examples from various campaign settings demonstrate how these principles apply in practice.</p>
+    <div class="callout note">
+      <div class="callout-title">Example 1: The Sigil Trade Route</div>
+      <p>A merchant acquires goods from the Plane of Fire and attempts to resell them in the Prime Material. The exchange friction costs 15% of profits before even accounting for transportation.</p>
+    </div>
+    <div class="callout note">
+      <div class="callout-title">Example 2: Labor Arbitrage</div>
+      <p>Hiring skilled workers from Mechanus is reliable but expensive. Hiring from Limbo is cheap but unpredictable. Which do you choose?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION SIX ────────────────────────────────── -->
+<section class="content-section" id="section-six">
+  <div class="section-header">
+    <span class="section-numeral">§ 1.6</span>
+    <span class="section-title">Common Misconceptions</span>
+    <button class="bookmark-btn" data-section-id="section-six" data-section-title="Common Misconceptions" aria-label="Bookmark this section">☆</button>
+    <span class="section-chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <p>New GMs often stumble over these common pitfalls when implementing the Ledger system.</p>
+    <h3>Myth: "Gp is just a number"</h3>
+    <p>False. In this system, gp represents narrative weight and player agency. A player who carefully manages their wealth has a richer game experience than one who ignores economics.</p>
+    <h3>Myth: "Planar arbitrage will break my game"</h3>
+    <p>Only if you let it. The anti-exploit toolkit in Module VIII gives you complete control over the economy. Use it.</p>
+    <h3>Myth: "Players don't care about economics"</h3>
+    <p>Some don't. Many do. By making economics optional but rewarding, you give all players agency without forcing complexity on anyone.</p>
+  </div>
+</section>
+
+<!-- ─── SECTION SEVEN ──────────────────────────────── -->
+<section class="content-section" id="section-seven">
+  <div class="section-header">
+    <span class="section-numeral">§ 1.7</span>
+    <span class="section-title">GM Reference Tables</span>
+    <button class="bookmark-btn" data-section-id="section-seven" data-section-title="GM Reference Tables" aria-label="Bookmark this section">☆</button>
+    <span class="section-chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <p>Quick-reference tables for common calculations appear throughout the modules. Here's an example.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Plane</th><th>Base Modifier</th><th>Example Item Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Prime Material</td><td>×1.0</td><td>Long sword: 15 gp</td></tr>
+          <tr><td>Transitive Planes</td><td>×1.5 to ×3.0</td><td>Long sword: 23–45 gp</td></tr>
+          <tr><td>Inner Planes</td><td>×2.0 to ×4.0</td><td>Long sword: 30–60 gp</td></tr>
+          <tr><td>Outer Planes</td><td>×3.0 to ×10.0</td><td>Long sword: 45–150 gp</td></tr>
+          <tr><td>Sigil (hub)</td><td>×0.8 to ×1.2</td><td>Long sword: 12–18 gp</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECTION EIGHT ──────────────────────────────── -->
+<section class="content-section" id="section-eight">
+  <div class="section-header">
+    <span class="section-numeral">§ 1.8</span>
+    <span class="section-title">Further Reading</span>
+    <button class="bookmark-btn" data-section-id="section-eight" data-section-title="Further Reading" aria-label="Bookmark this section">☆</button>
+    <span class="section-chevron">▾</span>
+  </div>
+  <div class="section-body">
+    <p>To go deeper into any topic, consult the following modules:</p>
+    <ul class="safeguard-list">
+      <li>
+        <span class="safeguard-num">Module II</span>
+        <div class="safeguard-content"><strong>Currencies &amp; Exchange.</strong> Complete currency tables, conversion mechanics, and the Currency Bureau system.</div>
+      </li>
+      <li>
+        <span class="safeguard-num">Module III</span>
+        <div class="safeguard-content"><strong>The Price of Everything.</strong> Pricing philosophy and the Planar Price Modifier engine.</div>
+      </li>
+      <li>
+        <span class="safeguard-num">Module IV</span>
+        <div class="safeguard-content"><strong>Trade Goods &amp; Commodities.</strong> What moves between planes and how to price it.</div>
+      </li>
+      <li>
+        <span class="safeguard-num">Module VIII</span>
+        <div class="safeguard-content"><strong>WBL Integration &amp; GM Controls.</strong> The anti-exploit toolkit and pacing guidance.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Module Navigation -->
+<div class="module-nav">
+  <a href="../index.html" class="module-nav-btn prev">
+    <span class="nav-btn-label">Previous</span>
+    <span class="nav-btn-title">Master Index</span>
+  </a>
+  <a href="../index.html" class="module-nav-btn next">
+    <span class="nav-btn-label">Next Module</span>
+    <span class="nav-btn-title">Module II</span>
+  </a>
+</div>
+
+</div><!-- /page-container -->
+</main>
+
+<button id="scroll-top" aria-label="Scroll to top" title="Back to top">↑</button>
+
+<script src="../ledger-scripts.js" defer></script>
+
+</body>
+</html>

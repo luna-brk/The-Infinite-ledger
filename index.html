@@ -11,11 +11,29 @@
 
     <!-- The Infinite Ledger Core Stylesheet -->
     <link rel="stylesheet" href="infinite-ledger.css">
+
 </head>
-<body>
+<body class="sidebar-collapsed">
 
 <!-- Motes canvas -->
 <canvas id="motes" aria-hidden="true"></canvas>
+
+<!-- Mobile Navigation Toggle -->
+<button id="nav-toggle" aria-label="Toggle bookmarks sidebar">☰</button>
+
+<!-- Bookmarks Sidebar -->
+<nav id="sidebar" class="collapsed">
+  <div class="nav-section">
+    <div class="nav-section-label">★ Bookmarks</div>
+    <div id="bookmarks-container">
+      <div style="color: var(--ink-faint); font-style: italic; padding: 8px 0;">No bookmarks yet</div>
+    </div>
+  </div>
+  <div class="nav-section" style="margin-top: auto;">
+    <div class="nav-section-label">Developer</div>
+    <a href="./test/" class="nav-link">Test Page</a>
+  </div>
+</nav>
 
 <div class="top-ribbon">
     <span class="folio">Folio I · Consortium Prospectus · MMXXVI</span>
@@ -76,48 +94,36 @@
     </div>
 
     <!-- Cutter margin scrawls -->
-    <div class="cutter-note left" style="top: 420px; left: -170px;">
-        <em class="scrawl">"They say they don't set the price of the multiverse — only keep the scales honest. Yet somehow every major trade route still answers to their ledger."</em>
-        <span class="signature">— Fell the Fallen, Tout</span>
+    <div class="cutter-note left" style="top: 450px;">
+        <em class="scrawl">"No planar market of consequence has moved without their consultation." They are careful with that word — consequence. Small merchants who skip the process learn quickly what falls outside it.</em>
+        <span class="signature">— Rivan Ash, Indep Factor</span>
     </div>
-    <div class="cutter-note right" style="top: 600px; right: -170px;">
-        <em class="scrawl">Sixteen planes turning round the Lady's City, and the Consortium quietly holds the toll on every road between them.</em>
-        <span class="signature">— Clerk Osric, Guvner</span>
+    <div class="cutter-note right" style="top: 690px;">
+        <em class="scrawl">"Arbitrage is permitted. Fraud is not." They distinguish between the two with admirable precision. What they do not say is that the line runs exactly where they draw it — and it is redrawn each quarter.</em>
+        <span class="signature">— Aldren Goss, Guvner Clerk</span>
     </div>
-    <div class="cutter-note left" style="top: 920px; left: -170px;">
-        <em class="scrawl">Ledger I is the Framework they say. More like the cage they built around what "lawful commerce" is allowed to mean.</em>
-        <span class="signature">— Mag, Anarchist</span>
+    <div class="cutter-note left" style="top: 1060px;">
+        <em class="scrawl">Fourteen of the sixteen planes have a licensed Consortium factor. They sent a representative to the Abyss once. The posting has been vacant for eleven years. They list it as an open position, not a casualty.</em>
+        <span class="signature">— Mivven, Planar Surveyor</span>
     </div>
-    <div class="cutter-note right" style="top: 1200px; right: -170px;">
-        <em class="scrawl">Ledger IV tells you what goods are permitted. Ledger V tells you what it costs to move them. Cross them at your peril, cutter.</em>
+    <div class="cutter-note right" style="top: 1537px;">
+        <em class="scrawl">Eleven volumes. A framework, they call it. The Harmonium's full code of conduct is one page. The Consortium requires eleven books simply to define the word fair.</em>
+        <span class="signature">— Shandry, Fated Blood</span>
+    </div>
+    <div class="cutter-note left" style="top: 1880px;">
+        <em class="scrawl">Ledger III fixes the markup. Ledger IV decides what you may carry. Between them they govern every cargo that moves between planes. In this document that is described as guidance. Do not test the guidance.</em>
         <span class="signature">— Kezrin, Fence</span>
     </div>
-    <div class="cutter-note left" style="top: 1500px; left: -170px;">
-        <em class="scrawl">Ledger VII covers their precious commerce laws. They claim they enforce them only reluctantly. Their collectors are never reluctant.</em>
-        <span class="signature">— Pik, Dustman Prentice</span>
+    <div class="cutter-note right" style="top: 2260px;">
+        <em class="scrawl">Ledger VII is their law and it is thorough. Cross-reference Ledger VI when you wonder which factions receive expedited clearance on their manifests. The Consortium insists exemptions do not exist. Technically correct — they call them Preferred Commerce Agreements.</em>
+        <span class="signature">— Mag, Anarchist</span>
     </div>
-    <div class="cutter-note right" style="top: 1800px; right: -170px;">
-        <em class="scrawl">Read Ledger VIII before you start dreaming of wealth or freeholds. Their tables have crushed more ambitious merchants than any devil's contract.</em>
-        <span class="signature">— Vheris, GM of the Hall</span>
-    </div>
-    <div class="cutter-note left" style="top: 2080px; left: -170px;">
-        <em class="scrawl">Three Pillars they boast — Coherence, Compatibility, Merchant Fascination. The fourth one, the one that actually runs the Cage, they never mention.</em>
+    <div class="cutter-note left" style="top: 3080px;">
+        <em class="scrawl">Three Pillars: Coherence, Compatibility, Fascination. The Consortium spent two years in committee arriving at those three words. There is a fourth pillar. They have never named it. You are standing on it.</em>
         <span class="signature">— Shem, Portal-Warden</span>
     </div>
 
     <div class="page-inner">
-
-        <!-- Faint watermark sigil -->
-        <svg class="bg-sigil" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="100" r="95" fill="none" stroke="#B8873B" stroke-width="0.8"/>
-            <circle cx="100" cy="100" r="80" fill="none" stroke="#B8873B" stroke-width="0.4"/>
-            <circle cx="100" cy="100" r="60" fill="none" stroke="#B8873B" stroke-width="0.3"/>
-            <circle cx="100" cy="100" r="30" fill="none" stroke="#B8873B" stroke-width="0.5"/>
-            <line x1="5" y1="100" x2="195" y2="100" stroke="#B8873B" stroke-width="0.3"/>
-            <line x1="100" y1="5" x2="100" y2="195" stroke="#B8873B" stroke-width="0.3"/>
-            <line x1="33" y1="33" x2="167" y2="167" stroke="#B8873B" stroke-width="0.3"/>
-            <line x1="167" y1="33" x2="33" y2="167" stroke="#B8873B" stroke-width="0.3"/>
-        </svg>
 
         <!-- Header -->
         <div class="header-band">
@@ -175,9 +181,9 @@
                 <circle cx="330" cy="330" r="320" fill="url(#wheelHalo)"/>
 
                 <g class="wheel-spin" style="transform-origin: 330px 330px">
-                    <circle cx="330" cy="330" r="310" fill="none" stroke="#B8873B" stroke-width="0.9"/>
-                    <circle cx="330" cy="330" r="304" fill="none" stroke="#7A5820" stroke-width="0.35" opacity="0.7"/>
-                    <circle cx="330" cy="330" r="238" fill="none" stroke="#7A5820" stroke-width="0.5" opacity="0.6"/>
+                    <circle cx="330" cy="330" r="330" fill="none" stroke="#B8873B" stroke-width="0.9"/>
+                    <circle cx="330" cy="330" r="324" fill="none" stroke="#7A5820" stroke-width="0.35" opacity="0.7"/>
+                    <circle cx="330" cy="330" r="252" fill="none" stroke="#B8873B" stroke-width="0.9"/>
                     <g id="wheelSpokes" stroke="#7A5820" stroke-width="0.5" opacity="0.55"></g>
                     <g id="planeTokens"></g>
                     <g font-family="Cinzel, serif" font-size="9.5" font-weight="600" fill="#B8A373" letter-spacing="0.55em" opacity="0.78">

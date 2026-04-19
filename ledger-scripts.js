@@ -27,7 +27,7 @@
     const ctx = canvas.getContext('2d');
     let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
     const motes = [];
-    const COUNT = Math.min(38, Math.floor((window.innerWidth * window.innerHeight) / 48000));
+    const COUNT = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 18000));
 
     function resize() {
       W = window.innerWidth; H = window.innerHeight;
@@ -98,10 +98,11 @@
         m.x += m.vx; m.y += m.vy;
         m.pulse += m.pulseSpeed;
 
-        if (m.x < -30 || m.x > W + 30 || m.y < -30 || m.y > H + 30) {
-          motes[i] = spawn(true);
-          continue;
-        }
+        // Screen wrap — reappear on the opposite edge
+        if (m.x < 0)  m.x = W;
+        if (m.x > W)  m.x = 0;
+        if (m.y < 0)  m.y = H;
+        if (m.y > H)  m.y = 0;
 
         const flicker = 0.55 + 0.35 * Math.sin(m.pulse);
         const r = m.r;
@@ -137,7 +138,7 @@
     if (!svg) return;
 
     const CX = 330, CY = 330;
-    const TOKEN_RADIUS = 270;
+    const TOKEN_RADIUS = 252;
     const DISC_R = 28;
     const svgNS = 'http://www.w3.org/2000/svg';
 
@@ -190,12 +191,12 @@
       const angle = (i * 360) / N;
       const rad = (angle - 90) * Math.PI / 180;
 
-      // Spoke
+      // Spoke runs from inner separator to outer ring, passing through the token disc
       const sp = document.createElementNS(svgNS, 'line');
       sp.setAttribute('x1', (CX + 176 * Math.cos(rad)).toFixed(2));
       sp.setAttribute('y1', (CY + 176 * Math.sin(rad)).toFixed(2));
-      sp.setAttribute('x2', (CX + 238 * Math.cos(rad)).toFixed(2));
-      sp.setAttribute('y2', (CY + 238 * Math.sin(rad)).toFixed(2));
+      sp.setAttribute('x2', (CX + 330 * Math.cos(rad)).toFixed(2));
+      sp.setAttribute('y2', (CY + 330 * Math.sin(rad)).toFixed(2));
       spokesGroup.appendChild(sp);
 
       // Token
@@ -277,11 +278,413 @@
     });
   }
 
+  /* ─── MODULE PAGE: SIDEBAR TOGGLE (mobile) ─── */
+  function initSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+    const toggle = document.getElementById('nav-toggle');
+    if (toggle) toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!sidebar.classList.contains('open')) return;
+      if (!sidebar.contains(e.target) && (!toggle || !toggle.contains(e.target))) {
+        sidebar.classList.remove('open');
+      }
+    });
+  }
+
+  /* ─── MODULE PAGE: COLLAPSIBLE SECTIONS ─── */
+  function initSectionCollapse() {
+    document.querySelectorAll('.section-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const body = header.nextElementSibling;
+        if (!body) return;
+        const collapsed = body.classList.toggle('collapsed');
+        header.classList.toggle('collapsed', collapsed);
+      });
+    });
+  }
+
+  /* ─── MODULE PAGE: SCROLL TRACKING ─── */
+  /* Handles reading-progress bar, scroll-to-top button visibility,
+     and active sidebar nav-link highlighting — all from one scroll listener.
+     Returns silently if none of the relevant elements are present. */
+  function initScrollTracking() {
+    const fillEl    = document.getElementById('progress-fill');
+    const pctEl     = document.getElementById('progress-pct');
+    const scrollBtn = document.getElementById('scroll-top');
+    const navLinks  = document.querySelectorAll('.nav-link[data-section]');
+    // Discover sections dynamically — no hardcoded IDs required
+    const sectionEls = Array.from(document.querySelectorAll('.content-section[id], section[id]'));
+
+    if (!fillEl && !pctEl && !scrollBtn && !navLinks.length) return;
+
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    function onScroll() {
+      const doc     = document.documentElement;
+      const scrolled = doc.scrollTop || document.body.scrollTop;
+      const total   = doc.scrollHeight - doc.clientHeight;
+      const pct     = total > 0 ? Math.round((scrolled / total) * 100) : 0;
+
+      if (fillEl) fillEl.style.width = pct + '%';
+      if (pctEl)  pctEl.textContent  = pct + '%';
+      if (scrollBtn) scrollBtn.classList.toggle('visible', scrolled > 400);
+
+      if (navLinks.length && sectionEls.length) {
+        let current = '';
+        sectionEls.forEach(el => {
+          if (el.getBoundingClientRect().top <= 100) current = el.id;
+        });
+        navLinks.forEach(link =>
+          link.classList.toggle('active', link.dataset.section === current)
+        );
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ─── MODULE PAGE: CONTENT SEARCH + KEYBOARD SHORTCUTS ─── */
+  /* Operates on .section-body elements. Pressing / focuses the
+     sidebar search; Esc clears it. Returns silently if #search-input
+     is not present (e.g. on the main prospectus page). */
+  function initContentSearch() {
+    const input = document.getElementById('search-input');
+    if (!input) return;
+
+    function clearHighlights() {
+      document.querySelectorAll('.highlight').forEach(h => {
+        h.parentNode.replaceChild(document.createTextNode(h.textContent), h);
+        h.parentNode.normalize();
+      });
+    }
+
+    function doSearch(query) {
+      clearHighlights();
+      if (!query || query.length < 2) return;
+      const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      document.querySelectorAll('.section-body').forEach(body => {
+        const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        let node;
+        while (node = walker.nextNode()) { if (re.test(node.textContent)) nodes.push(node); }
+        nodes.forEach(n => {
+          const span = document.createElement('span');
+          span.innerHTML = n.textContent.replace(re, '<mark class="highlight">$1</mark>');
+          n.parentNode.replaceChild(span, n);
+        });
+        if (body.querySelector('.highlight')) {
+          body.classList.remove('collapsed');
+          body.previousElementSibling?.classList.remove('collapsed');
+        }
+      });
+      const first = document.querySelector('.highlight');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    input.addEventListener('input', () => doSearch(input.value));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+        e.preventDefault(); input.focus();
+      }
+      if (e.key === 'Escape' && document.activeElement === input) {
+        input.value = ''; clearHighlights(); input.blur();
+      }
+    });
+  }
+
+  /* ─── SITEWIDE BOOKMARKS ─── */
+  function initBookmarks() {
+    const BOOKMARKS_KEY = 'infinite-ledger-bookmarks-v1';
+    const container = document.getElementById('bookmarks-container');
+    if (!container) return;
+
+    function getCurrentPagePath() {
+      let path = window.location.pathname;
+
+      // For local files, extract just the relative part after project name
+      if (path.includes('The-Infinite-ledger-main')) {
+        path = path.substring(path.indexOf('The-Infinite-ledger-main') + 'The-Infinite-ledger-main'.length);
+      }
+
+      if (path.endsWith('/')) path = path.slice(0, -1);
+      if (!path || path === '') path = '/index.html';
+      else if (!path.includes('.html')) path += '/index.html';
+
+      return path;
+    }
+
+    function getBookmarks() {
+      try {
+        const stored = localStorage.getItem(BOOKMARKS_KEY);
+        if (!stored) return [];
+
+        const parsed = JSON.parse(stored);
+
+        // Handle old format (object) vs new format (array)
+        if (Array.isArray(parsed)) {
+          return parsed;
+        } else if (typeof parsed === 'object' && parsed !== null) {
+          // Migrate old object format to new array format
+          return Object.entries(parsed).map(([sectionId, title]) => ({
+            sectionId,
+            title,
+            page: '/',
+            url: `/#${sectionId}`
+          }));
+        }
+        return [];
+      } catch (e) {
+        console.error('Error loading bookmarks:', e);
+        return [];
+      }
+    }
+
+    function saveBookmarks(bookmarks) {
+      try {
+        localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
+        window.dispatchEvent(new CustomEvent('bookmarksUpdated', { detail: bookmarks }));
+      } catch (e) {
+        console.error('Error saving bookmarks:', e);
+      }
+    }
+
+    function renderBookmarks() {
+      try {
+        const bookmarks = getBookmarks();
+        console.log('[Bookmarks] Container found:', container ? 'yes' : 'no');
+        console.log('[Bookmarks] Stored bookmarks:', bookmarks);
+
+        if (!Array.isArray(bookmarks) || bookmarks.length === 0) {
+          container.innerHTML = '<div style="color: var(--ink-faint); font-style: italic; padding: 8px 0;">No bookmarks yet. Click ★ on any section.</div>';
+          console.log('[Bookmarks] No bookmarks to display');
+          return;
+        }
+
+        let html = '';
+        bookmarks.forEach((bookmark, index) => {
+          const url = bookmark.url || `${bookmark.page || '/'}#${bookmark.sectionId}`;
+          const displayUrl = url.replace(/^\//, '');
+          html += `<a href="${url}" class="bookmark-link" title="${displayUrl}">★ ${bookmark.title}<span class="bookmark-remove" onclick="window.ledgerAPI.removeBookmark(${index}); event.preventDefault();" style="float: right; font-size: 12px; color: var(--ink-faint); cursor: pointer; padding: 0 4px;">✕</span></a>`;
+        });
+        container.innerHTML = html;
+
+        // Re-attach click handlers
+        document.querySelectorAll('#bookmarks-container .bookmark-link').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('bookmark-remove')) {
+              const href = this.getAttribute('href');
+              const currentPage = getCurrentPagePath();
+              const bookmarkPage = href.split('#')[0] || '/';
+
+              if (bookmarkPage !== '/' && bookmarkPage !== '' && !currentPage.includes(bookmarkPage)) {
+                window.location.href = href;
+              } else {
+                e.preventDefault();
+                const sectionId = href.split('#')[1];
+                if (sectionId) {
+                  const target = document.getElementById(sectionId);
+                  if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+              }
+            }
+          });
+        });
+      } catch (e) {
+        console.error('Error rendering bookmarks:', e);
+      }
+    }
+
+    // Global API for bookmarks
+    window.ledgerAPI = window.ledgerAPI || {};
+
+    window.ledgerAPI.toggleBookmark = function(sectionId, sectionTitle) {
+      try {
+        const bookmarks = getBookmarks();
+        const pagePath = getCurrentPagePath();
+        const bookmarkUrl = `${pagePath}#${sectionId}`;
+
+        console.log('[Bookmarks] Toggle bookmark:', sectionId, 'Page:', pagePath);
+
+        const existingIndex = bookmarks.findIndex(b => b.sectionId === sectionId && (b.page === pagePath || b.url === bookmarkUrl));
+        const btn = document.querySelector(`[data-section-id="${sectionId}"]`);
+
+        if (existingIndex >= 0) {
+          bookmarks.splice(existingIndex, 1);
+          console.log('[Bookmarks] Removed bookmark:', sectionId);
+          if (btn) {
+            btn.classList.remove('bookmarked');
+            btn.textContent = '☆';
+          }
+        } else {
+          bookmarks.push({ sectionId, title: sectionTitle, page: pagePath, url: bookmarkUrl });
+          console.log('[Bookmarks] Added bookmark:', { sectionId, title: sectionTitle, page: pagePath, url: bookmarkUrl });
+          if (btn) {
+            btn.classList.add('bookmarked');
+            btn.textContent = '★';
+          }
+        }
+        saveBookmarks(bookmarks);
+        renderBookmarks();
+      } catch (e) {
+        console.error('Error toggling bookmark:', e);
+      }
+    };
+
+    window.ledgerAPI.removeBookmark = function(index) {
+      try {
+        const bookmarks = getBookmarks();
+        if (index >= 0 && index < bookmarks.length) {
+          const bookmark = bookmarks[index];
+          bookmarks.splice(index, 1);
+          saveBookmarks(bookmarks);
+
+          const btn = document.querySelector(`[data-section-id="${bookmark.sectionId}"]`);
+          if (btn) {
+            btn.classList.remove('bookmarked');
+            btn.textContent = '☆';
+          }
+          renderBookmarks();
+        }
+      } catch (e) {
+        console.error('Error removing bookmark:', e);
+      }
+    };
+
+    // Auto-add bookmark buttons to all section headers (excluding sidebar)
+    function addAutoBookmarks() {
+      const sections = document.querySelectorAll('.section-header, .content-section > .section-header');
+      sections.forEach(section => {
+        if (section.querySelector('.bookmark-btn')) return;
+
+        const parent = section.closest('[id]');
+        if (!parent || !parent.id) return;
+
+        // Skip sidebar headers
+        if (parent.classList.contains('sidebar-header')) return;
+
+        const title = section.textContent.trim().substring(0, 50);
+        const btn = document.createElement('button');
+        btn.className = 'bookmark-btn';
+        btn.setAttribute('data-section-id', parent.id);
+        btn.setAttribute('data-section-title', title);
+        btn.setAttribute('aria-label', 'Bookmark this section');
+        btn.textContent = '☆';
+
+        section.appendChild(btn);
+
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.ledgerAPI.toggleBookmark(parent.id, title);
+        });
+      });
+    }
+
+    // Initialize
+    try {
+      renderBookmarks();
+      addAutoBookmarks();
+
+      // Mark already-bookmarked sections on current page
+      const bookmarks = getBookmarks();
+      const pagePath = getCurrentPagePath();
+
+      bookmarks.forEach(bookmark => {
+        // Check if this bookmark belongs to the current page
+        const bookmarkPath = bookmark.page || '';
+        const isCurrentPage = bookmarkPath === pagePath ||
+                            (bookmark.url && bookmark.url.split('#')[0].includes(pagePath)) ||
+                            (bookmark.url && pagePath.includes(bookmarkPath));
+
+        if (isCurrentPage) {
+          const btn = document.querySelector(`[data-section-id="${bookmark.sectionId}"]`);
+          if (btn) {
+            btn.classList.add('bookmarked');
+            btn.textContent = '★';
+          }
+        }
+      });
+
+      // Handle manual bookmark buttons
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('bookmark-btn')) {
+          e.preventDefault();
+          e.stopPropagation();
+          const sectionId = e.target.getAttribute('data-section-id');
+          const sectionTitle = e.target.getAttribute('data-section-title');
+          window.ledgerAPI.toggleBookmark(sectionId, sectionTitle);
+        }
+      });
+
+      window.addEventListener('bookmarksUpdated', renderBookmarks);
+    } catch (e) {
+      console.error('Error initializing bookmarks:', e);
+    }
+  }
+
+  /* ─── SIDEBAR TOGGLE ─── */
+  function initSidebarToggle() {
+    const toggle = document.getElementById('nav-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const body = document.body;
+
+    if (!toggle || !sidebar) return;
+
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      sidebar.classList.toggle('collapsed');
+      body.classList.toggle('sidebar-collapsed');
+    });
+  }
+
+  /* ─── SIDEBAR COMPONENTS INJECTION ─── */
+  /* Ensures all sidebar features (bookmarks, etc.) are present on every page.
+     Add new sidebar features here and they'll automatically appear everywhere. */
+  function ensureSidebarComponents() {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    // Ensure bookmarks section exists
+    if (!document.getElementById('bookmarks-container')) {
+      const bookmarksSection = document.createElement('div');
+      bookmarksSection.className = 'nav-section';
+      bookmarksSection.innerHTML = `
+        <div class="nav-section-label">★ Bookmarks</div>
+        <div id="bookmarks-container">
+          <div style="color: var(--ink-faint); font-style: italic; padding: 8px 0;">No bookmarks yet</div>
+        </div>
+      `;
+
+      // Insert after search if it exists, otherwise at the beginning
+      const searchSection = sidebar.querySelector('.sidebar-search');
+      if (searchSection) {
+        searchSection.after(bookmarksSection);
+      } else {
+        sidebar.insertBefore(bookmarksSection, sidebar.firstChild);
+      }
+    }
+  }
+
   /* ─── Initialize everything ─── */
+  /* Each function guards against missing elements, so this call is
+     safe on any Consortium page regardless of which components it uses. */
   window.addEventListener('load', () => {
     initMotes();
     buildGreatWheel();
     initModuleFilter();
+    initSidebar();
+    initSidebarToggle();
+    ensureSidebarComponents();
+    initBookmarks();
+    initSectionCollapse();
+    initScrollTracking();
+    initContentSearch();
   });
 
 })();

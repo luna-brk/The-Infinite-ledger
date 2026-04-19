@@ -3,764 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module I — Framework & Skeleton · The Infinite Ledger</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<title>Module I — Framework &amp; Skeleton · The Infinite Ledger</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=IM+Fell+English+SC&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../infinite-ledger.css">
 <style>
-/* ─── VARIABLES ─────────────────────────────────────── */
-:root {
-  --gold: #C9A84C;
-  --gold-light: #E8C97A;
-  --gold-pale: #F5E9CC;
-  --gold-dark: #7A6030;
-  --gold-border: #A8892E;
-  --ink: #1A1510;
-  --ink-mid: #2E2519;
-  --ink-light: #5C4D38;
-  --parchment: #F7F1E3;
-  --parchment-dark: #EDE4CE;
-  --parchment-deeper: #DDD0B0;
-  --parchment-hover: #E5D9B8;
-  --sigil-blue: #1C3045;
-  --sigil-blue-mid: #2B4A6A;
-  --sigil-blue-light: #3D6080;
-  --nav-width: 280px;
-}
-
-/* ─── RESET & BASE ──────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'EB Garamond', Georgia, serif;
-  background: #0D0A06;
-  color: var(--ink);
-  line-height: 1.75;
-  display: flex;
-  min-height: 100vh;
-}
-
-/* ─── SIDEBAR NAV ───────────────────────────────────── */
-#sidebar {
-  position: fixed;
-  left: 0; top: 0; bottom: 0;
-  width: var(--nav-width);
-  background: var(--ink-mid);
-  border-right: 1px solid var(--gold-dark);
-  overflow-y: auto;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
-
-#sidebar::-webkit-scrollbar { width: 4px; }
-#sidebar::-webkit-scrollbar-track { background: var(--ink-mid); }
-#sidebar::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
-
-.sidebar-header {
-  padding: 20px 20px 16px;
-  border-bottom: 1px solid rgba(168,137,46,0.3);
-  flex-shrink: 0;
-}
-
-.sidebar-back {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  opacity: 0.75;
-  transition: opacity 0.2s;
-  margin-bottom: 12px;
-}
-.sidebar-back:hover { opacity: 1; }
-.sidebar-back::before { content: '←'; font-family: serif; font-size: 14px; }
-
-.sidebar-title {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 11px;
-  color: var(--gold-light);
-  letter-spacing: 0.05em;
-  line-height: 1.3;
-}
-
-.sidebar-subtitle {
-  font-size: 10.5px;
-  color: var(--parchment-deeper);
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.2em;
-  margin-top: 4px;
-  opacity: 0.6;
-}
-
-.nav-section {
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(168,137,46,0.15);
-}
-
-.nav-section-label {
-  font-family: 'Cinzel', serif;
-  font-size: 8.5px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  padding: 6px 20px 4px;
-  opacity: 0.8;
-}
-
-.nav-link {
-  display: block;
-  padding: 7px 20px 7px 24px;
-  color: var(--parchment-dark);
-  text-decoration: none;
-  font-size: 12.5px;
-  line-height: 1.4;
-  transition: background 0.15s, color 0.15s, padding-left 0.15s;
-  border-left: 2px solid transparent;
-  position: relative;
-}
-.nav-link:hover, .nav-link.active {
-  background: rgba(201,168,76,0.08);
-  color: var(--gold-light);
-  padding-left: 28px;
-  border-left-color: var(--gold);
-}
-
-.nav-link-sub {
-  padding-left: 36px;
-  font-size: 11.5px;
-  color: rgba(237,228,206,0.6);
-}
-.nav-link-sub:hover, .nav-link-sub.active {
-  padding-left: 40px;
-  color: var(--gold);
-}
-
-.progress-bar {
-  height: 2px;
-  background: var(--gold-dark);
-  margin: 0;
-  flex-shrink: 0;
-}
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
-  width: 0%;
-  transition: width 0.1s;
-}
-
-/* Sticky progress at top */
-.sidebar-progress {
-  padding: 10px 20px 12px;
-  font-family: 'Cinzel', serif;
-  font-size: 9.5px;
-  letter-spacing: 0.25em;
-  color: var(--gold-dark);
-  border-bottom: 1px solid rgba(168,137,46,0.2);
-  flex-shrink: 0;
-}
-.progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
-.progress-track {
-  height: 3px;
-  background: rgba(168,137,46,0.2);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.progress-track-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
-  width: 0%;
-  transition: width 0.2s;
-  border-radius: 2px;
-}
-
-/* ─── TOGGLE BUTTON (mobile) ─────────────────────────── */
-#nav-toggle {
-  display: none;
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 200;
-  background: var(--sigil-blue);
-  border: 1px solid var(--gold-dark);
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  padding: 8px 14px;
-  cursor: pointer;
-}
-
-/* ─── MAIN CONTENT ──────────────────────────────────── */
-#main {
-  margin-left: var(--nav-width);
-  flex: 1;
-  background: radial-gradient(ellipse at 50% 0%, #2A2010 0%, #0D0A06 60%);
-  min-height: 100vh;
-  padding: 40px 24px 100px;
-}
-
-.page-container {
-  max-width: 820px;
-  margin: 0 auto;
-}
-
-/* ─── MODULE HEADER ──────────────────────────────────── */
-.module-banner {
-  background: var(--parchment);
-  position: relative;
-  margin-bottom: 40px;
-  box-shadow: 0 0 0 1px var(--gold-dark), 0 0 0 5px rgba(201,168,76,0.12), 0 20px 60px rgba(0,0,0,0.7);
-}
-
-.module-banner::before {
-  content: '';
-  position: absolute;
-  inset: 5px;
-  border: 1px solid var(--gold-dark);
-  pointer-events: none;
-  z-index: 1;
-}
-.module-banner::after {
-  content: '';
-  position: absolute;
-  inset: 10px;
-  border: 1px solid rgba(201,168,76,0.3);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.banner-top {
-  background: var(--sigil-blue);
-  padding: 36px 48px 20px;
-  border-bottom: 2px solid var(--gold);
-  text-align: center;
-}
-
-.banner-module-num {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.4em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.banner-title {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 30px;
-  color: var(--gold-light);
-  line-height: 1.15;
-  letter-spacing: 0.03em;
-  margin-bottom: 8px;
-}
-
-.banner-subtitle {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  color: rgba(245,233,204,0.6);
-}
-
-.banner-body {
-  padding: 28px 48px 32px;
-  background: var(--parchment);
-}
-
-.status-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--parchment-dark);
-  border: 1px solid var(--parchment-deeper);
-  padding: 4px 12px;
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.25em;
-  color: var(--sigil-blue);
-  font-weight: 700;
-}
-.status-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--gold);
-  border-radius: 50%;
-}
-
-.covers-line {
-  font-size: 13px;
-  color: var(--ink-light);
-  font-style: italic;
-}
-
-/* ─── PILLARS ────────────────────────────────────────── */
-.pillars-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0;
-  border: 1px solid var(--parchment-deeper);
-  margin-top: 24px;
-}
-
-.pillar {
-  padding: 16px;
-  border-right: 1px solid var(--parchment-deeper);
-  text-align: center;
-}
-.pillar:last-child { border-right: none; }
-
-.pillar-name {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--gold-dark);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.pillar-text {
-  font-size: 12.5px;
-  color: var(--ink-light);
-  font-style: italic;
-  line-height: 1.5;
-}
-
-/* ─── CONTENT SECTIONS ───────────────────────────────── */
-.content-section {
-  background: var(--parchment);
-  margin-bottom: 24px;
-  box-shadow: 0 0 0 1px rgba(168,137,46,0.3), 0 8px 30px rgba(0,0,0,0.5);
-  animation: fadeUp 0.5s ease both;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.content-section:nth-child(2) { animation-delay: 0.05s; }
-.content-section:nth-child(3) { animation-delay: 0.10s; }
-.content-section:nth-child(4) { animation-delay: 0.15s; }
-.content-section:nth-child(5) { animation-delay: 0.20s; }
-.content-section:nth-child(6) { animation-delay: 0.25s; }
-
-.section-header {
-  background: var(--sigil-blue);
-  padding: 14px 28px;
-  border-bottom: 1px solid var(--gold-dark);
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-}
-
-.section-header:hover { background: var(--sigil-blue-mid); }
-
-.section-numeral {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.35em;
-  color: var(--gold);
-  flex-shrink: 0;
-}
-
-.section-title {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--parchment-dark);
-  flex: 1;
-}
-
-.section-chevron {
-  color: var(--gold-dark);
-  font-size: 11px;
-  transition: transform 0.25s;
-  flex-shrink: 0;
-}
-.section-header.collapsed .section-chevron { transform: rotate(-90deg); }
-
-.section-body {
-  padding: 28px 32px;
-  overflow: hidden;
-}
-.section-body.collapsed { display: none; }
-
-/* Body typography */
-.section-body p {
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--ink-mid);
-  margin-bottom: 16px;
-}
-.section-body p:last-child { margin-bottom: 0; }
-
-.section-body em, .section-body i {
-  color: var(--ink-light);
-}
-
-.section-body strong, .section-body b {
-  color: var(--sigil-blue);
-  font-weight: 600;
-}
-
-/* Sub-headings */
-.section-body h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--sigil-blue);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin: 28px 0 12px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--parchment-deeper);
-}
-
-.section-body h4 {
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--gold-dark);
-  letter-spacing: 0.1em;
-  margin: 20px 0 8px;
-}
-
-/* Decorative divider */
-.ornament {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 20px 0;
-}
-.ornament span { flex: 1; height: 1px; background: var(--parchment-deeper); }
-.ornament-diamond {
-  width: 7px; height: 7px;
-  background: var(--parchment-deeper);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-
-/* ─── TABLES ─────────────────────────────────────────── */
-.table-wrap {
-  overflow-x: auto;
-  margin: 20px 0;
-  border: 1px solid var(--parchment-deeper);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13.5px;
-  min-width: 560px;
-}
-
-thead { background: var(--sigil-blue); }
-thead th {
-  font-family: 'Cinzel', serif;
-  font-size: 9.5px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold);
-  padding: 10px 14px;
-  text-align: left;
-  border-bottom: 1px solid var(--gold-dark);
-}
-
-tbody tr { border-bottom: 1px solid rgba(221,208,176,0.5); }
-tbody tr:last-child { border-bottom: none; }
-tbody tr:nth-child(even) { background: rgba(237,228,206,0.3); }
-
-tbody td {
-  padding: 10px 14px;
-  color: var(--ink-mid);
-  vertical-align: top;
-  line-height: 1.5;
-}
-
-tbody td:first-child {
-  font-family: 'Cinzel', serif;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--sigil-blue);
-  white-space: nowrap;
-}
-
-/* ─── CALLOUT BOXES ──────────────────────────────────── */
-.callout {
-  border-left: 3px solid var(--gold);
-  background: var(--parchment-dark);
-  padding: 16px 20px;
-  margin: 20px 0;
-  position: relative;
-}
-.callout-title {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 8px;
-}
-.callout p { font-size: 14.5px; color: var(--ink-light); margin-bottom: 0; }
-
-.callout.note { border-left-color: var(--sigil-blue-light); }
-.callout.note .callout-title { color: var(--sigil-blue-mid); }
-
-.callout.danger {
-  border-left-color: #8B2020;
-  background: #FDF2F2;
-}
-.callout.danger .callout-title { color: #8B2020; }
-
-/* ─── ZONE CARDS ─────────────────────────────────────── */
-.zone-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 20px 0;
-}
-
-.zone-card {
-  border: 1px solid var(--parchment-deeper);
-  border-left: 3px solid var(--gold-dark);
-  background: var(--parchment-dark);
-  padding: 16px;
-}
-
-.zone-num {
-  font-family: 'Cinzel', serif;
-  font-size: 8px;
-  letter-spacing: 0.35em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.zone-name {
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--sigil-blue);
-  margin-bottom: 10px;
-}
-
-.zone-field {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 6px;
-  font-size: 13px;
-}
-
-.zone-label {
-  font-family: 'Cinzel', serif;
-  font-size: 8.5px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  flex-shrink: 0;
-  width: 88px;
-  padding-top: 2px;
-}
-
-.zone-value { color: var(--ink-mid); line-height: 1.45; font-size: 13px; }
-
-/* ─── SAFEGUARD LIST ─────────────────────────────────── */
-.safeguard-list { list-style: none; padding: 0; margin: 16px 0; }
-.safeguard-list li {
-  display: flex;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(221,208,176,0.4);
-  font-size: 14.5px;
-  color: var(--ink-mid);
-  line-height: 1.55;
-}
-.safeguard-list li:last-child { border-bottom: none; }
-.safeguard-num {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  flex-shrink: 0;
-  width: 72px;
-  text-transform: uppercase;
-  padding-top: 2px;
-}
-.safeguard-content strong { color: var(--sigil-blue); }
-
-/* ─── CURRENCY PREVIEW TABLE ────────────────────────── */
-.currency-section {
-  margin: 20px 0;
-}
-
-.currency-section h4 {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 12px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--parchment-deeper);
-}
-
-/* ─── SCROLL-TO-TOP ──────────────────────────────────── */
-#scroll-top {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 44px;
-  height: 44px;
-  background: var(--sigil-blue);
-  border: 1px solid var(--gold-dark);
-  color: var(--gold);
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.25s, transform 0.25s;
-  z-index: 50;
-  font-family: serif;
-}
-#scroll-top.visible { opacity: 1; transform: translateY(0); }
-#scroll-top:hover { background: var(--sigil-blue-mid); }
-
-/* ─── SEARCH BAR ─────────────────────────────────────── */
-.sidebar-search {
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(168,137,46,0.2);
-  flex-shrink: 0;
-}
-
-.search-input {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--gold-dark);
-  padding: 7px 10px;
-  color: var(--parchment-dark);
-  font-family: 'EB Garamond', serif;
-  font-size: 13px;
-  outline: none;
-}
-.search-input::placeholder { color: rgba(237,228,206,0.35); }
-.search-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
-
-/* ─── KEYWORD HIGHLIGHT ──────────────────────────────── */
-.highlight { background: rgba(201,168,76,0.3); border-radius: 2px; }
-
-/* ─── SIBLING MODULE NAV ─────────────────────────────── */
-.module-nav {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(168,137,46,0.3);
-}
-
-.module-nav-btn {
-  display: flex;
-  flex-direction: column;
-  background: rgba(237,228,206,0.06);
-  border: 1px solid rgba(168,137,46,0.3);
-  padding: 14px 20px;
-  text-decoration: none;
-  transition: background 0.2s, border-color 0.2s;
-  flex: 1;
-  max-width: 300px;
-}
-.module-nav-btn:hover { background: rgba(201,168,76,0.08); border-color: var(--gold-dark); }
-
-.nav-btn-label {
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 4px;
-}
-
-.nav-btn-title {
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  color: var(--parchment-dark);
-}
-
-.module-nav-btn.prev .nav-btn-label::before { content: '← '; }
-.module-nav-btn.next { text-align: right; margin-left: auto; }
-.module-nav-btn.next .nav-btn-label::after { content: ' →'; }
-
-/* ─── RESPONSIVE ─────────────────────────────────────── */
-@media (max-width: 900px) {
-  :root { --nav-width: 260px; }
-}
-
-@media (max-width: 720px) {
-  #sidebar {
-    transform: translateX(-100%);
-  }
-  #sidebar.open {
-    transform: translateX(0);
-    box-shadow: 4px 0 20px rgba(0,0,0,0.6);
-  }
-  #main { margin-left: 0; padding: 60px 16px 80px; }
-  #nav-toggle { display: flex; align-items: center; gap: 8px; }
-  .banner-top { padding: 32px 24px 18px; }
-  .banner-body { padding: 20px 24px 24px; }
-  .banner-title { font-size: 22px; }
-  .pillars-row { grid-template-columns: 1fr; }
-  .pillar { border-right: none; border-bottom: 1px solid var(--parchment-deeper); }
-  .pillar:last-child { border-bottom: none; }
-  .zone-grid { grid-template-columns: 1fr; }
-  .section-body { padding: 20px 18px; }
-  .section-header { padding: 12px 20px; }
-  .module-nav { flex-direction: column; }
-  .module-nav-btn.next { text-align: left; margin-left: 0; }
-}
-
-/* ─── PRINT ──────────────────────────────────────────── */
-@media print {
-  #sidebar, #nav-toggle, #scroll-top { display: none !important; }
-  #main { margin-left: 0; background: white; padding: 0; }
-  .content-section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
-  .section-body.collapsed { display: block !important; }
-}
+/* Module I only needs to flip the shared body layout to sidebar mode */
+body { flex-direction: row; align-items: stretch; padding: 0; }
 </style>
 </head>
 <body>
 
-<!-- Mobile toggle -->
-<button id="nav-toggle" onclick="toggleSidebar()" aria-label="Toggle navigation">☰ Contents</button>
+<canvas id="motes"></canvas>
+
+<!-- Sidebar toggle -->
+<button id="nav-toggle" aria-label="Toggle navigation">☰</button>
 
 <!-- ═══ SIDEBAR ═══════════════════════════════════════ -->
 <nav id="sidebar">
   <div class="sidebar-header">
     <a href="../index.html" class="sidebar-back">The Infinite Ledger</a>
     <div class="sidebar-title">Module I</div>
-    <div class="sidebar-subtitle">Framework & Skeleton</div>
+    <div class="sidebar-subtitle">Framework &amp; Skeleton</div>
   </div>
 
   <div class="sidebar-search">
-    <input type="search" class="search-input" id="search-input" placeholder="Search this module…" oninput="searchPage(this.value)" autocomplete="off">
+    <input type="search" class="search-input" id="search-input"
+           placeholder="Search this module…" autocomplete="off">
   </div>
 
   <div class="sidebar-progress">
@@ -775,32 +43,32 @@ tbody td:first-child {
 
   <div class="nav-section">
     <div class="nav-section-label">Overview</div>
-    <a href="#preamble" class="nav-link" data-section="preamble">Preamble: Design Philosophy</a>
+    <a href="#preamble"     class="nav-link" data-section="preamble">Preamble: Design Philosophy</a>
     <a href="#master-index" class="nav-link" data-section="master-index">Master Module Index</a>
   </div>
 
   <div class="nav-section">
     <div class="nav-section-label">Part I · Framework</div>
-    <a href="#key-definitions" class="nav-link" data-section="key-definitions">§1.1 — Key Definitions</a>
-    <a href="#five-zones" class="nav-link" data-section="five-zones">§1.2 — The Five Economic Zones</a>
+    <a href="#key-definitions"   class="nav-link" data-section="key-definitions">§1.1 — Key Definitions</a>
+    <a href="#five-zones"        class="nav-link" data-section="five-zones">§1.2 — The Five Economic Zones</a>
     <a href="#zone-1" class="nav-link nav-link-sub" data-section="five-zones">Zone 1: The Prime Material</a>
     <a href="#zone-2" class="nav-link nav-link-sub" data-section="five-zones">Zone 2: Transitive Planes</a>
     <a href="#zone-3" class="nav-link nav-link-sub" data-section="five-zones">Zone 3: Inner Planes</a>
     <a href="#zone-4" class="nav-link nav-link-sub" data-section="five-zones">Zone 4: Outer Planes</a>
     <a href="#zone-5" class="nav-link nav-link-sub" data-section="five-zones">Zone 5: Sigil</a>
-    <a href="#arbitrage" class="nav-link" data-section="arbitrage">§1.3 — The Arbitrage Problem</a>
+    <a href="#arbitrage"         class="nav-link" data-section="arbitrage">§1.3 — The Arbitrage Problem</a>
     <a href="#currency-overview" class="nav-link" data-section="currency-overview">§1.4 — Currency Overview</a>
   </div>
 
   <div class="nav-section">
     <div class="nav-section-label">Quick Reference</div>
-    <a href="#hard-currencies" class="nav-link nav-link-sub" data-section="currency-overview">Hard Currencies</a>
+    <a href="#hard-currencies"   class="nav-link nav-link-sub" data-section="currency-overview">Hard Currencies</a>
     <a href="#exotic-currencies" class="nav-link nav-link-sub" data-section="currency-overview">Exotic Currencies</a>
   </div>
 
   <div class="nav-section">
     <div class="nav-section-label">Navigation</div>
-    <a href="../index.html" class="nav-link">← Back to Index</a>
+    <a href="../index.html"          class="nav-link">← Back to Index</a>
     <a href="../module-2/index.html" class="nav-link">Module II — Currencies →</a>
   </div>
 </nav>
@@ -824,23 +92,23 @@ tbody td:first-child {
     <div class="pillars-row">
       <div class="pillar">
         <div class="pillar-name">Coherence</div>
-        <p class="pillar-text">Every price must survive <em>"but why can't I just buy that on the Plane of Fire?"</em></p>
+        <p class="pillar-desc">Every price must survive <em>"but why can't I just buy that on the Plane of Fire?"</em></p>
       </div>
       <div class="pillar">
         <div class="pillar-name">PF1e Compatibility</div>
-        <p class="pillar-text">WBL is the structural spine. This system contextualizes it — never violates it.</p>
+        <p class="pillar-desc">WBL is the structural spine. This system contextualizes it — never violates it.</p>
       </div>
       <div class="pillar">
         <div class="pillar-name">Player Fascination</div>
-        <p class="pillar-text">The economy is a toy, not a tax. Complexity is opt-in. Anyone can buy a sword.</p>
+        <p class="pillar-desc">The economy is a toy, not a tax. Complexity is opt-in. Anyone can buy a sword.</p>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ─── SECTION: PREAMBLE ────────────────────────────── -->
+<!-- ─── PREAMBLE ──────────────────────────────────────── -->
 <section class="content-section" id="preamble">
-  <div class="section-header" onclick="toggleSection(this)">
+  <div class="section-header">
     <span class="section-numeral">Preamble</span>
     <span class="section-title">Design Philosophy</span>
     <span class="section-chevron">▾</span>
@@ -864,142 +132,60 @@ tbody td:first-child {
   </div>
 </section>
 
-<!-- ─── SECTION: MODULE INDEX ────────────────────────── -->
+<!-- ─── MODULE INDEX ──────────────────────────────────── -->
 <section class="content-section" id="master-index">
-  <div class="section-header" onclick="toggleSection(this)">
+  <div class="section-header">
     <span class="section-numeral">Master Index</span>
     <span class="section-title">Module Index &amp; Status</span>
     <span class="section-chevron">▾</span>
   </div>
   <div class="section-body">
     <p>Each module can be developed and consulted independently. The table below maps the complete system and its current status.</p>
-
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Module</th>
-            <th>Covers</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Module</th><th>Covers</th><th>Status</th></tr></thead>
         <tbody>
-          <tr>
-            <td>I — Framework &amp; Skeleton</td>
-            <td>This document. Organizational map, design axioms, key definitions.</td>
-            <td>◆ Active</td>
-          </tr>
-          <tr>
-            <td>II — Currencies &amp; Exchange</td>
-            <td>Every coin, barter-token, metaphysical currency, and credit system across the planes. Conversion tables.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>III — The Price of Everything</td>
-            <td>Pricing philosophy. How PF1e item prices translate across planes. Regional modifiers. The Planar Markup/Discount Engine.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>IV — Trade Goods &amp; Commodities</td>
-            <td>What moves between planes and why. Commodity classes. Trade route tables. Smuggling.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>V — Services, Labor &amp; Intangibles</td>
-            <td>Hiring, crafting commissions, spell services, information brokerage, faction favors. Portal tolls.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>VI — Faction Economics</td>
-            <td>How each major Sigil faction distorts, controls, or subverts the economy. Faction standing as currency.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>VII — Planar Commerce Law</td>
-            <td>Contracts (especially infernal/celestial), the Fraternity of Order's trade regulations, smuggling penalties, extraplanar taxation.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>VIII — WBL Integration &amp; GM Controls</td>
-            <td>Pacing wealth across levels 1–20. Treasure type by plane. Anti-exploit safeguards. The Planar Arbitrage problem and solutions.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>IX — Player-Facing Systems</td>
-            <td>Downtime commerce, investment, planar real estate, reputation economies.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>X — Player-Owned Businesses &amp; Trade Houses</td>
-            <td>Founding, running, and scaling player enterprises across the planes.</td>
-            <td>○ Skeleton</td>
-          </tr>
-          <tr>
-            <td>XI — Quick-Reference Tables</td>
-            <td>Condensed conversion charts, DC tables for appraisal/negotiation, regional price modifier cheat sheets.</td>
-            <td>○ Skeleton</td>
-          </tr>
+          <tr><td>I — Framework &amp; Skeleton</td><td>This document. Organizational map, design axioms, key definitions.</td><td>◆ Active</td></tr>
+          <tr><td>II — Currencies &amp; Exchange</td><td>Every coin, barter-token, metaphysical currency, and credit system across the planes. Conversion tables.</td><td>○ Skeleton</td></tr>
+          <tr><td>III — The Price of Everything</td><td>Pricing philosophy. How PF1e item prices translate across planes. Regional modifiers. The Planar Markup/Discount Engine.</td><td>○ Skeleton</td></tr>
+          <tr><td>IV — Trade Goods &amp; Commodities</td><td>What moves between planes and why. Commodity classes. Trade route tables. Smuggling.</td><td>○ Skeleton</td></tr>
+          <tr><td>V — Services, Labor &amp; Intangibles</td><td>Hiring, crafting commissions, spell services, information brokerage, faction favors. Portal tolls.</td><td>○ Skeleton</td></tr>
+          <tr><td>VI — Faction Economics</td><td>How each major Sigil faction distorts, controls, or subverts the economy. Faction standing as currency.</td><td>○ Skeleton</td></tr>
+          <tr><td>VII — Planar Commerce Law</td><td>Contracts (especially infernal/celestial), the Fraternity of Order's trade regulations, smuggling penalties, extraplanar taxation.</td><td>○ Skeleton</td></tr>
+          <tr><td>VIII — WBL Integration &amp; GM Controls</td><td>Pacing wealth across levels 1–20. Treasure type by plane. Anti-exploit safeguards. The Planar Arbitrage problem and solutions.</td><td>○ Skeleton</td></tr>
+          <tr><td>IX — Player-Facing Systems</td><td>Downtime commerce, investment, planar real estate, reputation economies.</td><td>○ Skeleton</td></tr>
+          <tr><td>X — Player-Owned Businesses &amp; Trade Houses</td><td>Founding, running, and scaling player enterprises across the planes.</td><td>○ Skeleton</td></tr>
+          <tr><td>XI — Quick-Reference Tables</td><td>Condensed conversion charts, DC tables for appraisal/negotiation, regional price modifier cheat sheets.</td><td>○ Skeleton</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ─── SECTION: KEY DEFINITIONS ────────────────────── -->
+<!-- ─── KEY DEFINITIONS ───────────────────────────────── -->
 <section class="content-section" id="key-definitions">
-  <div class="section-header" onclick="toggleSection(this)">
+  <div class="section-header">
     <span class="section-numeral">§ 1.1</span>
     <span class="section-title">Key Definitions</span>
     <span class="section-chevron">▾</span>
   </div>
   <div class="section-body">
     <p>The following terms are used consistently throughout all modules. Understanding them is prerequisite to using the rest of the Ledger.</p>
-
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Term</th>
-            <th>Definition</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
         <tbody>
-          <tr>
-            <td>Standard Gold Piece (gp)</td>
-            <td>The PF1e abstract unit of value. All prices in this system can always be resolved to gp for mechanical purposes. Flavor currencies exist <em>on top of</em> this abstraction, not in place of it.</td>
-          </tr>
-          <tr>
-            <td>Local Scrip</td>
-            <td>Any currency that only holds value in a specific location or plane. Oerthian gold lions, Baatorian soul-credits, Mechanus gear-marks.</td>
-          </tr>
-          <tr>
-            <td>Hard Currency</td>
-            <td>Currency accepted across multiple planes. The four hard currencies are: <strong>Sigilian Jinx</strong>, <strong>Minted Styx-Iron</strong>, <strong>Celestian Trade Bars</strong>, and <strong>Raw Quintessence</strong>.</td>
-          </tr>
-          <tr>
-            <td>Belief Value (BV)</td>
-            <td>A meta-economic unit representing the power of collective conviction. Some Outer Plane economies literally run on faith. This is the most volatile and dangerous currency in the system.</td>
-          </tr>
-          <tr>
-            <td>Exchange Friction</td>
-            <td>The percentage lost when converting between currencies. Represents money-changers, planar instability, trust deficits, and metaphysical incompatibility. Ranges from 0% (jinx-to-jinx in Sigil) to 40%+ (Baatorian soul-credits in Elysium).</td>
-          </tr>
-          <tr>
-            <td>Planar Price Modifier (PPM)</td>
-            <td>A multiplier applied to the base PF1e price of goods depending on <em>where</em> you're buying them and <em>what plane the good originates from</em>.</td>
-          </tr>
-          <tr>
-            <td>Wealth-By-Level (WBL)</td>
-            <td>PF1e's expected character wealth at each level. The sacred number. This system bends around it, never breaks it. Reference table in Module VIII.</td>
-          </tr>
-          <tr>
-            <td>Availability Factor (AF)</td>
-            <td>How easily a given item can be found in a given market. AF ×1.0 = normally stocked. AF ×3.0 = requires a quest or specialist. Covered in detail in Module III.</td>
-          </tr>
+          <tr><td>Standard Gold Piece (gp)</td><td>The PF1e abstract unit of value. All prices in this system can always be resolved to gp for mechanical purposes. Flavor currencies exist <em>on top of</em> this abstraction, not in place of it.</td></tr>
+          <tr><td>Local Scrip</td><td>Any currency that only holds value in a specific location or plane. Oerthian gold lions, Baatorian soul-credits, Mechanus gear-marks.</td></tr>
+          <tr><td>Hard Currency</td><td>Currency accepted across multiple planes. The four hard currencies are: <strong>Sigilian Jinx</strong>, <strong>Minted Styx-Iron</strong>, <strong>Celestian Trade Bars</strong>, and <strong>Raw Quintessence</strong>.</td></tr>
+          <tr><td>Belief Value (BV)</td><td>A meta-economic unit representing the power of collective conviction. Some Outer Plane economies literally run on faith. This is the most volatile and dangerous currency in the system.</td></tr>
+          <tr><td>Exchange Friction</td><td>The percentage lost when converting between currencies. Represents money-changers, planar instability, trust deficits, and metaphysical incompatibility. Ranges from 0% (jinx-to-jinx in Sigil) to 40%+ (Baatorian soul-credits in Elysium).</td></tr>
+          <tr><td>Planar Price Modifier (PPM)</td><td>A multiplier applied to the base PF1e price of goods depending on <em>where</em> you're buying them and <em>what plane the good originates from</em>.</td></tr>
+          <tr><td>Wealth-By-Level (WBL)</td><td>PF1e's expected character wealth at each level. The sacred number. This system bends around it, never breaks it. Reference table in Module VIII.</td></tr>
+          <tr><td>Availability Factor (AF)</td><td>How easily a given item can be found in a given market. AF ×1.0 = normally stocked. AF ×3.0 = requires a quest or specialist. Covered in detail in Module III.</td></tr>
         </tbody>
       </table>
     </div>
-
     <div class="callout note">
       <div class="callout-title">⚠ On the gp Abstraction</div>
       <p>Never forget that gp is a convenience abstraction, not a physical object in Sigil. A planewalker dealing in Sigilian Jinx, Mechanus Gear-Marks, and Bytopian labor-notes is doing exactly the same thing as a level 10 PC with 62,000 gp worth of gear — the numbers just <em>look</em> different. The Ledger provides conversion tables so that every exotic transaction can always resolve to a gp equivalent if the GM needs one.</p>
@@ -1007,9 +193,9 @@ tbody td:first-child {
   </div>
 </section>
 
-<!-- ─── SECTION: FIVE ZONES ──────────────────────────── -->
+<!-- ─── FIVE ECONOMIC ZONES ───────────────────────────── -->
 <section class="content-section" id="five-zones">
-  <div class="section-header" onclick="toggleSection(this)">
+  <div class="section-header">
     <span class="section-numeral">§ 1.2</span>
     <span class="section-title">The Five Economic Zones</span>
     <span class="section-chevron">▾</span>
@@ -1018,7 +204,6 @@ tbody td:first-child {
     <p>All planar commerce falls into one of five zones, each with its own rules of trade. The zones are ordered by distance from the Prime Material, corresponding roughly to when a campaign encounters them.</p>
 
     <div class="zone-grid">
-      <!-- Zone 1 -->
       <div class="zone-card" id="zone-1">
         <div class="zone-num">Zone 1</div>
         <div class="zone-name">The Prime Material</div>
@@ -1029,7 +214,6 @@ tbody td:first-child {
         <div class="zone-field"><span class="zone-label">PC Experience</span><span class="zone-value">Levels 1–3. Familiar and grounded. The <em>weirdness</em> is foreshadowed.</span></div>
       </div>
 
-      <!-- Zone 2 -->
       <div class="zone-card" id="zone-2">
         <div class="zone-num">Zone 2</div>
         <div class="zone-name">The Transitive Planes</div>
@@ -1040,7 +224,6 @@ tbody td:first-child {
         <div class="zone-field"><span class="zone-label">PC Experience</span><span class="zone-value">First taste of "your gold doesn't work here." Forces inventory thinking.</span></div>
       </div>
 
-      <!-- Zone 3 -->
       <div class="zone-card" id="zone-3">
         <div class="zone-num">Zone 3</div>
         <div class="zone-name">The Inner / Elemental Planes</div>
@@ -1051,7 +234,6 @@ tbody td:first-child {
         <div class="zone-field"><span class="zone-label">PC Experience</span><span class="zone-value">The realization that "infinite resources" doesn't mean "infinite wealth."</span></div>
       </div>
 
-      <!-- Zone 4 -->
       <div class="zone-card" id="zone-4">
         <div class="zone-num">Zone 4</div>
         <div class="zone-name">The Outer Planes</div>
@@ -1063,11 +245,11 @@ tbody td:first-child {
       </div>
     </div>
 
-    <!-- Zone 5 full width -->
-    <div class="zone-card" id="zone-5" style="margin-top:0; grid-column: span 2; border-left-color: var(--gold); background: var(--parchment-dark);">
+    <!-- Zone 5 — full-width hub entry with accent border -->
+    <div class="zone-card" id="zone-5" style="margin-top:0; border-left-color: var(--bronze-bright);">
       <div class="zone-num">Zone 5 — The Hub</div>
-      <div class="zone-name" style="font-size: 15px;">Sigil, the City of Doors</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap: 0 24px; margin-top: 8px;">
+      <div class="zone-name" style="font-size:15px;">Sigil, the City of Doors</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 24px; margin-top:8px;">
         <div>
           <div class="zone-field"><span class="zone-label">Currency</span><span class="zone-value">The Sigilian Jinx (hard currency). Everything else accepted at exchange friction.</span></div>
           <div class="zone-field"><span class="zone-label">Economy</span><span class="zone-value">Free port. The ultimate bazaar. Every economy in the multiverse collides here.</span></div>
@@ -1081,9 +263,9 @@ tbody td:first-child {
   </div>
 </section>
 
-<!-- ─── SECTION: ARBITRAGE ───────────────────────────── -->
+<!-- ─── PLANAR ARBITRAGE PROBLEM ───────────────────────── -->
 <section class="content-section" id="arbitrage">
-  <div class="section-header" onclick="toggleSection(this)">
+  <div class="section-header">
     <span class="section-numeral">§ 1.3</span>
     <span class="section-title">The Planar Arbitrage Problem</span>
     <span class="section-chevron">▾</span>
@@ -1128,128 +310,56 @@ tbody td:first-child {
   </div>
 </section>
 
-<!-- ─── SECTION: CURRENCY PREVIEW ───────────────────── -->
+<!-- ─── CURRENCY OVERVIEW ──────────────────────────────── -->
 <section class="content-section" id="currency-overview">
-  <div class="section-header" onclick="toggleSection(this)">
+  <div class="section-header">
     <span class="section-numeral">§ 1.4</span>
-    <span class="section-title">Currency System Overview <span style="font-weight:400;font-size:11px;color:rgba(237,228,206,0.5);margin-left:10px;font-family:'EB Garamond',serif;">(Module II Preview)</span></span>
+    <span class="section-title">Currency System Overview
+      <span style="font-weight:400;font-size:11px;color:var(--ink-faint);margin-left:10px;font-family:'EB Garamond',serif;">(Module II Preview)</span>
+    </span>
     <span class="section-chevron">▾</span>
   </div>
   <div class="section-body">
     <p>The complete currency system is documented in <strong>Module II — Currencies &amp; Mediums of Exchange</strong>. The tables below provide a working preview sufficient for early-campaign play.</p>
 
-    <div class="ornament">
-      <span></span>
-      <div class="ornament-diamond"></div>
-      <span></span>
+    <div class="rule-line">
+      <span></span><div class="rule-diamond sm"></div><span></span>
     </div>
 
     <div class="currency-section" id="hard-currencies">
       <h4>Hard Currencies — Accepted Across Multiple Planes</h4>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Currency</th>
-              <th>Origin</th>
-              <th>Base Value</th>
-              <th>Accepted Where</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Currency</th><th>Origin</th><th>Base Value</th><th>Accepted Where</th><th>Notes</th></tr></thead>
           <tbody>
-            <tr>
-              <td>Sigilian Jinx</td>
-              <td>Sigil</td>
-              <td>1 jinx = 1 gp</td>
-              <td>Everywhere that trades with Sigil</td>
-              <td>The de facto reserve currency of the multiverse. Minted by the Merkhant Consortium under dabus oversight. Cannot be counterfeited (the Lady's mark).</td>
-            </tr>
-            <tr>
-              <td>Minted Styx-Iron</td>
-              <td>Lower Planes</td>
-              <td>1 bar = 50 gp</td>
-              <td>Lower Planes, Sigil, Outlands</td>
-              <td>Iron from the River Styx, forged in Gehenna. Carries a faint aura of forgetfulness. Accepted because it's useful for binding fiends.</td>
-            </tr>
-            <tr>
-              <td>Celestian Trade Bar</td>
-              <td>Upper Planes</td>
-              <td>1 bar = 100 gp</td>
-              <td>Upper Planes, Sigil, Outlands, some Prime worlds</td>
-              <td>Sanctified silver stamped with the seal of a celestial concordance. Self-authenticating (glows faintly in the presence of evil).</td>
-            </tr>
-            <tr>
-              <td>Raw Quintessence</td>
-              <td>Astral Plane</td>
-              <td>Variable — see Module II</td>
-              <td>Everywhere, but perishable</td>
-              <td>The raw stuff of creation. Decays outside the Astral. Functions as a universal solvent of value but degrades ~10% per day on other planes unless contained.</td>
-            </tr>
+            <tr><td>Sigilian Jinx</td><td>Sigil</td><td>1 jinx = 1 gp</td><td>Everywhere that trades with Sigil</td><td>The de facto reserve currency of the multiverse. Minted by the Merkhant Consortium under dabus oversight. Cannot be counterfeited (the Lady's mark).</td></tr>
+            <tr><td>Minted Styx-Iron</td><td>Lower Planes</td><td>1 bar = 50 gp</td><td>Lower Planes, Sigil, Outlands</td><td>Iron from the River Styx, forged in Gehenna. Carries a faint aura of forgetfulness. Accepted because it's useful for binding fiends.</td></tr>
+            <tr><td>Celestian Trade Bar</td><td>Upper Planes</td><td>1 bar = 100 gp</td><td>Upper Planes, Sigil, Outlands, some Prime worlds</td><td>Sanctified silver stamped with the seal of a celestial concordance. Self-authenticating (glows faintly in the presence of evil).</td></tr>
+            <tr><td>Raw Quintessence</td><td>Astral Plane</td><td>Variable — see Module II</td><td>Everywhere, but perishable</td><td>The raw stuff of creation. Decays outside the Astral. Functions as a universal solvent of value but degrades ~10% per day on other planes unless contained.</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="ornament">
-      <span></span>
-      <div class="ornament-diamond"></div>
-      <span></span>
+    <div class="rule-line">
+      <span></span><div class="rule-diamond sm"></div><span></span>
     </div>
 
     <div class="currency-section" id="exotic-currencies">
       <h4>Exotic / Metaphysical Currencies — Plane-Specific</h4>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Currency</th>
-              <th>Plane(s)</th>
-              <th>Nature</th>
-              <th>Convertibility</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Currency</th><th>Plane(s)</th><th>Nature</th><th>Convertibility</th></tr></thead>
           <tbody>
-            <tr>
-              <td>Soul Shells</td>
-              <td>Lower Planes</td>
-              <td>Harvested petitioner essences</td>
-              <td>Converts to gp at appalling rates. Morally catastrophic. Illegal in Sigil.</td>
-            </tr>
-            <tr>
-              <td>Belief Tokens</td>
-              <td>Outer Planes (various)</td>
-              <td>Crystallized faith</td>
-              <td>Value depends on the deity/philosophy and the buyer's alignment.</td>
-            </tr>
-            <tr>
-              <td>Elemental Motes</td>
-              <td>Inner Planes</td>
-              <td>Condensed elemental matter</td>
-              <td>Valuable as crafting materials. Convert to gp via artisan markets.</td>
-            </tr>
-            <tr>
-              <td>Modron Gear-Marks</td>
-              <td>Mechanus</td>
-              <td>Standardized units of labor</td>
-              <td>Perfectly stable. Perfectly boring. 1 gear-mark = 1 gp, always, forever.</td>
-            </tr>
-            <tr>
-              <td>Chaos Shards</td>
-              <td>Limbo</td>
-              <td>Frozen chunks of possibility</td>
-              <td>Value fluctuates wildly. Roll 1d6 × base value at each transaction.</td>
-            </tr>
-            <tr>
-              <td>Memory Pearls</td>
-              <td>Various (esp. Astral)</td>
-              <td>Stored experiences / knowledge</td>
-              <td>Value depends entirely on the memory contained. Highly prized by the Society of Sensation.</td>
-            </tr>
+            <tr><td>Soul Shells</td><td>Lower Planes</td><td>Harvested petitioner essences</td><td>Converts to gp at appalling rates. Morally catastrophic. Illegal in Sigil.</td></tr>
+            <tr><td>Belief Tokens</td><td>Outer Planes (various)</td><td>Crystallized faith</td><td>Value depends on the deity/philosophy and the buyer's alignment.</td></tr>
+            <tr><td>Elemental Motes</td><td>Inner Planes</td><td>Condensed elemental matter</td><td>Valuable as crafting materials. Convert to gp via artisan markets.</td></tr>
+            <tr><td>Modron Gear-Marks</td><td>Mechanus</td><td>Standardized units of labor</td><td>Perfectly stable. Perfectly boring. 1 gear-mark = 1 gp, always, forever.</td></tr>
+            <tr><td>Chaos Shards</td><td>Limbo</td><td>Frozen chunks of possibility</td><td>Value fluctuates wildly. Roll 1d6 × base value at each transaction.</td></tr>
+            <tr><td>Memory Pearls</td><td>Various (esp. Astral)</td><td>Stored experiences / knowledge</td><td>Value depends entirely on the memory contained. Highly prized by the Society of Sensation.</td></tr>
           </tbody>
         </table>
       </div>
-
       <div class="callout">
         <div class="callout-title">→ Continue in Module II</div>
         <p>Full exchange rates, conversion mechanics, the Currency Bureau, counterfeit detection, and every additional currency type (Nightshillings, Fey Leaf-Coins, Baatorian soul-credits, and more) are documented in <strong>Module II — Currencies &amp; Mediums of Exchange</strong>.</p>
@@ -1258,7 +368,7 @@ tbody td:first-child {
   </div>
 </section>
 
-<!-- Module navigation -->
+<!-- Module prev / next navigation -->
 <div class="module-nav">
   <a href="../index.html" class="module-nav-btn prev">
     <span class="nav-btn-label">Previous</span>
@@ -1273,133 +383,8 @@ tbody td:first-child {
 </div><!-- /page-container -->
 </main>
 
-<!-- Scroll to top -->
-<button id="scroll-top" onclick="scrollToTop()" aria-label="Scroll to top" title="Back to top">↑</button>
+<button id="scroll-top" aria-label="Scroll to top" title="Back to top">↑</button>
 
-<script>
-/* ─── SIDEBAR TOGGLE (mobile) ─── */
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-}
-document.addEventListener('click', e => {
-  const sidebar = document.getElementById('sidebar');
-  const toggle = document.getElementById('nav-toggle');
-  if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
-    sidebar.classList.remove('open');
-  }
-});
-
-/* ─── SECTION COLLAPSE ─── */
-function toggleSection(header) {
-  const body = header.nextElementSibling;
-  const isCollapsed = body.classList.contains('collapsed');
-  if (isCollapsed) {
-    body.classList.remove('collapsed');
-    header.classList.remove('collapsed');
-  } else {
-    body.classList.add('collapsed');
-    header.classList.add('collapsed');
-  }
-}
-
-/* ─── SCROLL TRACKING ─── */
-function updateProgress() {
-  const doc = document.documentElement;
-  const scrolled = doc.scrollTop || document.body.scrollTop;
-  const total = doc.scrollHeight - doc.clientHeight;
-  const pct = Math.round((scrolled / total) * 100);
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-pct').textContent = pct + '%';
-
-  // Scroll-to-top visibility
-  const btn = document.getElementById('scroll-top');
-  if (scrolled > 400) btn.classList.add('visible');
-  else btn.classList.remove('visible');
-
-  // Active nav link tracking
-  updateActiveNav();
-}
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-/* ─── ACTIVE NAV TRACKING ─── */
-const sections = ['preamble','master-index','key-definitions','five-zones','arbitrage','currency-overview'];
-function updateActiveNav() {
-  const scrollY = window.scrollY || document.documentElement.scrollTop;
-  let currentSection = '';
-
-  for (const id of sections) {
-    const el = document.getElementById(id);
-    if (el && el.getBoundingClientRect().top <= 100) {
-      currentSection = id;
-    }
-  }
-
-  document.querySelectorAll('.nav-link[data-section]').forEach(link => {
-    link.classList.toggle('active', link.dataset.section === currentSection);
-  });
-}
-
-window.addEventListener('scroll', updateProgress, { passive: true });
-updateProgress();
-
-/* ─── SEARCH ─── */
-let originalContent = '';
-
-function searchPage(query) {
-  // Remove previous highlights
-  const highlights = document.querySelectorAll('.highlight');
-  highlights.forEach(h => {
-    const parent = h.parentNode;
-    parent.replaceChild(document.createTextNode(h.textContent), h);
-    parent.normalize();
-  });
-
-  if (!query || query.length < 2) return;
-
-  const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
-
-  // Walk text nodes in section bodies
-  document.querySelectorAll('.section-body').forEach(body => {
-    const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT);
-    const nodes = [];
-    let node;
-    while (node = walker.nextNode()) {
-      if (re.test(node.textContent)) nodes.push(node);
-    }
-    nodes.forEach(n => {
-      const span = document.createElement('span');
-      span.innerHTML = n.textContent.replace(re, '<mark class="highlight">$1</mark>');
-      n.parentNode.replaceChild(span, n);
-    });
-
-    // If any highlights in this body, expand the section
-    if (body.querySelector('.highlight')) {
-      body.classList.remove('collapsed');
-      body.previousElementSibling.classList.remove('collapsed');
-    }
-  });
-
-  // Scroll to first highlight
-  const first = document.querySelector('.highlight');
-  if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-/* ─── KEYBOARD SHORTCUTS ─── */
-document.addEventListener('keydown', e => {
-  if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
-    e.preventDefault();
-    document.getElementById('search-input').focus();
-  }
-  if (e.key === 'Escape') {
-    document.getElementById('search-input').value = '';
-    searchPage('');
-    document.getElementById('search-input').blur();
-  }
-});
-</script>
-
+<script src="../ledger-scripts.js" defer></script>
 </body>
 </html>
