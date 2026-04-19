@@ -113,6 +113,35 @@ Content sections use `.content-section[id]` + `.section-header` + `.section-body
 
 ---
 
+### Advanced Visual Patterns (The High-Fidelity Toolkit)
+
+These patterns are designed to handle the high information density of interplanar commerce while maintaining a themed, "hand-crafted" aesthetic.
+
+| Pattern | Class | Best Used For |
+|---|---|---|
+| **Planar Market Card** | `.market-card` | Regional economic snapshots (Markup, Friction, AF). |
+| **Comparison Ledger** | `.comparison-ledger` | Contrasting viewpoints (Official Law vs. Street Reality). |
+| **Process Flow** | `.process-flow` | Step-by-step procedures (Minting, Authentication). |
+| **Tome Statistics** | `.tome-stat` | Circular, iconic data points (Tax rates, WBL). |
+| **Consortium Decree** | `.consortium-decree` | Formal laws and standing orders with wax seals. |
+| **Trade Good Dossier** | `.good-dossier` | Commodity data with icons and categorical tags. |
+| **Alignment Axis** | `.alignment-axis` | Visual sliders for ideological placement. |
+| **Cutter's Cant Box** | `.cant-box` | Dashed callouts for street-level rumors/secrets. |
+| **Coverage Grid** | `.coverage-grid` | Massive 2-column lists (Module topics, coverage). |
+| **Usage Guide** | `.usage-guide` | Annotated, hand-written instructions. |
+| **Foundational Anchor** | `.foundational-anchor` | Heavy, centered cornerstone rules (WBL anchors). |
+| **Planar Pulse Map** | `.pulse-list` | Regional acceptance status with color-coded badges. |
+| **Institutional Registry** | `.registry-entry` | Bundling data tables with operational context footers. |
+| **Planar Directory** | `.directory-list` | Vertical indexes for locations and layers. |
+| **Currency Manifest** | `.coin-grid` | Responsive cards for regional assets and coinage. |
+
+#### Technical Implementation Notes
+- **Pulse List Colors:** Use `.high`, `.mid`, `.low`, or `.none` on `.pulse-strength` for color-coding.
+- **Coin Cards:** Are fully responsive; will stack on mobile and grid-fill on desktop.
+- **Dossier Icons:** Intended for emoji or small SVG glyphs in the `.good-icon` container.
+
+---
+
 ## CSS Explainer
 
 **Single file:** `infinite-ledger.css` serves every page. Sections are clearly delimited with `/* ── SECTION NAME ── */` banners.

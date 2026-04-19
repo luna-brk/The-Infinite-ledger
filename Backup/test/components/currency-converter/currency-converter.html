@@ -1,0 +1,136 @@
+<div id="converter-drawer" class="converter-drawer">
+  <div class="drawer-header draggable">
+    <div class="drawer-title">Merkhant's Scales</div>
+    <button class="drawer-close">✕</button>
+  </div>
+  <div class="drawer-content">
+    <div class="exchange-ledger-container">
+      <div class="exchange-controls">
+        <div class="input-group full-width">
+          <label for="conv-amount">Amount to Exchange</label>
+          <input type="number" id="conv-amount" value="100" min="1">
+        </div>
+
+        <div class="exchange-slots">
+          <div class="exchange-slot" id="slot-source">
+            <div class="slot-label">Source</div>
+            <div class="slot-ui">
+              <div class="slot-icon">🪙</div>
+              <div class="slot-name">Sigilian Jinx</div>
+              <div class="slot-sub">Reserve (1.00 gp)</div>
+            </div>
+          </div>
+          <div class="exchange-arrow">⇄</div>
+          <div class="exchange-slot" id="slot-target">
+            <div class="slot-label">Target</div>
+            <div class="slot-ui">
+              <div class="slot-icon">🟡</div>
+              <div class="slot-name">Standard gp</div>
+              <div class="slot-sub">Prime (1.00 gp)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group full-width">
+          <label for="conv-plane">Transaction Location</label>
+          <select id="conv-plane">
+            <option value="sigil" selected>Sigil (Neutral)</option>
+            <option value="astral">The Astral Plane (Neutral)</option>
+            <option value="prime">The Prime Material (Neutral)</option>
+            <option value="celestia">Mount Celestia (LG)</option>
+            <option value="elysium">Elysium (NG)</option>
+            <option value="beastlands">The Beastlands (CG)</option>
+            <option value="arborea">Arborea (CG)</option>
+            <option value="ysgard">Ysgard (CG)</option>
+            <option value="limbo">Limbo (CN)</option>
+            <option value="pandemonium">Pandemonium (CE)</option>
+            <option value="abyss">The Abyss (CE)</option>
+            <option value="carceri">Carceri (NE)</option>
+            <option value="hades">Hades (NE)</option>
+            <option value="gehenna">Gehenna (LE)</option>
+            <option value="hells">The Nine Hells (LE)</option>
+            <option value="acheron">Acheron (LE)</option>
+            <option value="mechanus">Mechanus (LN)</option>
+            <option value="arcadia">Arcadia (LG)</option>
+            <option value="fire">Plane of Fire (Elemental)</option>
+            <option value="water">Plane of Water (Elemental)</option>
+            <option value="earth">Plane of Earth (Elemental)</option>
+            <option value="air">Plane of Air (Elemental)</option>
+            <option value="shadowfell">The Shadowfell (Shadow)</option>
+            <option value="feywild">The Feywild (Fey)</option>
+          </select>
+        </div>
+
+        <div class="friction-overrides">
+          <div class="override-grid">
+            <label class="check-container">
+              <input type="checkbox" id="ov-specialist"> Specialist (-3%)
+              <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+              <input type="checkbox" id="ov-friend"> Personal (-2%)
+              <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+              <input type="checkbox" id="ov-emergency"> Street (+15%)
+              <span class="checkmark"></span>
+            </label>
+            <label class="check-container">
+              <input type="checkbox" id="ov-bulk"> Bulk (-2%)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+
+        <button id="conv-calculate" class="composer-btn primary full-width">Calculate Payout</button>
+      </div>
+
+      <div class="converter-receipt">
+        <div class="receipt-header">
+          <div class="receipt-logo">M·C</div>
+          <div class="receipt-title">Consortium Bill of Sale</div>
+        </div>
+        <div class="receipt-body">
+          <div class="receipt-row"><span>Source:</span><span id="rec-source-val">--</span></div>
+          <div class="receipt-row"><span>Target:</span><span id="rec-target-val">--</span></div>
+          <div class="receipt-divider"></div>
+          <div class="receipt-row"><span>Inherent Friction:</span><span id="rec-inherent">0%</span></div>
+          <div class="receipt-row"><span>Planar Conflict:</span><span id="rec-conflict">0%</span></div>
+          <div class="receipt-row"><span>Manual Adjust:</span><span id="rec-manual">0%</span></div>
+          <div class="receipt-divider"></div>
+          <div class="receipt-row total"><span>Total Payout:</span><span id="rec-payout">--</span></div>
+        </div>
+        <div class="receipt-footer">Values observed as per Sigil local time.</div>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-resize-handle"></div>
+</div>
+
+<div id="currency-picker-modal" class="picker-modal">
+  <div class="picker-content">
+    <div class="picker-header">
+      <div class="picker-title">Select Medium of Exchange</div>
+      <div class="picker-manifest-nav">
+        <button class="manifest-tab active" data-cat="all">All</button>
+        <button class="manifest-tab" data-cat="Reserves">Reserves</button>
+        <button class="manifest-tab" data-cat="Prime">Material</button>
+        <button class="manifest-tab" data-cat="Classical">Classical</button>
+        <button class="manifest-tab" data-cat="Border">Borders</button>
+        <button class="manifest-tab" data-cat="Upper">Upper</button>
+        <button class="manifest-tab" data-cat="Lower">Lower</button>
+        <button class="manifest-tab" data-cat="Neutral">Neutral</button>
+        <button class="manifest-tab" data-cat="Mirror">Mirror</button>
+        <button class="manifest-tab" data-cat="Transitive">Between</button>
+        <button class="manifest-tab" data-cat="Metaphysical">Exotic</button>
+      </div>
+      <input type="text" id="picker-search" placeholder="Search by name, plane, or metal...">
+      <button class="picker-close">✕</button>
+    </div>
+    <div class="picker-scroll-area">
+      <div id="picker-grid" class="market-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+</div>

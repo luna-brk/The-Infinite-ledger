@@ -1,0 +1,138 @@
+=============================================================================
+THE INFINITE LEDGER — MODULE II: IDEAS & CONCEPTS
+Visual & Interactive Improvements for the Merkhant Consortium
+=============================================================================
+
+CURRENT ASSET INVENTORY (Existing Frameworks)
+--------------------------------------------
+The following components and styles are already available in the 'test' codebase:
+
+[ JavaScript Components ]
+- Planar Motes: High-performance canvas-based particle system with collision detection.
+- The Great Wheel: Interactive SVG diagram with rotational physics and token builder.
+- Module Search/Filter: Real-time content filtering system with keyboard shortcuts.
+- Collapsible Sections: JS-driven accordion behavior for .content-section modules.
+
+[ CSS Styles & Patterns ]
+- Dark Vellum System: Layered background textures (vellum, vellum-warm, vellum-dark).
+- Bronze/Gold Lustre: CSS variable-driven metallic accents (--bronze, --gold-glow).
+- Astral/Ethereal Accents: Deep void and violet/teal color palettes for planar themes.
+- Typography: Official Cinzel Decorative (headings) and EB Garamond (body) font-stack.
+- Cutter-Note Scrawls: Iron-gall red (.rubric) NPC margin commentary styles.
+- Animations: Candle-flicker glows, slow wheel rotations, and wax-press seal effects.
+- UI Elements: .module-card, .three-pillars grid, .medallion seals, and .page decorative frames.
+- Responsive Design: Adaptive breakpoints for mobile and tablet views.
+
+NEW COMPONENT PROPOSALS (Ideas for Module II)
+--------------------------------------------
+After a deep search of the planar currency data and economic frameworks, 
+the following components are proposed for development in the 'test' sandbox.
+
+1. THE MERKHANT CONSORTIUM CURRENCY CONVERTER (Interactive JS)
+------------------------------------------------------------
+A functional "Money-Changer" tool that implements the "Three-Question 
+Conversion Protocol" (II.7.3).
+- Input: Amount, Source Currency, Source Plane, Target Plane.
+- Logic: Calculates "Friction" (0-50%) based on planar distance and 
+  alignment opposition.
+- Visual: A sleek, brass-accented UI that "prints" a Consortium receipt.
+
+2. PROCEDURAL "LADY'S MARK" GENERATOR (SVG + JS)
+----------------------------------------------
+The Sigilian Jinx is uncounterfeitable because of its "shifting, maze-like 
+pattern."
+- Component: An SVG maze that procedurally regenerates its path on hover 
+  or click.
+- "Counterfeit Filter": A CSS effect (distortion, slight blurring, or 
+  chromatic aberration) that triggers when the user hovers over a 
+  "suspect" coin, simulating the "nausea" or "unease" described in the text.
+
+3. QUINTESSENCE DECAY VISUALIZER (JS + CSS)
+-----------------------------------------
+Quintessence evaporates outside the Astral Plane.
+- Component: A "Vial" UI element with a liquid filling.
+- Interactivity: A dropdown to select the Plane (Prime, Elemental, etc.). 
+- Effect: The liquid level slowly drops in real-time (or accelerated) based 
+  on the decay rates (e.g., 5%/day on Prime). 
+- Alerts: Visual cues when storage becomes "Poor" (faster evaporation).
+
+4. ALIGNMENT-SENSITIVE "TACTILE" SHADERS (CSS)
+--------------------------------------------
+Celestian Trade Bars and Styx-Iron react to the user's alignment.
+- Component: A toggle for "User Alignment" (Good, Neutral, Evil).
+- Celestian Bar: Glows with a warm, golden `box-shadow` and `filter: brightness` 
+  when 'Good' is selected; looks dull when 'Evil'.
+- Styx-Iron: Develops a "frost" overlay or "oily sheen" (using SVG 
+  feTurbulence) when handled by 'Good' characters, reflecting its 
+  uncomfortable coldness.
+
+5. THE WEALTH SPECTRUM "LADDER" (CSS/SVG)
+---------------------------------------
+A vertical visualization of Tiers 0–12.
+- Component: A decorative "ladder" or "pillar" on the side of the page.
+- Interaction: Clicking a rung scrolls the user to that Tier's section.
+- Hover: Displays a "Lifestyle Tooltip" showing what a person at that tier 
+  typically owns (e.g., "Tier 11: Owns an Army").
+
+6. "CHAOS SHARD" VALUE OSCILLATOR (JS)
+------------------------------------
+Chaos Shards (Limbo) have unstable values.
+- Component: A "Current Value" display for Chaos Shards that fluctuates 
+  randomly every few seconds (within the 500-2000 gp range).
+- Mini-game: A "Sell Now" button to lock in a price.
+
+7. "ATHASIAN SCARCITY" THEME TOGGLE (CSS)
+---------------------------------------
+A "Planar Filter" that transforms the module's aesthetics to match the 
+resource-scarce world of Dark Sun.
+- Effect: Desaturates colors, applies a "cracked parchment" texture, and 
+  swaps all "Gold" mentions to "Ceramic" through CSS pseudo-elements or JS.
+
+8. PLANAR FRICTION HEATMAP (SVG)
+------------------------------
+A visual Great Wheel that lights up based on the "Source Plane."
+- Component: An SVG map of the planes.
+- Logic: When you select "Baator," the opposed "Upper Planes" turn red (High 
+  Friction), and "Lower Planes" turn green (Low Friction).
+
+9. "THE LADY'S WEIGHT" (Canvas/Special Effect)
+--------------------------------------------
+A hidden or rare visual effect for the theoretical 10M jinx denomination.
+- Visual: A screen-shaking, gravity-distorting effect where the "Motes" 
+  background is sucked toward the coin, representing its immense 
+  "metaphysical weight."
+
+10. GENERAL-USE AESTHETIC & FUNCTIONAL ENHANCEMENTS
+--------------------------------------------
+These ideas focus on site-wide polish and "Planescape" atmosphere, applicable to any module or hub page.
+
+1. ILLUMINATED MANUSCRIPT TYPOGRAPHY (CSS)
+- Drop Caps: Automatic ornate "Drop Caps" for the first letter of major sections using Cinzel Decorative and bronze gradients.
+- Hover Highlights: Subtle golden text-shadow "glows" when hovering over key terms or headers, as if a candle is being brought closer.
+
+2. DYNAMIC PLANAR PARALLAX (CSS/JS)
+- Layered Vellum: Splitting the background into multiple vellum layers that move at different speeds during scroll, creating a sense of physical depth.
+- Shifting Mists: Adding a low-opacity SVG "mist" or "smoke" layer that drifts slowly over the page, reacting to scroll position.
+
+3. "MERCANTILE" NAVIGATION ENHANCEMENTS (JS/CSS)
+- Planar Breadcrumbs: Instead of standard text, use small icons (Great Wheel symbols) to show the user's "depth" within the module.
+- Progress Ribbons: Transforming the sidebar progress bar into a decorative silk ribbon that "unfurls" as the user reads.
+
+4. INTERACTIVE BORDERS & SCROLLWORK (SVG/CSS)
+- Growth Animations: Section borders that subtly "grow" or animate into place as they enter the viewport.
+- Decorative Corner Flourishes: SVGs that animate (rotate or glow) when a section is expanded or active.
+
+5. THE "CONSORTIUM LENS" (JS/CSS)
+- High-Contrast Mode: A "True Seeing" toggle that simplifies the UI into high-contrast black and gold for accessibility while staying in-theme.
+- Loupe Effect: A "magnifying glass" effect for examining high-resolution maps or detailed currency illustrations.
+
+6. HAPTIC-LIKE VISUAL FEEDBACK (CSS)
+- Button Press: Bronze buttons should have a distinct "physical" feel—depressing slightly and triggering a brief golden radial-gradient flare.
+- Scroll Snapping: Smooth, weighted scroll snapping for major sections to give the page a "heavy," authoritative feel.
+
+7. AMBIENT PLANAR SOUNDSCAPE (JS - Optional/Toggle)
+- Subtle Audio: A very low-volume, toggleable ambient track of distant bazaar chatter or wind-howl, enhancing the immersion of the ledger.
+
+8. "QUICK-MEMO" FOLIO (JS/LocalStorage)
+- Sticky Notes: A "Cutter's Scrawl" feature where users can double-click any text to leave a temporary margin note (saved in LocalStorage).
+- Bookmark Tags: Small silk-ribbon tags that "pop out" of the side of the page for marked sections.

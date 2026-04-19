@@ -1,0 +1,769 @@
+================================================================================
+THE INFINITE LEDGER — THE DEFINITIVE MULTIVERSAL MANIFEST (MODULE II)
+================================================================================
+
+This document is the absolute authority on interplanar wealth, compiled by the 
+Merkhant Consortium Authentication Bureau. Every entry includes verified jinx 
+equivalents and improved atmospheric flavor for use in high-fidelity 
+Currency Cards.
+
+--------------------------------------------------------------------------------
+1. PRIME MATERIAL CURRENCIES (World-Specific Standards)
+--------------------------------------------------------------------------------
+
+[ OERTH (GREYHAWK) ]
+Flavor: "The gold of a thousand kingdoms; diverse, trusted, and well-minted."
+- Standard Gold Piece: 1.00 gp. (Common gold; well-minted and universally trusted)
+- Standard Silver Piece: 0.10 gp. (Common silver bird)
+- Standard Copper Piece: 0.01 gp. (Common copper bit)
+- Furyondian Crown: 1.00 gp. (Gold; bears the noble profile of a King)
+- Keoish Mark: 1.00 gp. (Slightly larger and heavier; preferred by dwarves)
+- Velunan Solar: 1.00 gp. (Detailed religious imagery; backed by Rao's See)
+- Iuz Iron: 0.80 gp. (Debased and crude; hated by most honest merchants)
+- Scarlet Brotherhood Hidden Coin: 1.00 gp. (Bears secret tactical scratches)
+- Ull Ingot: Value by weight. (Crude metal bars; barter-standard of the steppes)
+- Sea Mark: 1.00 gp. (Gold; nautical imagery; accepted in coastal ports)
+- Ulek Standard: 1.00 gp. (Dwarf-assured minting; extremely reliable)
+- Verbobonc Half-Crown: 0.50 gp. (Small gold coin; common fractional trade)
+- Dyvers Florin: 1.00 gp. (Part of an active commercial exchange network)
+- Nyrond Stag: 1.00 gp. (Currently war-inflated; 0.9 gp elsewhere)
+- Imperial Orb: 1.00 gp. (Declining trust due to Great Kingdom collapse)
+
+[ TORIL (FORGOTTEN REALMS) ]
+Flavor: "The most varied coinage in the Prime; every city has its own mark."
+- Faerûnian gp: 1.00 gp. (Standard gold Lions or Danters)
+- Electrum Piece (ep): 0.50 gp. (Unique alloy of gold and silver)
+- Harbor Disk: 10.0 gp. (Thick gold disc used for major Waterdhavian trade)
+- Gate Standard: 1.00 gp. (Excellent commercial minting from Baldur's Gate)
+- Amnian Camel Mark: 1.00 gp. (Gold; backed by the Council of Five)
+- Calishite Sun Coin: 1.00 gp. (Brilliant gold minted by the Pashas)
+- Sembian Trader: 1.00 gp. (Corporate-state gold; highly reliable)
+- Sembian Finch: 0.10 gp. (Regional silver bird)
+- Purple Dragon Standard: 1.00 gp. (Royal warrant gold of Cormyr)
+- Purple Dragon Crown: 10.0 gp. (Cormyrean platinum equivalent)
+- Thayan Blood Mark: 1.00 gp. (Red gold alloy minted by Red Wizards)
+- Slaver's Script: Variable. (Internal Thayan slave-economy paper)
+- Zhent Standard: 0.90 gp. (Debased gold widely circulated by Zhentarim)
+- Moonsilver: 0.11 gp. (Premium silver; 110% standard sp value)
+- Star Coin: 1.00 gp. (Academic-prestige gold minted in Silverymoon)
+- Mulhorandi Solar: 2.00 gp. (Lavish oversized gold with divine imagery)
+- Mulhorandi Moon: 0.50 gp. (Regional silver standard)
+- Aglarondan Standard: 1.00 gp. (Gold piece of the Simbul's realm)
+- Jungle Amber: 5–50 gp. (Raw amber bits valued by clarity and size)
+
+[ ATHAS (DARK SUN) ]
+Flavor: "Ceramic is common; metal is life. A single iron coin can buy a village."
+- Ceramic Bit: 0.005 gp. (Smallest practical unit of fired clay)
+- Ceramic Piece: 0.01 gp. (Standard 'cp' equivalent; glazed clay)
+- Ceramic 5-unit: 0.05 gp. (Common regional denomination)
+- Ceramic 10-unit: 0.10 gp. (Standard 'sp' equivalent; daily commerce)
+- Ceramic Trade Piece: 0.50 gp. (Heavy fired clay for larger retail)
+- Ceramic Crown: 1.00 gp. (Fine glazed clay; rare outside Sorcerer-Cities)
+- Metal Coin (Iron/Bronze): 10.0 gp. (Face value irrelevant; treated as metal)
+- Metal Ingot (1 lb Iron): 100.0 gp. (Strategic reserve; near-priceless)
+- True Metal (Silver, 1 oz): 500.0 gp. (Found only in Sorcerer-Kings' vaults)
+- True Metal (Gold, 1 oz): 1,000 gp. (The ultimate reserve asset of kings)
+- Mythic Metal (Mithral, 1 oz): 10,000+ gp. (Artifact-tier mythical material)
+
+[ KRYNN (DRAGONLANCE) ]
+Flavor: "In a world of war, steel is the only metal that matters."
+- Steel Piece: 1.00 gp. (The multiversal standard for Krynn; practical wealth)
+- Silver Piece: 0.10 gp. (Standard silver)
+- Gold Piece (Krynnish): 0.50 gp. (Devalued; seen as decorative and soft)
+- Platinum Piece (Krynnish): 5.00 gp. (Five-steel piece equivalent)
+- Tyntagel: 2.00 gp. (Elegant silver coinage of the Silvanesti High Elves)
+
+[ THE UNDERDARK ]
+Flavor: "Smells of deep stone; the vertical economy of the depths."
+- Drow Spider Coin: 1.00 gp. (Trace adamantine; minted with Lolth's sigil)
+- Drow Debt-Marker: Variable. (Physical manifestation of political favor)
+- Svirfneblin Iron Ingot: 2.00 gp. (Purified deep-iron; mining standard)
+- Duergar Grey Coin: 1.00 gp. (Debased iron; trusted in Gracklstugh)
+- Kuo-Toa Shell: 0.50 gp. (Symbolic value traded in coastal enclaves)
+- Illithid Thought-Gem: 10–100 gp. (Psionically charged crystal fragment)
+- Myconid Spore-Token: 5–20 gp. (Organic communication and trade unit)
+- Aboleth Memory-Vial: 50–500 gp. (Extracted memories from extreme antiquity)
+- Beholder Eye-Coin: 25–250 gp. (Shed scales used as occult currency)
+
+[ ADDITIONAL PRIME WORLDS ]
+Flavor: "Setting standards for the multiverse's edge."
+- Galifar Standard (Eberron): 1.00 gp. (Highly trusted; Dragonmarked backing)
+- Kundarak Letter (Eberron): 1,000+ gp. (Premium Consortium-adjacent credit)
+- Birthright Regency: (Variable; bloodline-based political assets)
+- Alphatian Magic-Mark (Mystara): (Variable; magic-as-primary-wealth)
+- Rock of Bral Credit (Spelljammer): (Variable; 'Sigil-lite' trade credit)
+
+--------------------------------------------------------------------------------
+2. TRANSITIVE & MIRROR PLANES (The Roads Between)
+--------------------------------------------------------------------------------
+
+[ THE ASTRAL PLANE ] (The Silver Void)
+Flavor: "An infinite sea of solidified thought, where the past and future 
+drift as silvery mists."
+- Silver Sword Bond: 500.0 gp. "A serrated silver plate marking a Githyanki 
+  war-band's debt. It vibrates faintly when held near a portal."
+- Warrior's Mark: 50.0 gp. "A silver victory credit marking githyanki standing. 
+  Each represents a distinct deed carved into the thought-stuff."
+- Queen's Seal: 10,000 gp. "Issued by Vlaakith's direct court. It is a 
+  near-mythic store of value, recognized in every Githyanki fortress."
+- Astral Cartography Note: 100–5,000 gp. "A documented, thought-stable route 
+  through the Void. Worth its weight in quintessence to a captain."
+
+[ THE ETHEREAL PLANE ] (The Misty Shore)
+Flavor: "A realm of ghostly light and swirling mists, where the border 
+between 'here' and 'there' dissolves."
+- Phase Spider Silk (yard): 50.0 gp. "Shimmering silk that exists in two 
+  realities at once. Clothing made from it is proof against ghosts."
+- Ethereal Drift-Stone: Variable. "A porous, glowing rock that smells of ozone. 
+  The primary building material of waystations on the Misty Shore."
+- ghost-silk: Variable. "Woven from the residue of ethereal hauntings; its 
+  touch is like a cold memory."
+
+[ THE ORDIAL PLANE ] (The Hidden Transitive)
+Flavor: "The rumored space between the Outer and Energy planes. It hums with 
+an impossible, ancient frequency."
+- Ordial Resonance Fragment (minor): 500–2,000 gp. "A small crystalline shard 
+  of pure 'betweenness'. Used as a catalyst for extreme transit magic."
+- Ordial Resonance Fragment (major): 5,000–20,000 gp. "A larger, singing crystal 
+  that seems to show distant planes inside its facets."
+- Ordial Meridian: 100,000+ gp. "A fragment the size of a fist; it acts as a 
+  metaphysical compass for the entire multiverse."
+
+[ THE FEYWILD ] (The Bright Mirror)
+Flavor: "A realm of luminous excess; where what something means is its price."
+- Summer Gold: 2.00 gp. "Gold minted by the Seelie Court. It smells of honey 
+  and warm grass; spending it feels like a joyous, lingering laugh."
+- Winter Silver: 2.00 gp. "Unnaturally cold silver of the Unseelie Court. It 
+  bites the skin and frost forms on the coin's edge when held."
+- Seasonal Leaf-Coin: 1.00 gp. "Magically preserved gold leaf. Its value shifts 
+  with the seasons: precious in winter, common in autumn."
+- Dreaming Gem: 10–1,000 gp. "A faceted crystal containing a captured dream. 
+  Hold it to your ear to hear the whispers of a sleeping forest."
+- Promise-Stone: 50.0 gp. "A smooth river stone that glows when a favor is 
+  pledged. It grows heavy and dull if the promise is ever broken."
+- Song-Coin: 10–500 gp. "A golden coin that releases a song when played. The 
+  more significant the song, the higher the value."
+- True Name Flower: Variable. "A flower grown over the burial site of a being 
+  whose true name it preserves. Fragile and ontological."
+- Fey Bargain Scroll: Variable. "A formal written bargain. It carries the 
+  metaphysical weight of a pact made with the faerie courts."
+- Moonstone Mark: 100.0 gp. "A polished moonstone set in silver. Used as a 
+  neutral medium of exchange between the Summer and Winter Courts."
+- Court Favor Token: 500–5,000 gp. "A token of noble favor. Redeemable for one 
+  significant service from a named fey high-up."
+
+[ THE SHADOWFELL ] (The Dark Mirror)
+Flavor: "A dark reflection where light is diminished and the resonance of loss 
+permeates everything."
+- Nightshilling: 1.00 gp. "A silver coin that seems to pull the light from the 
+  air. The face is a featureless void, and it is always cold."
+- Obsidian Bit: 0.01 gp. "Sharp volcanic flakes used as small change. Mined 
+  directly from the intrusions of the Shadowfell's core."
+- Shadow-Silver: 0.10 gp. "Silver coins with a permanent blackened finish. 
+  They are colder than standard silver and absorb sound."
+- Shroud-Gold: 5.00 gp. "Gold coins recovered from funerary ceremonies. They 
+   carry the faint weight of a final breath and the aura of death."
+- Letherna Bond: 10,000 gp. "A wax-sealed scroll issued by the Raven Queen's 
+  innermost circle. A currency of absolute finality."
+- Shadow-Silk Bolt: 50 gp/yard. "Dark, shimmering fabric that resists all 
+  illumination. The primary export of fetchling weavers."
+- Memory of Sunlight: 10–500 gp. "A rare, glowing pearl containing a captured 
+  memory of a sunrise. A luxury beyond price in the dark."
+- Drop of Dread: 5–50 gp. "Distilled fear harvested from a sentient soul. 
+  Used as a dark component in shadow-aspected magic."
+- Void-Gem: 100–1,000 gp. "Gems formed in deep shadow. They reflect no light 
+  and feel like a vacuum in the palm of your hand."
+
+[ THE DEMIPLANES OF DREAD ] (The Mists of Ravenloft)
+Flavor: "Sealed pockets of existential terror, where your own wealth can 
+become a shackle."
+- Dread-Mark: 1.00 gp equiv. "A featureless, grey-metal coin of unknown 
+  origin. It is the only coin recognized in every mist-shrouded domain."
+- Fear-Token: 5–50 gp. "A jagged crystal formed from the distilled terror of 
+  a nightmare. It feels slick and repellent to the touch."
+- Barovian Crest: 1.00 gp. "Tarnish-prone silver stamped with a raven and a 
+  castle. It smells of damp earth and old blood."
+- Falcon Standard (Falkovnia): 1.00 gp. "Rugged, military-grade coin of 
+  pressed iron. Its value is enforced by Drakov's legion."
+- Mechanist Token (Lamordia): 1.00 gp. "A precisely stamped brass coin. It is 
+  a testament to the industrial gothic focus of the region."
+- Dread-Debt: Variable. "A formal obligation placed by a Darklord or 
+  significant Power. Never take one lightly; the Lords always collect."
+- Hazlani Arcane Token: Variable. "Spells made manifest as trade-goods. The 
+  only true wealth in the realm of Hazlik."
+
+--------------------------------------------------------------------------------
+3. THE PRIME ELEMENTAL PLANES (The Inner Sphere)
+--------------------------------------------------------------------------------
+
+[ ELEMENTAL PLANE OF AIR ] (The Boundless Sky)
+Flavor: "Light as a feather and just as likely to blow away. Air Plane wealth 
+rewards the mobile."
+- Zephyr Mark: 1.00 gp. "Magically solidified air disc, light enough to float on 
+  a breeze. Carried in weighted pouches to prevent loss."
+- Storm-Charge: 50.0 gp. "A fist-sized crystal holding a crackling lightning 
+  bolt. Essential for cloud-city infrastructure."
+- Cloud-Silver: 10.0 gp. "Refined at the border of the Astral, this silver 
+  swirls with inner mists when a breeze passes over it."
+- Wind-Token: 0.10 gp. "A token of hardened wind used as small change in the 
+  floating markets of Aaqa."
+- Djinni Craftsmanship Note: Variable. "A promissory note from a djinni master 
+  artisan. Their work is among the finest in the multiverse."
+- Tempest Bond: 1,000 gp. "An institutional bond issued by the Skyport 
+  Consortium of Aaqa for major inter-plane commerce."
+
+[ ELEMENTAL PLANE OF EARTH ] (The Eternal Mountain)
+Flavor: "Indestructible mineral worth; the Dao nobility charge a heavy tax 
+for every sample of their realm."
+- Earth-Coin: 1.00 gp. "A mineral disc so compressed it can cut diamonds. 
+  Minted by the Great Khan of the Dao to never break or dull."
+- Stone-Mark: 0.10 gp. "Polished granite small change, each bearing the 
+  micro-etched tax-seal of a Dao mining house."
+- Dao Debt-Seal: 500.0 gp. "A formal ceramic seal acknowledging institutional 
+  debt. The Dao take these marks more seriously than their lives."
+- Crystal-Bond: 10,000 gp. "A singing emerald grown to hold a specific 
+  metaphysical value. Used for treaty-level transactions."
+- Adamantine Shard: 500–5,000 gp/lb. "Pure raw adamantine used directly as 
+  currency by the Delve's high-ups."
+
+[ ELEMENTAL PLANE OF FIRE ] (The Sea of Flames)
+Flavor: "Warm to the touch and forged in the greatest bazaar in the multiverse. 
+The Efreet care for nothing but your ability to pay."
+- Ember-Coin: 1.00 gp. "Forged from magma-iron. A minor enchantment keeps them 
+  cool enough for non-fire natives to handle safely."
+- Flame-Script: 10.0 gp. "Fire-resistant ash-paper trade notes. The ink is only 
+  visible when the paper is held over an open flame."
+- Searing Mark: 100.0 gp. "Gold piece with a permanent fire enchantment. It 
+  sparkles with dancing embers; unusable by those with fire-revulsion."
+- Salamander Scale: 25.0 gp. "A shed, polished scale. Traded as both a 
+  recognized currency and a potent alchemical component."
+- Efreeti Writ: 1,000 gp. "A formal obligation signed by an Efreeti Noble. 
+  Binding, but the efreet will search for every possible loophole."
+- Sultanate Bond: 10,000 gp. "A brass plate bearing the Sultan's direct seal. 
+  To forge one is to invite immediate, eternal immolation."
+- Brass Crown: 100,000 gp. "The highest denomination in the City of Brass, 
+  reserved for transactions between major planar powers."
+
+[ ELEMENTAL PLANE OF WATER ] (The Eternal Ocean)
+Flavor: "Fluid wealth that never rusts. The Marid value beauty and novelty 
+over standard weight."
+- Tide-Mark: 1.00 gp. "Crystallized water that remains solid even in extreme 
+  heat. It is as clear as a mountain spring."
+- Pearl-Standard: 10.0 gp. "A perfectly spherical pearl, graded for luster 
+  by the Marid Assayers. Both a currency and a luxury good."
+- Sea-Token: 0.10 gp. "A small, magically marked shell used for small change 
+  throughout the coral cities of the plane."
+- Marid Crest: 500.0 gp. "An engraved shell-medallion. It represents the 
+  authority and patronage of a Water-Plane noble court."
+- Wave-Bond: 5,000 gp. "A major institutional bond issued by the House of Tides. 
+  Accepted at every reputable port in the Inner Sphere."
+- Deep-Sapphire: 1,000–10,000 gp. "Gems formed in the highest-pressure 
+  currents. Tightly controlled by the Marid courts."
+
+--------------------------------------------------------------------------------
+4. THE BORDER ELEMENTAL PLANES (Para-Elemental)
+--------------------------------------------------------------------------------
+
+[ PARA-ELEMENTAL ICE ] (Air + Water)
+Flavor: "Eternally frozen perfection; a vault of cold wealth."
+- Permafrost Shard: 5.0 gp. "Eternally frozen ice that does not melt in normal 
+  heat. A durable asset and magical focus."
+- Frost Coin: 1.00 gp. "Pressed from compressed frost-iron by giants. It is 
+  heavy and carries the chill of the great glaciers."
+- Ice-Mark: 10.0 gp. "A marked block of elemental ice used for mid-tier trade 
+  between the White Dragon enclaves."
+- Cryogenic Bond: 500.0 gp. "A formal institutional note from an Ice Plane 
+  noble house. It is cold to the touch and legally final."
+- Stygian Ice Chip: 1,000–10,000 gp. "Intersection ice that erodes memory. 
+  Each chip is a dangerous alchemical masterpiece."
+- Glacial Preservation Block: 50 gp/cu ft. "Elemental ice that halts all 
+  decay. A premium trade good on the Plane of Fire."
+
+[ PARA-ELEMENTAL MAGMA ] (Earth + Fire)
+Flavor: "The forge of creation; where metal and mineral are born."
+- Azer Forge-Mark: 1.00 gp. "Durable brass coins from Azer smiths. Sturdy 
+  enough to survive the plane's most intense heat."
+- Raw Ore Token: 5–50 gp. "An assayer-certified token representing a specific 
+  quantity of native magma-ore."
+- Magma-Formed Gem: 50–5,000 gp. "Gems formed in primordial chemical 
+  processes; imperfect standard but magically potent."
+- Fire-Iron Mark: 100.0 gp. "Iron alloyed with fire-aspected minerals. The 
+  standard for heat-resistant strategic metallurgy."
+
+[ PARA-ELEMENTAL OOZE ] (Earth + Water)
+Flavor: "Niche harvesting from the least pleasant place in the Inner Sphere."
+- Muck-Pearl: 25–100 gp. "Beautiful oily pearls formed by intelligent oozes. 
+  PRIZED for alchemical stabilization."
+- Ooze-Silk (yard): 200.0 gp. "Magically waterproof silk spun by intelligent 
+  slimes. Essential for deep-water diving gear."
+- Primal Sludge Ingot: 50.0 gp. "A solidified sample of elemental sludge 
+  maintained for off-plane alchemical research."
+- Preserved Ooze Specimen: 100–500 gp. "Extracted biological samples prized 
+  by researchers and dark alchemists."
+
+[ PARA-ELEMENTAL SMOKE ] (Air + Fire)
+Flavor: "Economically marginal skies of ash and particulate."
+- Cinder-Coal (lb): 1.00 gp. "High-energy fuel; burns hotter and cleaner than 
+  standard coal. Highly valued by industrial smiths."
+- Living Smoke (bottled): 15.0 gp. "Bottled mephit-smoke used as a component 
+  for fog-related and illusion magic."
+- Haze-grown mushroom: 25.0 gp. "Unique smoke-adapted culinary and alchemical 
+  specimens."
+- Smoke-craft Component: 50.0 gp. "Specialized materials required for 
+  sustaining complex illusions."
+- Smoke-Bond: 500.0 gp. "An institutional promissory note used between the 
+  plane's few commercial entities."
+
+--------------------------------------------------------------------------------
+5. THE ENERGIZED ELEMENTAL PLANES (Quasi-Elemental)
+--------------------------------------------------------------------------------
+
+[ QUASI-ELEMENTAL LIGHTNING ] (Air + Positive)
+Flavor: "Deafening and dangerous; wealth made of pure discharge."
+- Voltaic Crystal: 100.0 gp. "Crystal that stores and releases charge on 
+  command. Essential for construct-crafting."
+- Storm-Seed: 200.0 gp. "A compressed ball of air and electricity. When 
+  opened, it releases a localized elemental storm."
+- Pure Lightning Charge: 50–500 gp. "A contained strike of exceptional 
+  power. Used to power high-tier magical infrastructure."
+- Living Spark: 500.0 gp. "A stabilized entity of pure electricity. An 
+  exotic and fragile alchemical component."
+- Skystone (Lightning-kissed): 1,000 gp. "Stones struck by lightning until 
+  they absorb lasting electrical properties. Used for shock-weapons."
+
+[ QUASI-ELEMENTAL MINERALS ] (Earth + Positive)
+Flavor: "Crystalline perfection; the ultimate standard of purity."
+- Mineral Crystal (Grade A): 100–500 gp. "Gems of impossible clarity, 
+  infused with a faint life-aspected resonance."
+- Growth-Stone: 200.0 gp. "Positive-infused mineral that improves 
+  agricultural yield. Highly valued in resource-scarce regions."
+- Soul-Crystal: 1,000–5,000 gp. "A crystal spontaneously formed around a 
+  fragment of life-force. Essential for resurrection magic."
+- Positive Crystal Focus: 500.0 gp. "A crystal attuned to life-energy. It 
+  enhances healing spells and restorative rituals."
+- Living Diamond: 5,000–50,000 gp. "Extraordinary living crystal that 
+  responds to stimuli. A quest-tier artifact base."
+
+[ QUASI-ELEMENTAL RADIANCE ] (Fire + Positive)
+Flavor: "Blindingly pure light; wealth you cannot look at directly."
+- Dawn-Shard: 100.0 gp. "A small solidified piece of early-morning radiance. 
+  Used as a component for light-aspected divination."
+- Solidified Light: 200–1,000 gp. "Radiance that has achieved a temporary 
+  solid form. Brilliantly luminous and magically active."
+- True Radiance Vial: 2,000 gp. "Vial of liquid radiance. One of the most 
+  potent healing materials in the multiverse."
+- Radiance Component: 500.0 gp. "Carefully contained matter-sample from the 
+  plane's core. Used in crafting artifacts of light."
+- Sunstone (Radiance-grade): 10,000 gp. "Extraordinary focusing stone formed 
+  from pure radiance. Far superior to standard variants."
+
+[ QUASI-ELEMENTAL STEAM ] (Water + Positive)
+Flavor: "Infused with transformative life energy; the mist of becoming."
+- Steam Essence (Vial): 100.0 gp. "Condensed healing-steam; slightly warm. 
+  The primary component for high-tier restoration magic."
+- Mist-Pearl: 200.0 gp. "Elegant pearl formed from the crystallization of 
+  healing energy in the scalding mists."
+- Transformation Vapour: 500.0 gp. "Steam suffused with positive energy. 
+  Capable of temporarily altering physical properties."
+- Healing Mist Generator: 2,000 gp. "Device that slowly releases essence. 
+  Creates a zone of passive recovery in hospitals."
+- Cloud-of-Restoration: 5,000 gp. "Specialized use of steam essence that 
+  can reverse advanced magical conditions."
+
+[ QUASI-ELEMENTAL ASH ] (Fire + Negative)
+Flavor: "Entropy and endings; the cold silence after the fire."
+- Silence-Sand (pound): 25.0 gp. "Fine ash that muffles sound and magic. 
+  Essential for anti-detection and abjuration rituals."
+- Ruin-Stone: 50.0 gp. "A piece of native rock associated with finality. 
+  Used in last-rites and binding magic."
+- Ash-Residuum (oz): 50–200 gp. "Entropic component for necromancy. 
+  Carries the fundamental property of completion."
+- Desiccation Crystal: 100.0 gp. "Compressed ash that draws moisture from 
+  living tissue. Used in dark alchemical preparations."
+- Entropy-Ash (Vial): 300.0 gp. "Concentrated vial of ash-matter. The 
+  primary component for disintegration-adjacent magic."
+
+[ QUASI-ELEMENTAL DUST ] (Earth + Negative)
+Flavor: "Devouring sands where time itself accelerates."
+- Time-Dust (oz): 100.0 gp. "Dust from temporal regions; ages objects on 
+  contact. Extremely dangerous to handle."
+- Age-Stone: 500.0 gp. "Stone suffused with time acceleration. It visibly 
+  ages objects and beings in its immediate vicinity."
+- Dust-of-Erasure (Vial): 1,000 gp. "Refined potent dust capable of aging 
+  objects to destruction. A component of absolute ruin."
+- Compressed Dust Block: 50.0 gp. "Stable blocks of plane-dust. Used as a 
+  construction material and alchemical base."
+- Desiccation Mineral: 75.0 gp. "Mineral that absorbs all life-moisture. 
+  Used for indefinite organic preservation."
+
+[ QUASI-ELEMENTAL SALT ] (Water + Negative)
+Flavor: "Hyper-saline desert; dehydrated and brilliantly white."
+- Elemental Salt (lb): 10.0 gp. "Multiverse's finest preservation salt. 
+  The City of Brass maintains a permanent standing order."
+- Sorrow-Salt (oz): 50.0 gp. "Salt crystallized from actual planar tears. 
+  A powerful and morally complicated necromancy component."
+- Salt-Crystal Ward: 100.0 gp. "Pre-formed crystal that creates a 10-foot 
+  zone undead cannot enter for one hour."
+- Preservation Salt (lb): 25.0 gp. "Infused salt that stops organic decay 
+  indefinitely. Used for masterwork mummification."
+- Salt-Scourge (pound): 200.0 gp. "Concentrated negative-energy salt. 
+  Contact causes immediate entropic tissue damage."
+
+[ QUASI-ELEMENTAL VACUUM ] (Air + Negative)
+Flavor: "The perfect absence; silence is the only constant."
+- Void-Silver: 500 gp/oz. "Silver formed at the plane's border. It absorbs 
+  magic on contact; essential for anti-magic zones."
+- Null-Stone: 1,000 gp. "Single-use stone that actively suppresses magic 
+  in a radius. A staple of high-tier thieves' guilds."
+- Silence Crystal: 100.0 gp. "Durable crystal that creates a zone of 
+  absolute silence. Reusable and essential for stealth."
+- Absence-Token: 50.0 gp. "Carries a trace of anti-presence. Reduces 
+  magical detection of the holder across the planes."
+- Bottled Nothing (Vial): 200–1,000 gp. "Sealed container of true vacuum. 
+  Creates a brief area of total sensory absence when opened."
+
+--------------------------------------------------------------------------------
+6. THE ENERGY PLANES
+--------------------------------------------------------------------------------
+
+[ POSITIVE ENERGY PLANE ]
+Flavor: "Terrible abundance. Too much life is effectively death."
+- Life-Spark Crystal: 500–5,000 gp. "Crystallized positive energy, stable 
+  enough for transport. Foundation for the highest healing magic."
+- Dawn-Mote: 200.0 gp. "Small, stable condensed positive-energy unit used as 
+  a spell component for divine restoration."
+- Revitalization Essence: 1,000 gp. "Distilled essence in liquid form. It 
+  reverses fatigue and briefly suppresses magical exhaustion."
+- Eternal Radiance Seed: 10,000 gp. "Extraordinarily rare; grows into a 
+  minor sacred tree over decades. A diplomatic treasure."
+- True Life-Essence: 50,000+ gp. "The purest form of positive energy. Used 
+  in true resurrection magic and holy artifacts."
+- Overflow Crystal (Unstable): 500 gp. "A crystal that has absorbed too much 
+  energy. It may heal or harm unpredictably."
+
+[ NEGATIVE ENERGY PLANE ]
+Flavor: "Entropy made environment. The Void pulls at your soul."
+- Shadow-Essence (Vial): 300.0 gp. "Distilled negative energy in liquid form. 
+  Used in high-tier necromancy and drain-effect enchantments."
+- Void-Shard: 100.0 gp. "Fragment of negative-energy-aspected material. Cold 
+  and life-repellent; used in construct crafting."
+- Death-Perfume (Vial): 500.0 gp. "A rare extract that triggers false-death 
+  states. Prized for escape and dark rituals."
+- True Unmaking-Essence: 10,000+ gp. "Used for creating wraiths and weapons 
+  that permanently reduce life-force. Legally restricted."
+- Oblivion-Crystal: 25,000+ gp. "Contains the fundamental absence of life. 
+  Used only for the most extreme magical workings of ruin."
+- Enervation Concentrate: 2,000 gp. "Concentrated extract used for energy 
+  drain effects. Primarily supplied by the Doomguard."
+
+--------------------------------------------------------------------------------
+7. THE UPPER OUTER PLANES (The Heavens of Good)
+--------------------------------------------------------------------------------
+
+[ MOUNT CELESTIA ] (Lawful Good)
+Flavor: "Paragon of ordered righteousness; wealth earned through virtue."
+- Celestian Trade Bar: 100.0 gp. "Warm, luminous, and marked with holy 
+  sigils. The backbone of celestial commerce."
+- Ephel-Silver: 2.00 gp. "Sanctified silver from the higher layers. It 
+  reflects only the truth of the one who looks into it."
+- Throne-Gold: 100.0 gp. "Holy gold from the layer of Chronias. Radiates 
+  a peace so profound it can calm a violent heart."
+- Merit Tokens: Variable. "Non-transferable records of righteous action. 
+  A spiritual credit earned through service."
+- Archon Writ: 50–500 gp. "Official documentation authorizing specific 
+  purchases or services within the celestial bureaucracy."
+- Crown of Chronias: 100,000+ gp. "Rare ceremonial object for extreme 
+  transactions. Possessing one marks you as a shaper of planar politics."
+
+[ BYTOPIA ] (Lawful Good / Neutral Good)
+Flavor: "Payment for an honest day's work in the twin paradises."
+- Labor-Note: 1.00 gp. "A standardized note representing one day of skilled 
+  labor. The core of the Bytopian economy."
+- Guild Seal: 500.0 gp. "Heavy silver seal marking a master's membership. 
+  A currency of absolute professional trust."
+- Craft-Mark: Variable. "Quality stamps from master artisans. Adds a 25% 
+  premium to the value of the goods they brand."
+- Royal Commendation: 10,000 gp. "Signed by a senior administrator. 
+  Functions as high-level institutional credit."
+
+[ ELYSIUM ] (Neutral Good)
+Flavor: "The gift economy of pure goodness; excess made altruism."
+- Gift-Tokens: Variable. "Symbolic objects of relationship standing. They 
+  carry no fixed price, only the weight of shared goodwill."
+- River-Water (Vial): 25.0 gp. "Restorative water from the River Oceanus. 
+  It tastes of the best memory you have ever had."
+- Blessed Grain (Bushel): 10.0 gp. "Sustains an adult for a month. Exported 
+  to those in need throughout the planes."
+- Pure Water Seal: 1,000 gp. "Medallion marking major charitable donations. 
+  Grants preferential service at celestial temples."
+- Joy-Mark: 1.00 gp. "A symbolic currency representing emotional surplus 
+  and the abundance of the fields."
+
+[ THE BEASTLANDS ] (Neutral Good / Chaotic Good)
+Flavor: "Trophies of the primal hunt in the happy hunting grounds."
+- Trophy-Worth: Variable. "Wyvern fangs (100 gp), dire wolf claws (20 gp). 
+  In the wild, strength is the only measure of wealth."
+- Beast-Lord's Token: 500–5,000 gp. "Recognition of service to a Primal 
+  Lord. Identifies you as a friend to the wild."
+- Druid's Staff-Coin: 50–500 gp. "Living wood coin that grows and changes. 
+  Its value increases as the wood matures over years."
+
+[ ARBOREA ] (Chaotic Good)
+Flavor: "Lavish and exuberant; an economy modulated by mood and song."
+- Ambrosian Drachma: 2.00 gp. "Oversized, lavishly decorated gold. Minted 
+  in the image of Arborean powers; highly collectible."
+- Apollo's Laurel: 100.0 gp. "Ceremonial coin of laurel-leaf gold. A sign 
+  of extraordinary artistic or athletic accomplishment."
+- Wine-Cask Credit: Variable. "Promissory note for legendary vintages. A 
+  single cask can exchange for a small fortune."
+- Titan's Wealth: 10,000+ gp. "Ancient gold inscribed with runes of 
+  power. Used only by the greatest Olympian deities."
+- Arborean Favor: Variable. "Purely social currency. A relationship-debt 
+  more valuable than any individual payoff."
+
+[ YSGARD ] (Chaotic Good / Chaotic Neutral)
+Flavor: "Prestige you wear on your arm; the wealth of fallen heroes."
+- Ring-Gold: 1.00 gp. "Jewelry-based torcs and rings worn as public 
+  status symbols. Status you can carry and spend."
+- Thane's Bond: 500.0 gp. "Token marking a Ysgardian thane's formal 
+  endorsement. Opens doors to high-status warrior commerce."
+- Heroic Ingot: 5,000 gp. "Gold forged from the melted trophies of 
+  conquered foes. SIGNIFIES a life of epic deeds."
+- Battle-Mark: Variable. "Scars and stories serving as social currency. 
+  Verified status within the mead-halls of the heroic."
+- Mead-Debt: Variable. "A serious social contract. Unpaid debts grow into 
+  combat-obligations settled at the feast-table."
+
+--------------------------------------------------------------------------------
+8. THE LOWER OUTER PLANES (The Pits of Evil)
+--------------------------------------------------------------------------------
+
+[ BAATOR (THE NINE HELLS) ] (Lawful Evil)
+Flavor: "Contractual rapacity; where the law is a weapon and every debt is 
+eternal."
+- Nessian Gold: 1.00 gp. "Deep-red gold bearing Asmodeus's personal seal. 
+  Accepting one implies submission to the King of Hells' authority."
+- Infernal Script: 1.00 gp. "Contracts printed on paper that bleeds if 
+  violated. They are supernaturally binding paper instruments."
+- Baator Iron Piece: 0.50 gp. "Debased coinage used for military logistical 
+  purchases. Rugged, heavy, and worth half its face in Sigil."
+- Devil's Bond: 5,000 gp. "A soul-backed promissory of service. The text is 
+  written in invisible ink that changes based on the light."
+- Archdevil's Decree: 100,000+ gp. "The highest institutional instrument. 
+  A certified check signed by a Lord of the Nine."
+- Contract-Debt Token: Variable. "Formal acknowledgment of an active 
+  infernal debt. The most dangerous financial instrument known."
+
+[ GEHENNA ] (Neutral Evil / Lawful Evil)
+Flavor: "Mercenary logic; the bleak eternity where everything has a price."
+- Yugoloth Script: 1.00 gp. "Formal promissory notes from yugoloth companies. 
+  Backed by nothing but their terrifying professional reputation."
+- Styx-Iron: 50.0 gp. "Foundational Lower Plane currency. Gehenna is the 
+  multiverse's primary producer of these memory-eroding bars."
+- Merc-Bond: 5,000 gp. "A formal mercenary contract note. Redeemable in 
+  high-tier military services across the Blood War."
+- Oinoloth's Mark: 50,000 gp. "Issued directly by the Leader of the 
+  Yugoloths. Used for institutional-level campaign funding."
+
+[ THE GREY WASTE (HADES) ] (Neutral Evil)
+Flavor: "The color of despair; where passion dies and souls are the only 
+true measure of worth."
+- Night Hag's Coin: 1.00 gp. "A dull grey coin of compressed soul-matter. 
+  Prolonged exposure drains the passion from the holder."
+- Hag's Bond: 500.0 gp. "A mummified finger or eye serving as a promissory. 
+  Night hags honor these with business partners, if no one else."
+- Despair Token: 5.00 gp. "Crystallized fragment of profound hopelessness. 
+  Used as a dark component for grey-magic and necromancy."
+- Soul-Shell: (See Metaphysical Assets). "The primary trade good of the 
+  Waste. Mortals are the inventory here."
+
+[ CARCERI ] (Chaotic Evil / Neutral Evil)
+Flavor: "The prison planes; where debts are literal chains and hope is 
+contraband."
+- Debt-Bond: 50–5,000 gp. "A shard of black glass that grows into physical 
+  shackles on anyone who fails to pay their obligation."
+- Escape-Price: (Priceless). "The rumored cost of leaving the prison. 
+  Theoretical; the Dark Powers always take their cut."
+- Contraband Goods: Variable. "Mundane items from outside the plane that 
+  command enormous premiums among the desperate damned."
+
+[ THE ABYSS ] (Chaotic Evil)
+Flavor: "Predation made manifest; the infinite layers of endless chaos."
+- Graz'zt's Silver: 1.00 gp. "The only minted currency in the Abyss. 
+  Elegant, silver-washed, and profoundly corrupt."
+- Lolth's Web-Coin: 1.00 gp. "Spider-silk woven into a hard, durable disc. 
+  Standard for trade in the Demonweb and Menzoberranzan."
+- Demonic Favor: Variable. "A metaphysical debt to a demon lord. The most 
+  unreliable and dangerous currency in existence."
+- Demonic Wealth (Trophies): Variable. "Gold and gems taken from victims. 
+  Demons do not mint; they accumulate and display strength."
+
+--------------------------------------------------------------------------------
+9. THE NEUTRAL OUTER PLANES (Law & Chaos)
+--------------------------------------------------------------------------------
+
+[ MECHANUS ] (Lawful Neutral)
+Flavor: "The Great Machine of absolute certainty; mathematical perfection 
+in every transaction."
+- Gear-Mark: 1.00 gp. "A perfect disc of Mechanus steel engraved with a 
+  unique mathematical proof. Utterly stable and counterfeiting-proof."
+- Gear-Pip: 0.01 gp. "A microscopic, perfect steel gear representing the 
+  smallest unit of mechanical worth."
+- Gear-Bit: 0.10 gp. "A utility gear with a dual mathematical proof. Used for 
+  daily transactions across the plane's infinite lattice."
+- Millennium-Mark: 1,000 gp. "A complex platinum gear-assembly that rotates 
+  in perfect sync with the plane's own movement."
+- Order-Bond: 10,000 gp. "The multiverse's most reliable institutional bond. 
+  Not a single Order-Bond has ever defaulted in cosmic history."
+- Primus-Mark: 100,000 gp. "AnSolved Theorem engraved in platinum. 
+  Verification requires high-tier Modron oversight."
+- Modron Script: 0.01–100 gp. "The multiverse's first paper money, 
+  distinguished by proofs of increasingly complex geometry."
+
+[ ARCADIA ] (Lawful Neutral / Lawful Good)
+Flavor: "Perfect order and agricultural tranquility; the peaceable kingdoms."
+- Civic Mark: 1.00 gp. "Utilitarian and reliable brass coinage. The 
+  undisputed workhorse of Arcadian day-to-day commerce."
+- Civic Bond: 500.0 gp. "Bonds backed by a city's agricultural production. 
+  Exceptionallly reliable and widely accepted in the Upper Planes."
+- Harmony Seal: 5,000 gp. "Formal seal representing significant civic 
+  contribution. Used for major inter-city trade and diplomacy."
+- Perfection-Gold: 10.0 gp. "Minted to exact purity and weight. In Arcadia, 
+  a 10 gp coin is precisely 10 gp — a point of profound planar pride."
+
+[ ACHERON ] (Lawful Evil / Lawful Neutral)
+Flavor: "The infinite battlefield; a war economy where supply lines are 
+the only true wealth."
+- Iron Cube Coin: 1.00 gp. "Rugged, military-grade currency pressed from the 
+  iron cubes. Bears the insignia of the issuing army."
+- Commander's Bond: 500.0 gp. "A tactical promissory note used to fund major 
+  supply lines and mercenary contracts across the grinding cubes."
+- Weapon-Backed Note: 5–50 gp. "Currency backed by specific weapon stockpiles. 
+  Essential for large-scale logistics where moving metal is impossible."
+- Warlord's Mark: 10,000 gp. "Issued by dominant military powers for 
+  treaty-level transactions and major alliance fundings."
+
+[ LIMBO ] (Chaotic Neutral)
+Flavor: "Stability is a choice; wealth here fluctuates with the strength 
+of your own will."
+- Chaos Shard: (Variable Roll). "Irregular fragments of crystallized Limbo 
+  matter. Shifting and iridescent; value fluctuates with every touch."
+- Githzerai Script: 1.00 gp. "Bronze tokens maintained by mental discipline. 
+  Stable in monasteries; may revert to chaos in unfocused hands."
+- Sage-Stone: 500.0 gp. "Focus stones used by chaos-shapers to stabilize 
+  reality. A currency of pure mental discipline."
+- Slaad Chaos Gem: (Wildly Variable). "Gem-like objects produced by slaadi. 
+  They change form and value unpredictably — a gamble in physical form."
+- Shaped-Reality Favor: Variable. "The service of chaos-shaping as currency. 
+  The value lasts only as long as the shaper remains concentrated."
+
+[ PANDEMONIUM ] (Chaotic Neutral / Chaotic Evil)
+Flavor: "Silence is the only true wealth in the howling darkness."
+- Silence Stone: 50.0 gp. "A dull, porous stone that creates a 10-foot radius 
+  of absolute peace. The most valuable commodity in the howling caverns."
+- Wind-Shard: 5.00 gp. "Fragment of compressed wind. Screams faintly when 
+  held to the ear; used as an exotic component for wind-enchanting."
+- Madness-Gem: 25–250 gp. "Gems that have absorbed the plane's maddening 
+  noise. Used in confusion-based magic; extreme handling risk."
+- Pandemonium Barter: (No Scrip). "Organized commerce does not exist here. 
+  Wealth is what you can carry and what keeps you sane."
+
+--------------------------------------------------------------------------------
+10. THE HUB (Sigil & The Outlands)
+--------------------------------------------------------------------------------
+
+[ THE SIGILIAN JINX ] (Reserve Baseline)
+Flavor: "A jagged scrap of dusksteel that seems to hum with the city's 
+hidden machinery. Authentic jinx feel like certainty."
+- 1/100 Jinx (Pip): 0.01 gp. "A dull brown, single-dot micro-coin."
+- 1/10 Jinx (Bit): 0.1 gp. "Copper-toned coin bearing a single maze line."
+- 1 Jinx (Standard): 1.00 gp. "Blue-grey dusksteel with a full maze pattern. 
+  The multiversal standard for all legitimate commerce."
+- 5 Jinx (Fiver/"Hand"): 5.00 gp. "Silver-washed; the standard unit for 
+  common trade and senior mercenary pay."
+- 25 Jinx (Quarter-Bar): 25.0 gp. "Gold-washed and heavy for its size. 
+  Used for bulk retail and luxury purchases."
+- Trade Bar: 100.0 gp. "A 4-inch rectangular bar with maze patterns on all 
+  faces. Easy to pack for long-range planar transit."
+- Grand Bar: 1,000 gp. "A palm-sized, 1 lb bar bearing the Consortium seal. 
+  The standard unit for major business transactions."
+- Consortium Plate: 10,000 gp. "A plate-sized, 3 lb ingot. Requires identity 
+  verification at issuance and represents massive wealth."
+- Vault Ingot: 100,000 gp. "A 10 lb brick, serialized and tracked in the 
+  Consortium ledgers. Used for institutional fund transfers."
+- Foundry Monolith: 1,000,000 gp. "An 80 lb slab held exclusively in the 
+  Consortium's deepest vaults. Transactions are paperwork only."
+- The Lady's Weight: 10,000,000 gp. "A theoretical reserve asset rumored 
+  to be stored in the Lady's own hidden city-mechanisms."
+
+[ THE CONCORDANT OUTLANDS ]
+Flavor: "True Neutral ground; where every world's coin is evaluated with 
+dispassionate, practical logic."
+- Gate-Town Scrip: Variable. "Ad-hoc paper notes issued by gate-town 
+  councils. Accepted within the town and its adjacent plane."
+- Spire-Token: 50.0 gp. "An iron disc that functions as a battery for 
+  magic suppressed by the Spire. Essential for travelers."
+- Merchant's Letter: 500+ gp. "A letter of credit from an Outlands trade 
+  conglomerate. Universally respected in neutral gate-towns."
+- Outlands Barter: Variable. "The Concordant Domain accepts almost any 
+  valuable object as currency, from planar maps to exotic seeds."
+
+--------------------------------------------------------------------------------
+11. METAPHYSICAL ASSETS (Exotic Life-Assets)
+--------------------------------------------------------------------------------
+
+[ SOUL SHELLS ] (Night Hag soul-brokers)
+Flavor: "Sentient essence distilled into robins-egg crystals. The dark 
+engine of the Lower Planes."
+- Dross Grade: 10–50 gp. "Cloudy, small shell from a weak petitioner. 
+  Commonly used in bulk as magical furnace-fuel."
+- Common Grade: 50–200 gp. "Clear, steady glow. The standard unit of 
+  sentient trade in the Grey Waste and Baator."
+- Choice Grade: 200–1,000 gp. "Bright, warm glow from a strong-willed soul. 
+  Prized for advanced enchantment and binding."
+- Prime Grade: 1,000–5,000 gp. "Brilliant, singing crystal from a heroic 
+  mortal. Used in the creation of powerful holy or unholy items."
+- Singular Grade: 5,000–50,000 gp. "A unique, named soul with properties 
+  reflecting its previous life. A campaign-level asset."
+- Paragon Grade: 50,000–250,000 gp. "Named artifact-tier soul from a 
+  figure of cosmic influence. Traded only for nation-tier wealth."
+- Mythic Grade: 250,000–2,000,000+ gp. "Mortal souls that achieved 
+  transcendence. Their existence is rumor even in Nessus."
+
+[ BELIEF TOKENS ] (Crystallized Conviction)
+Flavor: "Faith made tangible; crystals that pulse with the raw force of 
+sentient caring."
+- LG/NG/CG Tokens: 10–50 gp. "Radiant, life-affirming convictions used to 
+  substitute for holy material components."
+- LE/NE/CE Tokens: 10–45 gp. "Serrated, cold convictions used as fuel for 
+  lower-plane rituals and binding magic."
+- True Neutral Tokens: 20–60 gp. "The rarest and most balanced force. 
+  Command a premium from the Athar and Rilmani."
+
+[ MEMORY PEARLS ] (Sensate Standard)
+Flavor: "Bottled experience; small opalescent spheres containing a single 
+complete sensory memory."
+- Mundane Memory: 1–10 gp. "Sensory snapshots: the smell of rain, a first 
+  kiss. Common entertainment for the jaded."
+- Skilled Knowledge: 50–500 gp. "Professional secrets: how to pick a 
+  specific lock or the layout of a secure building."
+- Secret/Intelligence: 100–10,000+ gp. "High-stakes information: a 
+  password, a political weakness, or a tactical secret."
+- Dead God's Memory: 10,000–100,000+ gp. "Astral-harvested fragments of 
+  divine knowledge from before the current age."
+- Cosmic Event Memory: 1,000,000+ gp. "Eyewitness record of a plane's 
+  creation or a treaty between major powers."
+
+[ TRUE NAMES ] (Ontological Leverage)
+Flavor: "The ultimate currency; a creature's fundamental identity. To 
+know it is to own them utterly."
+- Minor Outsider (CR 1-5): 500–2,000 gp. "Useful for standard binding 
+  rituals and minor summoning contracts."
+- Major Outsider (CR 11-15): 10,000–50,000 gp. "Dangerous to possess; the 
+  named creature and its rivals will actively hunt you."
+- Greater Outsider (CR 16-20): 50,000–200,000 gp. "Nation-toppling power. 
+  Attracts attention from every planar faction."
+- Fiend Lord/Celestial Paragon: 200,000–2,000,000 gp. "Leveraged rather 
+  than sold. Possession is a campaign-defining event."
+- Archdevil/Demon Lord: 2,000,000–20,000,000+ gp. "The end of a campaign. 
+  Such names are traded for entire layers of existence."

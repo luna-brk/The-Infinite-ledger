@@ -282,7 +282,23 @@
     document.addEventListener('click', e => { if (!sidebar.classList.contains('open')) return; if (!sidebar.contains(e.target) && (!toggle || !toggle.contains(e.target))) sidebar.classList.remove('open'); });
   }
 
-  function initSectionCollapse() { document.querySelectorAll('.section-header').forEach(header => { header.addEventListener('click', () => { const body = header.nextElementSibling; if (body) { const collapsed = body.classList.toggle('collapsed'); header.classList.toggle('collapsed', collapsed); } }); }); }
+  function initSectionCollapse() { 
+    try {
+      document.querySelectorAll('.section-header').forEach(header => { 
+        const body = header.nextElementSibling; if (!body) return;
+        if (!body.classList.contains('collapsed')) body.style.maxHeight = body.scrollHeight + 'px'; else body.style.maxHeight = '0px';
+        header.addEventListener('click', (e) => { 
+          if (e.target.closest('button')) return; const isCollapsed = body.classList.contains('collapsed');
+          const onTransitionEnd = (event) => { if (event.propertyName === 'max-height') { if (!body.classList.contains('collapsed')) setTimeout(() => { if (!body.classList.contains('collapsed')) body.style.maxHeight = 'none'; }, 20); body.removeEventListener('transitionend', onTransitionEnd); } };
+          body.addEventListener('transitionend', onTransitionEnd);
+          if (isCollapsed) { body.style.display = 'block'; body.classList.remove('collapsed'); body.style.maxHeight = 'none'; const targetHeight = body.scrollHeight + 4; body.style.maxHeight = '0px'; body.classList.add('collapsed'); body.offsetHeight; body.classList.remove('collapsed'); header.classList.remove('collapsed'); body.style.maxHeight = targetHeight + 'px'; }
+          else { body.style.maxHeight = body.scrollHeight + 'px'; body.offsetHeight; body.classList.add('collapsed'); header.classList.add('collapsed'); body.style.maxHeight = '0px'; }
+        }); 
+      });
+      window.addEventListener('resize', () => { document.querySelectorAll('.section-body:not(.collapsed)').forEach(body => { body.style.maxHeight = 'none'; }); });
+    } catch (e) { console.error('initSectionCollapse failed:', e); }
+  }
+
 
   function initScrollTracking() {
     const fillEl = document.getElementById('progress-fill'), pctEl = document.getElementById('progress-pct'), scrollBtn = document.getElementById('scroll-top'), navLinks = document.querySelectorAll('.nav-link[data-section]'), sectionEls = Array.from(document.querySelectorAll('.content-section[id], section[id]'));
@@ -570,19 +586,54 @@
     window.addEventListener('scrawlsUpdated', renderUserScrawls);
   }
 
+  /* ─── DYNAMIC PLANAR PARALLAX ─── */
+  function initParallax() {
+    const vellum = document.querySelector('.layer-vellum-deep');
+    const mists = document.querySelector('.layer-mists');
+    if (!vellum || !mists) return;
+
+    window.addEventListener('mousemove', e => {
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+
+      vellum.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+      mists.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+    });
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      vellum.style.transform = `translateY(${scrolled * 0.1}px)`;
+      mists.style.transform = `translateY(${scrolled * 0.25}px)`;
+    });
+  }
+
+  /* ─── INTERACTIVE BORDERS (Intersection Observer) ─── */
+  function initSectionObservers() {
+    const sections = document.querySelectorAll('.content-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(s => observer.observe(s));
+  }
+
   // ─── INITIALIZATION ───
   function init() {
     // 1. Critical UI components (run as soon as DOM is ready)
-    initSidebar(); 
-    initSidebarToggle(); 
-    ensureSidebarComponents(); 
-    initBookmarks(); 
-    initSectionCollapse(); 
-    initScrollTracking(); 
-    initContentSearch(); 
-    
+    initSidebar();
+    initSidebarToggle();
+    ensureSidebarComponents();
+    initBookmarks();
+    initSectionCollapse();
+    initScrollTracking();
+    initContentSearch();
+
     // 2. Scrawl systems (need to be ready before load)
-    initCutterNotes(); 
+    initCutterNotes();
     initUserScrawls();
   }
 
@@ -594,10 +645,11 @@
   }
 
   // Run heavy/canvas systems on window.load
-  window.addEventListener('load', () => { 
-    initMotes(); 
-    buildGreatWheel(); 
-    initModuleFilter(); 
+  window.addEventListener('load', () => {
+    initMotes();
+    initParallax();
+    initSectionObservers();
+    buildGreatWheel();
+    initModuleFilter();
   });
-
 })();
